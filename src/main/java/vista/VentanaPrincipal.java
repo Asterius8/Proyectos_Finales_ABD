@@ -183,6 +183,32 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jSeparator5 = new javax.swing.JSeparator();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTable6 = new javax.swing.JTable();
+        jPanel14 = new javax.swing.JPanel();
+        jPanel15 = new javax.swing.JPanel();
+        lblPel = new javax.swing.JLabel();
+        jTabbedPane4 = new javax.swing.JTabbedPane();
+        jPanel16 = new javax.swing.JPanel();
+        lblInsPel = new javax.swing.JLabel();
+        lblNumCatPel = new javax.swing.JLabel();
+        txtNumCatPel = new javax.swing.JTextField();
+        lblTitPel = new javax.swing.JLabel();
+        txtTitPel = new javax.swing.JTextField();
+        lblGenPel = new javax.swing.JLabel();
+        txtGenPel = new javax.swing.JTextField();
+        lblCosAlqPel = new javax.swing.JLabel();
+        txtCosAlqPel = new javax.swing.JTextField();
+        lblDirPel = new javax.swing.JLabel();
+        txtDirPel = new javax.swing.JTextField();
+        lblCosAdqPel = new javax.swing.JLabel();
+        txtCosAdqPel = new javax.swing.JTextField();
+        lblActPel = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        txaActPel = new javax.swing.JTextArea();
+        btnAgrPel = new javax.swing.JButton();
+        btnCanPel = new javax.swing.JButton();
+        jSeparator6 = new javax.swing.JSeparator();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        jTable7 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -1162,6 +1188,172 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         tpnCliente.addTab("Sucursal", jPanel8);
 
+        jPanel15.setBackground(new java.awt.Color(255, 153, 0));
+
+        lblPel.setFont(new java.awt.Font("Arial", 3, 36)); // NOI18N
+        lblPel.setText("Pelicula");
+
+        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
+        jPanel15.setLayout(jPanel15Layout);
+        jPanel15Layout.setHorizontalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel15Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(lblPel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel15Layout.setVerticalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel15Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblPel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        lblInsPel.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblInsPel.setText("Ingrese la informacion de los siguientes campos");
+
+        lblNumCatPel.setText("Numero de Catálogo");
+
+        lblTitPel.setText("Titulo");
+
+        lblGenPel.setText("Género");
+
+        lblCosAlqPel.setText("Coste de Alquiler");
+
+        lblDirPel.setText("Director");
+
+        lblCosAdqPel.setText("Coste de Adquisición");
+
+        lblActPel.setText("Actores");
+
+        txaActPel.setColumns(20);
+        txaActPel.setRows(5);
+        jScrollPane7.setViewportView(txaActPel);
+
+        btnAgrPel.setText("Agregar");
+
+        btnCanPel.setText("Cancelar");
+
+        jTable7.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane8.setViewportView(jTable7);
+
+        javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
+        jPanel16.setLayout(jPanel16Layout);
+        jPanel16Layout.setHorizontalGroup(
+            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel16Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator6)
+                    .addGroup(jPanel16Layout.createSequentialGroup()
+                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblInsPel)
+                            .addGroup(jPanel16Layout.createSequentialGroup()
+                                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel16Layout.createSequentialGroup()
+                                        .addComponent(lblCosAdqPel)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtCosAdqPel, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel16Layout.createSequentialGroup()
+                                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblNumCatPel)
+                                            .addComponent(lblTitPel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lblGenPel)
+                                            .addComponent(lblCosAlqPel)
+                                            .addComponent(lblDirPel))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtNumCatPel)
+                                            .addComponent(txtTitPel)
+                                            .addComponent(txtGenPel, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                            .addComponent(txtCosAlqPel)
+                                            .addComponent(txtDirPel))))
+                                .addGap(80, 80, 80)
+                                .addComponent(lblActPel)
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel16Layout.createSequentialGroup()
+                                .addComponent(btnAgrPel)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnCanPel)))
+                        .addGap(0, 375, Short.MAX_VALUE))
+                    .addComponent(jScrollPane8))
+                .addContainerGap())
+        );
+        jPanel16Layout.setVerticalGroup(
+            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel16Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblInsPel)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel16Layout.createSequentialGroup()
+                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblNumCatPel)
+                            .addComponent(txtNumCatPel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblActPel))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblTitPel)
+                            .addComponent(txtTitPel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblGenPel)
+                            .addComponent(txtGenPel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblDirPel)
+                            .addComponent(txtDirPel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblCosAlqPel)
+                            .addComponent(txtCosAlqPel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblCosAdqPel)
+                            .addComponent(txtCosAdqPel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane7))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAgrPel)
+                    .addComponent(btnCanPel))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTabbedPane4.addTab("Agregar", jPanel16);
+
+        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
+        jPanel14.setLayout(jPanel14Layout);
+        jPanel14Layout.setHorizontalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jTabbedPane4)
+        );
+        jPanel14Layout.setVerticalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 597, Short.MAX_VALUE))
+        );
+
+        tpnCliente.addTab("Pelicula", jPanel14);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1222,10 +1414,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgrCli;
     private javax.swing.JButton btnAgrEmp;
+    private javax.swing.JButton btnAgrPel;
     private javax.swing.JButton btnAgrSuc;
     private javax.swing.JButton btnBusSuc;
     private javax.swing.JButton btnCanCli;
     private javax.swing.JButton btnCanEmp;
+    private javax.swing.JButton btnCanPel;
     private javax.swing.JButton btnCanSuc;
     private javax.swing.JButton btnCanSuc1;
     private javax.swing.JButton btnEdiSuc;
@@ -1250,6 +1444,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1291,20 +1488,25 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
+    private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable5;
     private javax.swing.JTable jTable6;
+    private javax.swing.JTable jTable7;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
@@ -1320,6 +1522,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
+    private javax.swing.JLabel lblActPel;
     private javax.swing.JLabel lblApeMatCli;
     private javax.swing.JLabel lblApeMatEmp;
     private javax.swing.JLabel lblApePatCli;
@@ -1330,18 +1533,25 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblCliente;
     private javax.swing.JLabel lblCodSuc;
     private javax.swing.JLabel lblColCli;
+    private javax.swing.JLabel lblCosAdqPel;
+    private javax.swing.JLabel lblCosAlqPel;
+    private javax.swing.JLabel lblDirPel;
     private javax.swing.JLabel lblEmp;
     private javax.swing.JLabel lblEstSuc;
     private javax.swing.JLabel lblFecNacCli;
     private javax.swing.JLabel lblFecRegCli;
+    private javax.swing.JLabel lblGenPel;
+    private javax.swing.JLabel lblInsPel;
     private javax.swing.JLabel lblInsSuc;
     private javax.swing.JLabel lblInstruccionCli;
     private javax.swing.JLabel lblIntEmp;
     private javax.swing.JLabel lblNomCli;
     private javax.swing.JLabel lblNomEmp;
+    private javax.swing.JLabel lblNumCatPel;
     private javax.swing.JLabel lblNumCli;
     private javax.swing.JLabel lblNumEmp;
     private javax.swing.JLabel lblNumSuc;
+    private javax.swing.JLabel lblPel;
     private javax.swing.JLabel lblPueEmp;
     private javax.swing.JLabel lblSalEmp;
     private javax.swing.JLabel lblSuc;
@@ -1349,7 +1559,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblSucCli1;
     private javax.swing.JLabel lblTelCli;
     private javax.swing.JLabel lblTelSuc;
+    private javax.swing.JLabel lblTitPel;
     private javax.swing.JTabbedPane tpnCliente;
+    private javax.swing.JTextArea txaActPel;
     private javax.swing.JTextField txtApeMatCli;
     private javax.swing.JTextField txtApeMatEmp;
     private javax.swing.JTextField txtApePatCli;
@@ -1362,12 +1574,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField txtCodSuc;
     private javax.swing.JTextField txtCodSuc1;
     private javax.swing.JTextField txtColCli;
+    private javax.swing.JTextField txtCosAdqPel;
+    private javax.swing.JTextField txtCosAlqPel;
+    private javax.swing.JTextField txtDirPel;
     private javax.swing.JTextField txtEstSuc;
     private javax.swing.JTextField txtEstSuc1;
     private javax.swing.JTextField txtFecNacCli;
     private javax.swing.JTextField txtFecRegCli;
+    private javax.swing.JTextField txtGenPel;
     private javax.swing.JTextField txtNomCli;
     private javax.swing.JTextField txtNomEmp;
+    private javax.swing.JTextField txtNumCatPel;
     private javax.swing.JTextField txtNumCli;
     private javax.swing.JTextField txtNumEmp;
     private javax.swing.JTextField txtNumSuc;
@@ -1376,5 +1593,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField txtTelCli;
     private javax.swing.JTextField txtTelSuc;
     private javax.swing.JTextField txtTelSuc1;
+    private javax.swing.JTextField txtTitPel;
     // End of variables declaration//GEN-END:variables
 }
