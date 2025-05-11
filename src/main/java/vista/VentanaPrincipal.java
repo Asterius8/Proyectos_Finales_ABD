@@ -231,6 +231,25 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jSeparator7 = new javax.swing.JSeparator();
         jScrollPane10 = new javax.swing.JScrollPane();
         jTable8 = new javax.swing.JTable();
+        jPanel18 = new javax.swing.JPanel();
+        jPanel19 = new javax.swing.JPanel();
+        lblCop = new javax.swing.JLabel();
+        jTabbedPane5 = new javax.swing.JTabbedPane();
+        jPanel20 = new javax.swing.JPanel();
+        lblInsCop = new javax.swing.JLabel();
+        lblNumCop = new javax.swing.JLabel();
+        txtNumCop = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jComboBox7 = new javax.swing.JComboBox<>();
+        lblSucursal = new javax.swing.JLabel();
+        jComboBox8 = new javax.swing.JComboBox<>();
+        lblNumCat = new javax.swing.JLabel();
+        jComboBox9 = new javax.swing.JComboBox<>();
+        btnAgrCop = new javax.swing.JButton();
+        btnCanCop = new javax.swing.JButton();
+        jSeparator8 = new javax.swing.JSeparator();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        jTable9 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -1506,6 +1525,145 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         tpnCliente.addTab("Pelicula", jPanel14);
 
+        jPanel19.setBackground(new java.awt.Color(153, 153, 255));
+
+        lblCop.setFont(new java.awt.Font("Arial", 3, 36)); // NOI18N
+        lblCop.setText("Copias de Peliculas");
+
+        javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
+        jPanel19.setLayout(jPanel19Layout);
+        jPanel19Layout.setHorizontalGroup(
+            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel19Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(lblCop)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel19Layout.setVerticalGroup(
+            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel19Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblCop)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        lblInsCop.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblInsCop.setText("Ingrese la informacion de los siguientes campos");
+
+        lblNumCop.setText("Numero de Copia");
+
+        jLabel1.setText("Estado");
+
+        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        lblSucursal.setText("Sucursal");
+
+        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        lblNumCat.setText("Numero de Catalogo");
+
+        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        btnAgrCop.setText("Agregar");
+
+        btnCanCop.setText("Cancelar");
+
+        jTable9.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane11.setViewportView(jTable9);
+
+        javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
+        jPanel20.setLayout(jPanel20Layout);
+        jPanel20Layout.setHorizontalGroup(
+            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel20Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator8)
+                    .addGroup(jPanel20Layout.createSequentialGroup()
+                        .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblInsCop)
+                            .addGroup(jPanel20Layout.createSequentialGroup()
+                                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblNumCat)
+                                    .addComponent(lblNumCop)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblSucursal))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtNumCop)
+                                    .addComponent(jComboBox7, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jComboBox8, 0, 150, Short.MAX_VALUE)
+                                    .addComponent(jComboBox9, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel20Layout.createSequentialGroup()
+                                .addComponent(btnAgrCop)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnCanCop)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 1152, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel20Layout.setVerticalGroup(
+            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel20Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblInsCop)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblNumCop)
+                    .addGroup(jPanel20Layout.createSequentialGroup()
+                        .addComponent(txtNumCop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblSucursal))))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblNumCat)
+                    .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAgrCop)
+                    .addComponent(btnCanCop))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTabbedPane5.addTab("Agregar", jPanel20);
+
+        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
+        jPanel18.setLayout(jPanel18Layout);
+        jPanel18Layout.setHorizontalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jTabbedPane5)
+        );
+        jPanel18Layout.setVerticalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel18Layout.createSequentialGroup()
+                .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE))
+        );
+
+        tpnCliente.addTab("Copias de Peliculas", jPanel18);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1565,12 +1723,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgrCli;
+    private javax.swing.JButton btnAgrCop;
     private javax.swing.JButton btnAgrEmp;
     private javax.swing.JButton btnAgrPel;
     private javax.swing.JButton btnAgrSuc;
     private javax.swing.JButton btnBusPel;
     private javax.swing.JButton btnBusSuc;
     private javax.swing.JButton btnCanCli;
+    private javax.swing.JButton btnCanCop;
     private javax.swing.JButton btnCanEmp;
     private javax.swing.JButton btnCanPel;
     private javax.swing.JButton btnCanPel1;
@@ -1595,6 +1755,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JComboBox<String> jComboBox6;
+    private javax.swing.JComboBox<String> jComboBox7;
+    private javax.swing.JComboBox<String> jComboBox8;
+    private javax.swing.JComboBox<String> jComboBox9;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -1604,7 +1768,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
+    private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -1648,6 +1815,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1663,10 +1831,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTabbedPane jTabbedPane4;
+    private javax.swing.JTabbedPane jTabbedPane5;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
@@ -1675,6 +1845,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTable jTable6;
     private javax.swing.JTable jTable7;
     private javax.swing.JTable jTable8;
+    private javax.swing.JTable jTable9;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField11;
@@ -1702,6 +1873,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblCliente;
     private javax.swing.JLabel lblCodSuc;
     private javax.swing.JLabel lblColCli;
+    private javax.swing.JLabel lblCop;
     private javax.swing.JLabel lblCosAdqPel;
     private javax.swing.JLabel lblCosAlqPel;
     private javax.swing.JLabel lblDirPel;
@@ -1710,14 +1882,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblFecNacCli;
     private javax.swing.JLabel lblFecRegCli;
     private javax.swing.JLabel lblGenPel;
+    private javax.swing.JLabel lblInsCop;
     private javax.swing.JLabel lblInsPel;
     private javax.swing.JLabel lblInsSuc;
     private javax.swing.JLabel lblInstruccionCli;
     private javax.swing.JLabel lblIntEmp;
     private javax.swing.JLabel lblNomCli;
     private javax.swing.JLabel lblNomEmp;
+    private javax.swing.JLabel lblNumCat;
     private javax.swing.JLabel lblNumCatPel;
     private javax.swing.JLabel lblNumCli;
+    private javax.swing.JLabel lblNumCop;
     private javax.swing.JLabel lblNumEmp;
     private javax.swing.JLabel lblNumSuc;
     private javax.swing.JLabel lblPel;
@@ -1726,6 +1901,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblSuc;
     private javax.swing.JLabel lblSucCli;
     private javax.swing.JLabel lblSucCli1;
+    private javax.swing.JLabel lblSucursal;
     private javax.swing.JLabel lblTelCli;
     private javax.swing.JLabel lblTelSuc;
     private javax.swing.JLabel lblTitPel;
@@ -1760,6 +1936,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField txtNumCatPel;
     private javax.swing.JTextField txtNumCatPel1;
     private javax.swing.JTextField txtNumCli;
+    private javax.swing.JTextField txtNumCop;
     private javax.swing.JTextField txtNumEmp;
     private javax.swing.JTextField txtNumSuc;
     private javax.swing.JTextField txtNumSuc1;
