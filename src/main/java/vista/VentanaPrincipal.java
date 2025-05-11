@@ -209,6 +209,28 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jSeparator6 = new javax.swing.JSeparator();
         jScrollPane8 = new javax.swing.JScrollPane();
         jTable7 = new javax.swing.JTable();
+        jPanel17 = new javax.swing.JPanel();
+        jRadioButton28 = new javax.swing.JRadioButton();
+        jRadioButton29 = new javax.swing.JRadioButton();
+        jRadioButton30 = new javax.swing.JRadioButton();
+        jRadioButton31 = new javax.swing.JRadioButton();
+        jRadioButton32 = new javax.swing.JRadioButton();
+        jRadioButton33 = new javax.swing.JRadioButton();
+        txtCosAdqPel1 = new javax.swing.JTextField();
+        txtCosAlqPel1 = new javax.swing.JTextField();
+        txtCatPel1 = new javax.swing.JTextField();
+        txtNumCatPel1 = new javax.swing.JTextField();
+        txtDirPel1 = new javax.swing.JTextField();
+        jRadioButton34 = new javax.swing.JRadioButton();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        btnEliPel = new javax.swing.JButton();
+        btnEdiPel = new javax.swing.JButton();
+        btnBusPel = new javax.swing.JButton();
+        btnCanPel1 = new javax.swing.JButton();
+        jSeparator7 = new javax.swing.JSeparator();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        jTable8 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -1337,6 +1359,136 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jTabbedPane4.addTab("Agregar", jPanel16);
 
+        jRadioButton28.setText("Mostrar Todo");
+
+        jRadioButton29.setText("Numero de Catalogo");
+
+        jRadioButton30.setText("Categoria");
+
+        jRadioButton31.setText("Coste de Alquiler");
+
+        jRadioButton32.setText("Coste de Adquisicion");
+
+        jRadioButton33.setText("Director");
+
+        jRadioButton34.setText("Actores");
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane9.setViewportView(jTextArea1);
+
+        btnEliPel.setText("Eliminar");
+
+        btnEdiPel.setText("Editar");
+
+        btnBusPel.setText("Buscar");
+
+        btnCanPel1.setText("Cancelar");
+
+        jTable8.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane10.setViewportView(jTable8);
+
+        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
+        jPanel17.setLayout(jPanel17Layout);
+        jPanel17Layout.setHorizontalGroup(
+            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel17Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator7)
+                    .addGroup(jPanel17Layout.createSequentialGroup()
+                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel17Layout.createSequentialGroup()
+                                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel17Layout.createSequentialGroup()
+                                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jRadioButton29)
+                                            .addComponent(jRadioButton28))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtNumCatPel1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
+                                    .addGroup(jPanel17Layout.createSequentialGroup()
+                                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jRadioButton32)
+                                            .addComponent(jRadioButton31)
+                                            .addComponent(jRadioButton30)
+                                            .addComponent(jRadioButton33))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtCosAdqPel1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                            .addComponent(txtCosAlqPel1)
+                                            .addComponent(txtCatPel1)
+                                            .addComponent(txtDirPel1))))
+                                .addGap(64, 64, 64)
+                                .addComponent(jRadioButton34)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel17Layout.createSequentialGroup()
+                                .addComponent(btnEliPel)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnEdiPel)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnBusPel)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnCanPel1)))
+                        .addGap(0, 366, Short.MAX_VALUE))
+                    .addComponent(jScrollPane10))
+                .addContainerGap())
+        );
+        jPanel17Layout.setVerticalGroup(
+            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel17Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel17Layout.createSequentialGroup()
+                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jRadioButton28)
+                            .addComponent(jRadioButton34))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jRadioButton29)
+                            .addComponent(txtNumCatPel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jRadioButton30)
+                            .addComponent(txtCatPel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jRadioButton31)
+                            .addComponent(txtCosAlqPel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jRadioButton32)
+                            .addComponent(txtCosAdqPel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jRadioButton33)
+                            .addComponent(txtDirPel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEliPel)
+                    .addComponent(btnEdiPel)
+                    .addComponent(btnBusPel)
+                    .addComponent(btnCanPel1))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTabbedPane4.addTab("Buscar", jPanel17);
+
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
@@ -1416,13 +1568,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnAgrEmp;
     private javax.swing.JButton btnAgrPel;
     private javax.swing.JButton btnAgrSuc;
+    private javax.swing.JButton btnBusPel;
     private javax.swing.JButton btnBusSuc;
     private javax.swing.JButton btnCanCli;
     private javax.swing.JButton btnCanEmp;
     private javax.swing.JButton btnCanPel;
+    private javax.swing.JButton btnCanPel1;
     private javax.swing.JButton btnCanSuc;
     private javax.swing.JButton btnCanSuc1;
+    private javax.swing.JButton btnEdiPel;
     private javax.swing.JButton btnEdiSuc;
+    private javax.swing.JButton btnEliPel;
     private javax.swing.JButton btnEliSuc;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
@@ -1447,6 +1603,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
+    private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1475,7 +1632,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton25;
     private javax.swing.JRadioButton jRadioButton26;
     private javax.swing.JRadioButton jRadioButton27;
+    private javax.swing.JRadioButton jRadioButton28;
+    private javax.swing.JRadioButton jRadioButton29;
     private javax.swing.JRadioButton jRadioButton3;
+    private javax.swing.JRadioButton jRadioButton30;
+    private javax.swing.JRadioButton jRadioButton31;
+    private javax.swing.JRadioButton jRadioButton32;
+    private javax.swing.JRadioButton jRadioButton33;
+    private javax.swing.JRadioButton jRadioButton34;
     private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JRadioButton jRadioButton5;
     private javax.swing.JRadioButton jRadioButton6;
@@ -1483,6 +1647,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton8;
     private javax.swing.JRadioButton jRadioButton9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1490,12 +1655,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
@@ -1507,6 +1674,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTable jTable5;
     private javax.swing.JTable jTable6;
     private javax.swing.JTable jTable7;
+    private javax.swing.JTable jTable8;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
@@ -1569,14 +1738,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField txtCalCli;
     private javax.swing.JTextField txtCalSuc;
     private javax.swing.JTextField txtCalSuc1;
+    private javax.swing.JTextField txtCatPel1;
     private javax.swing.JTextField txtCiuSuc;
     private javax.swing.JTextField txtCiuSuc1;
     private javax.swing.JTextField txtCodSuc;
     private javax.swing.JTextField txtCodSuc1;
     private javax.swing.JTextField txtColCli;
     private javax.swing.JTextField txtCosAdqPel;
+    private javax.swing.JTextField txtCosAdqPel1;
     private javax.swing.JTextField txtCosAlqPel;
+    private javax.swing.JTextField txtCosAlqPel1;
     private javax.swing.JTextField txtDirPel;
+    private javax.swing.JTextField txtDirPel1;
     private javax.swing.JTextField txtEstSuc;
     private javax.swing.JTextField txtEstSuc1;
     private javax.swing.JTextField txtFecNacCli;
@@ -1585,6 +1758,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField txtNomCli;
     private javax.swing.JTextField txtNomEmp;
     private javax.swing.JTextField txtNumCatPel;
+    private javax.swing.JTextField txtNumCatPel1;
     private javax.swing.JTextField txtNumCli;
     private javax.swing.JTextField txtNumEmp;
     private javax.swing.JTextField txtNumSuc;
