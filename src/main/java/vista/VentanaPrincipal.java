@@ -28,7 +28,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        tpnCliente = new javax.swing.JTabbedPane();
+        tpnVideo = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -382,6 +382,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(lblSucCli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(lblFecRegCli, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtFecRegCli, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(lblFecNacCli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(lblTelCli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(lblColCli, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -389,16 +397,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txtColCli, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtTelCli, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtFecNacCli, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(lblSucCli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(lblFecRegCli, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtFecRegCli, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
-                                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                            .addComponent(txtFecNacCli, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addGap(0, 477, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -406,7 +406,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(lblInstruccionCli)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(14, 14, 14)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -456,7 +456,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCanCli)
                     .addComponent(btnAgrCli))
-                .addGap(0, 28, Short.MAX_VALUE))
+                .addGap(0, 27, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Agregar", jPanel5);
@@ -679,7 +679,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        tpnCliente.addTab("Cliente", jPanel1);
+        tpnVideo.addTab("Cliente", jPanel1);
 
         jPanel7.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -982,7 +982,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addComponent(jTabbedPane2))
         );
 
-        tpnCliente.addTab("Empleado", jPanel2);
+        tpnVideo.addTab("Empleado", jPanel2);
 
         jPanel11.setBackground(new java.awt.Color(0, 204, 0));
 
@@ -1244,7 +1244,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addComponent(jTabbedPane3))
         );
 
-        tpnCliente.addTab("Sucursal", jPanel8);
+        tpnVideo.addTab("Sucursal", jPanel8);
 
         jPanel15.setBackground(new java.awt.Color(255, 153, 0));
 
@@ -1322,7 +1322,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel16Layout.createSequentialGroup()
                                         .addComponent(lblCosAdqPel)
                                         .addGap(18, 18, 18)
-                                        .addComponent(txtCosAdqPel, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE))
+                                        .addComponent(txtCosAdqPel, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel16Layout.createSequentialGroup()
                                         .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(lblNumCatPel)
@@ -1540,7 +1540,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addComponent(jTabbedPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 597, Short.MAX_VALUE))
         );
 
-        tpnCliente.addTab("Pelicula", jPanel14);
+        tpnVideo.addTab("Pelicula", jPanel14);
 
         jPanel19.setBackground(new java.awt.Color(153, 153, 255));
 
@@ -1553,7 +1553,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel19Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(lblCop)
+                .addComponent(lblCop, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel19Layout.setVerticalGroup(
@@ -1788,20 +1788,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel18Layout.createSequentialGroup()
                 .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE))
+                .addComponent(jTabbedPane5))
         );
 
-        tpnCliente.addTab("Copias de Peliculas", jPanel18);
+        tpnVideo.addTab("Copias de Peliculas", jPanel18);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tpnCliente)
+            .addComponent(tpnVideo)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tpnCliente)
+            .addComponent(tpnVideo)
         );
 
         pack();
@@ -2050,7 +2050,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblTelCli;
     private javax.swing.JLabel lblTelSuc;
     private javax.swing.JLabel lblTitPel;
-    private javax.swing.JTabbedPane tpnCliente;
+    private javax.swing.JTabbedPane tpnVideo;
     private javax.swing.JTextArea txaActPel;
     private javax.swing.JTextField txtApeMatCli;
     private javax.swing.JTextField txtApeMatEmp;

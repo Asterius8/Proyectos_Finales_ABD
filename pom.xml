@@ -10,4 +10,11 @@
         <maven.compiler.release>22</maven.compiler.release>
         <exec.mainClass>edu.tecjerez.proyectos_finales_abd.Proyectos_Finales_ABD</exec.mainClass>
     </properties>
+    <dependencies>
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>42.7.5</version>
+            </dependency>
+    </dependencies>
 </project>
