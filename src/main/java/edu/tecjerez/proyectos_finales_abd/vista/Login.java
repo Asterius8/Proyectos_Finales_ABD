@@ -1,4 +1,4 @@
-package vista;
+package edu.tecjerez.proyectos_finales_abd.vista;
 
 public class Login extends javax.swing.JFrame {
 

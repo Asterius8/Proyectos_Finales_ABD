@@ -1,4 +1,4 @@
-package ConexionBD;
+package edu.tecjerez.proyectos_finales_abd.ConexionBD;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

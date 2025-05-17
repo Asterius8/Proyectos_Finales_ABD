@@ -1,6 +1,6 @@
-package vista;
+package edu.tecjerez.proyectos_finales_abd.vista;
 
-import ConexionBD.ConexionBD;
+import edu.tecjerez.proyectos_finales_abd.ConexionBD.ConexionBD;
 import java.sql.Connection;
 
 public class test {
