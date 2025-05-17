@@ -25,7 +25,7 @@ public class ConexionBD {
          try {
 
             conexion = DriverManager.getConnection(cadena, usuario, contraseña);
-             System.out.println("Si conecto");
+            System.out.println("Si conecto");
 
         } catch (SQLException e) {
 
@@ -47,7 +47,7 @@ public class ConexionBD {
         }
 
         return conexion;
-    }
+    }//Fin Obtener Conexion
 
     //Cerrar conexion
     static void cerrarConexion() {
@@ -58,7 +58,8 @@ public class ConexionBD {
             System.out.println("Error al cerrar la conexión");
             e.printStackTrace();
         }
-    }
+    }//Fin Cerrar Conexion
     
+    //
     
 }
