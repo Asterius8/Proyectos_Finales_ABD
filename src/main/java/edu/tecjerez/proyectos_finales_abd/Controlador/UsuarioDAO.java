@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 
 public class UsuarioDAO {
     
-     //------------------------------------------- Altas ------------------------------------------------
+    //------------------------------------------- Altas ------------------------------------------------
     public static boolean agregarUsuario(Usuario u){
         
         boolean res = false;
@@ -18,7 +18,7 @@ public class UsuarioDAO {
 
         return res;
     
-    }
+    }//-------------------- Final Alta Usuario ------------------------------------------------------------------------------------------------------------------------------------
     
     //-------------------------------------------- Consultas -------------------------------------------
     public static boolean buscarUsuarioIgual(String filtro1) {
@@ -47,6 +47,29 @@ public class UsuarioDAO {
         
         return false;
         
-    }
+    }//-------------------- Final Busqueda Existente -------------------------------------------------------------------------------------------------------------------------------
     
+    public static boolean buscarUsuario (String filtro1, String filtro2){
+    
+        try {
+            
+            String sql = "SELECT * FROM usuarios WHERE nombre_usuario ='" + filtro1 + "' AND contraseña = '"+ filtro2 +"'";
+            
+            ResultSet rs = ConexionBD.BuscarUsuario(sql);
+            
+            int contFilas = 0;
+            
+            while (rs.next()) {
+                contFilas++;
+            }
+            
+            return contFilas == 1;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return false;
+    
+    }
 }
