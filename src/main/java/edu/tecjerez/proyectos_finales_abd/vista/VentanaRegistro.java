@@ -1,16 +1,21 @@
 package edu.tecjerez.proyectos_finales_abd.vista;
 
+import edu.tecjerez.proyectos_finales_abd.Controlador.UsuarioDAO;
+import edu.tecjerez.proyectos_finales_abd.Modelo.Usuario;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Oscar
  */
 public class VentanaRegistro extends javax.swing.JFrame {
 
-    /**
-     * Creates new form VentanaRegistro
-     */
+  String usuario, contraseña;
+  
     public VentanaRegistro() {
+        setTitle("Registrar");
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -48,20 +53,20 @@ public class VentanaRegistro extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(lblTitulo)
-                .addContainerGap(25, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblimagen)
-                .addGap(68, 68, 68))
+                .addComponent(lblTitulo)
+                .addGap(53, 53, 53))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(97, 97, 97)
+                .addComponent(lblimagen, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(lblimagen, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(32, 32, 32)
+                .addComponent(lblimagen, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(lblTitulo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -71,8 +76,18 @@ public class VentanaRegistro extends javax.swing.JFrame {
         lblCon.setText("Contraseña");
 
         btnAce.setText("Aceptar");
+        btnAce.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceActionPerformed(evt);
+            }
+        });
 
         btnCan.setText("Cancelar");
+        btnCan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCanActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -80,18 +95,19 @@ public class VentanaRegistro extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblNomUsu)
-                    .addComponent(txtNomUsu)
-                    .addComponent(lblCon)
-                    .addComponent(txtCon, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
-                .addComponent(btnAce)
-                .addGap(18, 18, 18)
-                .addComponent(btnCan)
-                .addGap(15, 15, 15))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblNomUsu)
+                            .addComponent(lblCon)
+                            .addComponent(txtNomUsu, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                            .addComponent(txtCon))
+                        .addContainerGap(40, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(btnAce, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCan, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,15 +115,15 @@ public class VentanaRegistro extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addComponent(lblNomUsu)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtNomUsu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
+                .addComponent(txtNomUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
                 .addComponent(lblCon)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtCon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addComponent(txtCon, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAce)
-                    .addComponent(btnCan))
+                    .addComponent(btnAce, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCan, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(8, 8, 8))
         );
 
@@ -131,6 +147,45 @@ public class VentanaRegistro extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCanActionPerformed
+
+        Login l = new Login();
+        l.setVisible(true);
+        this.dispose();
+
+    }//GEN-LAST:event_btnCanActionPerformed
+
+    private void btnAceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceActionPerformed
+
+        usuario = txtNomUsu.getText();
+        contraseña = txtCon.getText();
+        
+        if (!(usuario.equals("") || contraseña.equals(""))) {//Para verificar que las variables no esten vacias
+
+            if(UsuarioDAO.buscarUsuarioIgual(usuario)){
+            
+                JOptionPane.showMessageDialog(this, "Usuario ya existente...");
+                
+            }else{
+            
+                UsuarioDAO.agregarUsuario(new Usuario(usuario, contraseña));
+                
+                JOptionPane.showMessageDialog(this, "Usuario creado correctamente");
+            
+                Login l = new Login();
+                l.setVisible(true);
+                this.dispose();
+                
+            }
+            
+        }else{
+        
+            JOptionPane.showMessageDialog(this, "Sea tan amable de llenar ambos campos.");
+            
+        }    
+        
+    }//GEN-LAST:event_btnAceActionPerformed
 
     /**
      * @param args the command line arguments

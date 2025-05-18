@@ -5,6 +5,8 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         setTitle("Login");
         initComponents();
+        setLocationRelativeTo(null);
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -62,8 +64,18 @@ public class Login extends javax.swing.JFrame {
         });
 
         btnCan.setText("Cancelar");
+        btnCan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCanActionPerformed(evt);
+            }
+        });
 
         btnAcc.setText("Acceder");
+        btnAcc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAccActionPerformed(evt);
+            }
+        });
 
         lblUsu.setText("Usuario");
 
@@ -162,6 +174,20 @@ public class Login extends javax.swing.JFrame {
         this.dispose();
         
     }//GEN-LAST:event_btnRegActionPerformed
+
+    private void btnAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccActionPerformed
+
+        VentanaPrincipal vp = new VentanaPrincipal();
+        vp.setVisible(true);
+        this.dispose();
+
+    }//GEN-LAST:event_btnAccActionPerformed
+
+    private void btnCanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCanActionPerformed
+
+        System.exit(0);
+
+    }//GEN-LAST:event_btnCanActionPerformed
 
     /**
      * @param args the command line arguments
