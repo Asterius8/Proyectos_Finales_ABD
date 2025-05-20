@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 public class ConexionBD {
     
@@ -22,22 +23,42 @@ public class ConexionBD {
     
 //Constructor-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
-     private ConexionBD() {
-         
-         String cadena = "jdbc:postgresql://localhost:" + puerto + "/" + db;
-         
-         try {
+private ConexionBD() {
+    String cadena = "jdbc:postgresql://localhost:" + puerto + "/" + db;
 
-            conexion = DriverManager.getConnection(cadena, usuario, contraseña);
-            System.out.println("Si conecto");
+    try {
+        conexion = DriverManager.getConnection(cadena, usuario, contraseña);
+        System.out.println("✅ Conexión establecida correctamente");
+    } catch (SQLException e) {
+        
+        String mensajeError = e.getMessage().toLowerCase();
+        
+        // Mostrar mensaje amigable al usuario si se alcanza el límite de conexiones
+        if (mensajeError.contains("too many connections") ||
+            mensajeError.contains("connection limit") ||
+            mensajeError.contains("fatal: lo siento, ya tenemos demasiados clientes")) {
 
-        } catch (SQLException e) {
-
-            System.err.println("Error de conexion del driver " + e.getMessage());
-
+            JOptionPane.showMessageDialog(null,
+                    "No se pudo establecer conexión.\n" +
+                    "Ya se alcanzó el número máximo de usuarios conectados.\n\n" +
+                    "Por favor, cierra otra instancia del programa o intenta más tarde.",
+                    "Conexión no disponible",
+                    JOptionPane.WARNING_MESSAGE);
+            System.exit(0);
+            
+        } else {
+            
+            JOptionPane.showMessageDialog(null,
+                    "❌ Error al conectar con la base de datos:\n" + e.getMessage(),
+                    "Error de conexión",
+                    JOptionPane.ERROR_MESSAGE);
+                    System.exit(0);
+            
         }
-     
-     }//Fin Constructor
+
+        conexion = null; // importante: dejarla en null
+    }
+}
      
 //Metodos-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
      
