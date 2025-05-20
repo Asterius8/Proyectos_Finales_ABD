@@ -1,12 +1,27 @@
 package edu.tecjerez.proyectos_finales_abd.vista;
 
-public class VentanaPrincipal extends javax.swing.JFrame {
+import edu.tecjerez.proyectos_finales_abd.Controlador.SucursalDAO;
+import edu.tecjerez.proyectos_finales_abd.Modelo.Sucursal;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
-    public VentanaPrincipal() {
+public class VentanaPrincipal extends javax.swing.JFrame {
+    
+    //Atributos
+    String num_Suc, calle, ciudad, estado, cod_pos, tel;
+    DefaultTableModel modelo;
+
+    public VentanaPrincipal() throws SQLException {
         
         setTitle("VideoClub");
         initComponents();
         setLocationRelativeTo(null);
+        modelo = (DefaultTableModel) tbl_sucursal.getModel();
+        this.mostrar();
         
     }
     
@@ -46,7 +61,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnCanSuc = new javax.swing.JButton();
         jSeparator4 = new javax.swing.JSeparator();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTable5 = new javax.swing.JTable();
+        tbl_sucursal = new javax.swing.JTable();
         panBusSuc = new javax.swing.JPanel();
         jRadioButton21 = new javax.swing.JRadioButton();
         jRadioButton22 = new javax.swing.JRadioButton();
@@ -190,9 +205,26 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         lblCodSuc.setText("Codigo Postal");
 
+        txtCodSuc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCodSucKeyTyped(evt);
+            }
+        });
+
         lblTelSuc.setText("Teléfono");
 
+        txtTelSuc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelSucKeyTyped(evt);
+            }
+        });
+
         btnAgrSuc.setText("Agregar");
+        btnAgrSuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgrSucActionPerformed(evt);
+            }
+        });
 
         btnCanSuc.setText("Cancelar");
         btnCanSuc.addActionListener(new java.awt.event.ActionListener() {
@@ -201,18 +233,27 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_sucursal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Num Sucursal", "Calle", "Ciudad", "Estado", "Codigo Postal", "Telefono"
             }
-        ));
-        jScrollPane5.setViewportView(jTable5);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane5.setViewportView(tbl_sucursal);
 
         javax.swing.GroupLayout panAgrSucLayout = new javax.swing.GroupLayout(panAgrSuc);
         panAgrSuc.setLayout(panAgrSucLayout);
@@ -1044,6 +1085,68 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnCanCop1ActionPerformed
 
+    private void btnAgrSucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgrSucActionPerformed
+
+        num_Suc = txtNumSuc.getText();
+        calle = txtCalSuc.getText();
+        ciudad = txtCiuSuc.getText();
+        estado = txtEstSuc.getText();
+        cod_pos = txtCodSuc.getText();
+        tel = txtTelSuc.getText();
+        
+        
+        if( !(num_Suc.equals("")  || calle.equals("") || ciudad.equals("") || estado.equals("") || cod_pos.equals("") || tel.equals("")) ){
+        
+            if(SucursalDAO.nunSucursalIgual(num_Suc)){
+            
+                JOptionPane.showMessageDialog(this, "El numero de sucursal ya existe.");
+            
+            }else{
+            
+                try {
+                    SucursalDAO.agregarSucursal(new Sucursal(num_Suc, calle, ciudad, estado, cod_pos,tel));
+                    
+                    JOptionPane.showMessageDialog(this, "Usuario creado correctamente");
+                    
+                    this.mostrar();
+                } catch (SQLException ex) {
+                    Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            }
+        
+        }else{
+        
+            JOptionPane.showMessageDialog(this, "Todos los campos deben de ser llenados.");
+            
+        }
+
+    }//GEN-LAST:event_btnAgrSucActionPerformed
+
+    private void txtTelSucKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelSucKeyTyped
+
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c) || txtTelSuc.getText().length() >= 10) {
+
+            evt.consume();
+
+        }
+
+    }//GEN-LAST:event_txtTelSucKeyTyped
+
+    private void txtCodSucKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodSucKeyTyped
+
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c) || txtTelSuc.getText().length() >= 5) {
+
+            evt.consume();
+
+        }
+
+    }//GEN-LAST:event_txtCodSucKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -1074,7 +1177,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaPrincipal().setVisible(true);
+                try {
+                    new VentanaPrincipal().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -1150,7 +1257,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTabbedPane jTabbedPane5;
     private javax.swing.JTable jTable10;
-    private javax.swing.JTable jTable5;
     private javax.swing.JTable jTable6;
     private javax.swing.JTable jTable7;
     private javax.swing.JTable jTable8;
@@ -1183,6 +1289,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel panCop;
     private javax.swing.JPanel panPel;
     private javax.swing.JPanel panSuc;
+    private javax.swing.JTable tbl_sucursal;
     private javax.swing.JTabbedPane tpnVideo;
     private javax.swing.JTextArea txaActPel;
     private javax.swing.JTextField txtCalSuc;
@@ -1211,4 +1318,30 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField txtTelSuc1;
     private javax.swing.JTextField txtTitPel;
     // End of variables declaration//GEN-END:variables
+
+    public void mostrar() throws SQLException {
+
+        ResultSet rs = SucursalDAO.buscar();
+
+        String datos[] = new String[6];
+
+        //vaciar filas anteriores
+        modelo.setRowCount(0);
+
+        while (rs.next()) {
+            
+            datos[0] = rs.getString(1);
+            datos[1] = rs.getString(2);
+            datos[2] = rs.getString(3);
+            datos[3] = rs.getString(4);
+            datos[4] = rs.getString(5);
+            datos[5] = rs.getString(6);
+            
+            modelo.addRow(datos);
+
+        }
+
+    }
+    
 }
+

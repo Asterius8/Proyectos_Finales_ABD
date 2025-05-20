@@ -163,7 +163,7 @@ public class VentanaRegistro extends javax.swing.JFrame {
         
         if (!(usuario.equals("") || contraseña.equals(""))) {//Para verificar que las variables no esten vacias
 
-            if(UsuarioDAO.buscarUsuarioIgual(usuario)){
+            if( UsuarioDAO.buscarUsuarioIgual(usuario) ){
             
                 JOptionPane.showMessageDialog(this, "Usuario ya existente...");
                 

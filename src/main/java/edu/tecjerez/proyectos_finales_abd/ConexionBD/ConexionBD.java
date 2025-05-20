@@ -1,11 +1,13 @@
 package edu.tecjerez.proyectos_finales_abd.ConexionBD;
 
+import edu.tecjerez.proyectos_finales_abd.Modelo.Sucursal;
 import edu.tecjerez.proyectos_finales_abd.Modelo.Usuario;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class ConexionBD {
     
@@ -87,6 +89,35 @@ public class ConexionBD {
 
     }//Fin Agregar Usuario
     
+    //Agregar una Sucursar a la base de datos ----------------------------------------------------------------------------------------------------------------------------------------------
+    public static boolean agregarSucursal(Sucursal s){
+    
+        try {
+
+            Connection conexion = getConexion();
+
+            pstm = conexion.prepareStatement("INSERT INTO sucursal VALUES(?,?,?,?,?,?)");
+            pstm.setString(1, s.getNum_Suc());
+            pstm.setString(2, s.getCalle());
+            pstm.setString(3, s.getCiudad() );
+            pstm.setString(4, s.getEstado());
+            pstm.setString(5, s.getCod_pos());
+            pstm.setString(6, s.getTel());
+            
+            pstm.execute();
+
+            return true;
+
+        } catch (Exception e) {
+
+            System.out.println("Error en instrucción DML");
+
+        }
+
+        return false;
+    
+    }
+    
     //Ejecutar la consulta a tabla usuarios buscando el usuario -------------------------------------------------------------------------------------------------------------------
     public static ResultSet BuscarUsuarioIgual(String consulta) {
     
@@ -140,5 +171,26 @@ public class ConexionBD {
         }
         return null;
         
+    }
+    
+    public static ResultSet buscarSucursales(){
+    
+        try {
+        
+            Connection conexion = getConexion();
+
+            String sentencia = "SELECT * FROM sucursal;";
+
+            Statement st = conexion.createStatement();
+            ResultSet rs = st.executeQuery(sentencia);
+            
+            return rs;
+        
+        } catch (Exception e) {
+
+        }
+
+        return null;
+    
     }
 }

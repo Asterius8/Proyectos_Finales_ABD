@@ -1,6 +1,9 @@
 package edu.tecjerez.proyectos_finales_abd.vista;
 
 import edu.tecjerez.proyectos_finales_abd.Controlador.UsuarioDAO;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
@@ -177,9 +180,15 @@ public class Login extends javax.swing.JFrame {
 
             if(UsuarioDAO.buscarUsuario(usuario, contraseña)){
                 
-                VentanaPrincipal vp = new VentanaPrincipal();
-                vp.setVisible(true);
-                this.dispose();
+                VentanaPrincipal vp;
+                try {
+                    vp = new VentanaPrincipal();
+                    vp.setVisible(true);
+                    this.dispose();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
             
             }else{
             

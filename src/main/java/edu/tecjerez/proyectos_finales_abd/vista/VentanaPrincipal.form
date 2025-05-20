@@ -251,6 +251,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtCodSuc">
+                      <Events>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCodSucKeyTyped"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblTelSuc">
                       <Properties>
@@ -258,11 +261,17 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtTelSuc">
+                      <Events>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTelSucKeyTyped"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="btnAgrSuc">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Agregar"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgrSucActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="btnCanSuc">
                       <Properties>
@@ -281,14 +290,16 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTable" name="jTable5">
+                        <Component class="javax.swing.JTable" name="tbl_sucursal">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="4" rowCount="4">
-                                <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                              <Table columnCount="6" rowCount="5">
+                                <Column editable="false" title="Num Sucursal" type="java.lang.Object"/>
+                                <Column editable="false" title="Calle" type="java.lang.Object"/>
+                                <Column editable="false" title="Ciudad" type="java.lang.Object"/>
+                                <Column editable="false" title="Estado" type="java.lang.Object"/>
+                                <Column editable="false" title="Codigo Postal" type="java.lang.Object"/>
+                                <Column editable="false" title="Telefono" type="java.lang.Object"/>
                               </Table>
                             </Property>
                           </Properties>
