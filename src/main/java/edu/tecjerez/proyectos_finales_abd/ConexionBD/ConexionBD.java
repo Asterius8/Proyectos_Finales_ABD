@@ -147,12 +147,12 @@ private ConexionBD() {
 
             Connection conexion = getConexion();
 
-            pstm = conexion.prepareStatement("INSERT INTO pelicula VALUES(?,?,?,?,?,?)");
+            pstm = conexion.prepareStatement("INSERT INTO pelicula VALUES(?,?,?,?,?,?,?)");
             pstm.setString(1, p.getNum_cat());
             pstm.setString(2, p.getTitulo());
             pstm.setString(3, p.getCategoria());
-            pstm.setString(4, p.getCos_alqui());
-            pstm.setString(5, p.getCost_adqui());
+            pstm.setFloat(4, p.getCos_alqui());
+            pstm.setFloat(5, p.getCost_adqui());
             pstm.setString(6, p.getAct());
             pstm.setString(7, p.getDirector());
             
@@ -163,6 +163,7 @@ private ConexionBD() {
         } catch (Exception e) {
 
             System.out.println("Error en instrucción DML");
+            System.out.println(e);
 
         }
 

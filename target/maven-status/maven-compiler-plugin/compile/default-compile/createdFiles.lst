@@ -1,11 +1,14 @@
 edu\tecjerez\proyectos_finales_abd\vista\VentanaPrincipal$9.class
 edu\tecjerez\proyectos_finales_abd\vista\VentanaPrincipal$4.class
+edu\tecjerez\proyectos_finales_abd\vista\VentanaPrincipal$13.class
 edu\tecjerez\proyectos_finales_abd\vista\VentanaPrincipal$2.class
 edu\tecjerez\proyectos_finales_abd\vista\VentanaPrincipal$11.class
 edu\tecjerez\proyectos_finales_abd\vista\Login$2.class
+edu\tecjerez\proyectos_finales_abd\Modelo\Pelicula.class
 edu\tecjerez\proyectos_finales_abd\vista\VentanaRegistro$2.class
 edu\tecjerez\proyectos_finales_abd\Controlador\UsuarioDAO.class
 edu\tecjerez\proyectos_finales_abd\vista\Login$3.class
+edu\tecjerez\proyectos_finales_abd\vista\VentanaPrincipal$16.class
 edu\tecjerez\proyectos_finales_abd\vista\VentanaPrincipal$7.class
 edu\tecjerez\proyectos_finales_abd\vista\VentanaPrincipal$5.class
 edu\tecjerez\proyectos_finales_abd\Controlador\SucursalDAO.class
@@ -13,6 +16,8 @@ edu\tecjerez\proyectos_finales_abd\vista\Login$5.class
 edu\tecjerez\proyectos_finales_abd\vista\VentanaRegistro.class
 edu\tecjerez\proyectos_finales_abd\vista\VentanaRegistro$3.class
 edu\tecjerez\proyectos_finales_abd\vista\Login$1.class
+edu\tecjerez\proyectos_finales_abd\Controlador\PeliculaDAO.class
+edu\tecjerez\proyectos_finales_abd\vista\VentanaPrincipal$14.class
 edu\tecjerez\proyectos_finales_abd\vista\VentanaPrincipal$8.class
 edu\tecjerez\proyectos_finales_abd\vista\Login.class
 edu\tecjerez\proyectos_finales_abd\Modelo\Sucursal.class
@@ -20,9 +25,11 @@ edu\tecjerez\proyectos_finales_abd\vista\VentanaPrincipal$3.class
 edu\tecjerez\proyectos_finales_abd\vista\VentanaPrincipal$10.class
 edu\tecjerez\proyectos_finales_abd\ConexionBD\ConexionBD.class
 edu\tecjerez\proyectos_finales_abd\vista\VentanaPrincipal$6.class
+edu\tecjerez\proyectos_finales_abd\vista\VentanaPrincipal$15.class
 edu\tecjerez\proyectos_finales_abd\vista\VentanaRegistro$1.class
 edu\tecjerez\proyectos_finales_abd\vista\VentanaPrincipal.class
 edu\tecjerez\proyectos_finales_abd\Modelo\Usuario.class
 edu\tecjerez\proyectos_finales_abd\vista\Login$4.class
 edu\tecjerez\proyectos_finales_abd\vista\VentanaPrincipal$1.class
 edu\tecjerez\proyectos_finales_abd\vista\test.class
+edu\tecjerez\proyectos_finales_abd\vista\VentanaPrincipal$12.class

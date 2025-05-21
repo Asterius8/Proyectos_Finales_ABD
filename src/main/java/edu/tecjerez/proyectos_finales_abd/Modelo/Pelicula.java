@@ -3,14 +3,15 @@ package edu.tecjerez.proyectos_finales_abd.Modelo;
 public class Pelicula {
     
     //Atributos
-    private String num_cat, titulo, categoria, cos_alqui, cost_adqui, act, director;
+    private String num_cat, titulo, categoria, act, director;
+    private float cos_alqui, cost_adqui;
     
     //Constructor(es)
 
     public Pelicula() {
     }
 
-    public Pelicula(String num_cat, String titulo, String categoria, String cos_alqui, String cost_adqui, String act, String director) {
+    public Pelicula(String num_cat, String titulo, String categoria, float cos_alqui, float cost_adqui, String act, String director) {
         this.num_cat = num_cat;
         this.titulo = titulo;
         this.categoria = categoria;
@@ -46,19 +47,19 @@ public class Pelicula {
         this.categoria = categoria;
     }
 
-    public String getCos_alqui() {
+    public float getCos_alqui() {
         return cos_alqui;
     }
 
-    public void setCos_alqui(String cos_alqui) {
+    public void setCos_alqui(float cos_alqui) {
         this.cos_alqui = cos_alqui;
     }
 
-    public String getCost_adqui() {
+    public float getCost_adqui() {
         return cost_adqui;
     }
 
-    public void setCost_adqui(String cost_adqui) {
+    public void setCost_adqui(float cost_adqui) {
         this.cost_adqui = cost_adqui;
     }
 

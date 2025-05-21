@@ -1,6 +1,8 @@
 package edu.tecjerez.proyectos_finales_abd.vista;
 
+import edu.tecjerez.proyectos_finales_abd.Controlador.PeliculaDAO;
 import edu.tecjerez.proyectos_finales_abd.Controlador.SucursalDAO;
+import edu.tecjerez.proyectos_finales_abd.Modelo.Pelicula;
 import edu.tecjerez.proyectos_finales_abd.Modelo.Sucursal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,8 +14,9 @@ import javax.swing.table.DefaultTableModel;
 public class VentanaPrincipal extends javax.swing.JFrame {
     
     //Atributos
-    String num_Suc, calle, ciudad, estado, cod_pos, tel, num_catalogo, titulo, categoria, cos_alqui, cos_adqui, actores, director;
-    DefaultTableModel modelo;
+    String num_Suc, calle, ciudad, estado, cod_pos, tel, num_catalogo, titulo, categoria, actores, director;
+    float cos_alqui, cos_adqui;
+    DefaultTableModel modelo, modeloPelicula;
 
     public VentanaPrincipal() throws SQLException {
         
@@ -21,7 +24,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         modelo = (DefaultTableModel) tbl_sucursal.getModel();
+        modeloPelicula = (DefaultTableModel)  tbl_Pelicula.getModel();
         this.mostrar();
+        this.mostrarPeliculas();
         
     }
     
@@ -108,7 +113,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnCanPel = new javax.swing.JButton();
         jSeparator6 = new javax.swing.JSeparator();
         jScrollPane8 = new javax.swing.JScrollPane();
-        jTable7 = new javax.swing.JTable();
+        tbl_Pelicula = new javax.swing.JTable();
         jPanel17 = new javax.swing.JPanel();
         jRadioButton28 = new javax.swing.JRadioButton();
         jRadioButton29 = new javax.swing.JRadioButton();
@@ -196,6 +201,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         lblInsSuc.setText("Ingrese la informacion de los siguientes campos");
 
         lblNumSuc.setText("Numero de Sucursal");
+
+        txtNumSuc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumSucKeyTyped(evt);
+            }
+        });
 
         lblCalSuc.setText("Calle");
 
@@ -495,15 +506,33 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         lblNumCatPel.setText("Numero de Catálogo");
 
+        txtNumCatPel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumCatPelKeyTyped(evt);
+            }
+        });
+
         lblTitPel.setText("Titulo");
 
         lblGenPel.setText("Categoria");
 
         lblCosAlqPel.setText("Coste de Alquiler");
 
+        txtCosAlqPel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCosAlqPelKeyTyped(evt);
+            }
+        });
+
         lblDirPel.setText("Director");
 
         lblCosAdqPel.setText("Coste de Adquisición");
+
+        txtCosAdqPel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCosAdqPelKeyTyped(evt);
+            }
+        });
 
         lblActPel.setText("Actores");
 
@@ -525,18 +554,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jTable7.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_Pelicula.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7"
             }
         ));
-        jScrollPane8.setViewportView(jTable7);
+        jScrollPane8.setViewportView(tbl_Pelicula);
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
@@ -1157,29 +1186,88 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         num_catalogo = txtNumCatPel.getText();
         titulo = txtTitPel.getText();
         categoria = txtCatPel.getText();
-        cos_alqui = txtCosAlqPel.getText();
-        cos_adqui = txtCosAdqPel.getText();
+        cos_alqui = Float.parseFloat(txtCosAlqPel.getText());
+        cos_adqui = Float.parseFloat(txtCosAdqPel.getText());
         actores = txaActPel.getText();
         director = txtDirPel.getText();
         
-        if(!(num_catalogo.equals("") || titulo.equals("") || categoria.equals("") || cos_alqui.equals("") || cos_adqui.equals("") || actores.equals("") ||director.equals(""))){
+        if( !(num_catalogo.equals("") || titulo.equals("") || categoria.equals("") || actores.equals("") ||director.equals("")) ){
         
-            if(SucursalDAO.nunSucursalIgual(num_Suc)){
+            if(PeliculaDAO.numPeliculaIgual(num_catalogo)){
             
                 JOptionPane.showMessageDialog(this, "El numero de catalogo ya existe.");
             
             }else{
             
-                
+                try {
+                    PeliculaDAO.agregarPelicula(new Pelicula(num_catalogo, titulo, categoria, cos_alqui, cos_adqui, actores, director));
+                    
+                    JOptionPane.showMessageDialog(this, "Pelicula agregada correctamente");
+                    
+                    this.mostrarPeliculas();
+                    
+                } catch (SQLException ex) {
+                    
+                    Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                    
+                }
                 
             }
             
         
+        }else{
+        
+            JOptionPane.showMessageDialog(this, "Todos los campos deben de ser llenados.");
+            
         }
         
         
         
     }//GEN-LAST:event_btnAgrPelActionPerformed
+
+    private void txtCosAlqPelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCosAlqPelKeyTyped
+        
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c)) {
+
+            evt.consume();
+
+        }
+        
+    }//GEN-LAST:event_txtCosAlqPelKeyTyped
+
+    private void txtCosAdqPelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCosAdqPelKeyTyped
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c)) {
+
+            evt.consume();
+
+        }
+    }//GEN-LAST:event_txtCosAdqPelKeyTyped
+
+    private void txtNumSucKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumSucKeyTyped
+        
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c)) {
+
+            evt.consume();
+
+        }
+        
+    }//GEN-LAST:event_txtNumSucKeyTyped
+
+    private void txtNumCatPelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumCatPelKeyTyped
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c)) {
+
+            evt.consume();
+
+        }
+    }//GEN-LAST:event_txtNumCatPelKeyTyped
 
     /**
      * @param args the command line arguments
@@ -1292,7 +1380,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane5;
     private javax.swing.JTable jTable10;
     private javax.swing.JTable jTable6;
-    private javax.swing.JTable jTable7;
     private javax.swing.JTable jTable8;
     private javax.swing.JTable jTable9;
     private javax.swing.JTextArea jTextArea1;
@@ -1323,6 +1410,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel panCop;
     private javax.swing.JPanel panPel;
     private javax.swing.JPanel panSuc;
+    private javax.swing.JTable tbl_Pelicula;
     private javax.swing.JTable tbl_sucursal;
     private javax.swing.JTabbedPane tpnVideo;
     private javax.swing.JTextArea txaActPel;
@@ -1371,7 +1459,33 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             datos[4] = rs.getString(5);
             datos[5] = rs.getString(6);
             
+            
             modelo.addRow(datos);
+
+        }
+
+    }
+    
+    public void mostrarPeliculas() throws SQLException {
+
+        ResultSet rs = PeliculaDAO.buscar();
+
+        String datos[] = new String[7];
+
+        //vaciar filas anteriores
+        modeloPelicula.setRowCount(0);
+
+        while (rs.next()) {
+            
+            datos[0] = rs.getString(1);
+            datos[1] = rs.getString(2);
+            datos[2] = rs.getString(3);
+            datos[3] = rs.getString(4);
+            datos[4] = rs.getString(5);
+            datos[5] = rs.getString(6);
+            datos[6] = rs.getString(7);
+            
+            modeloPelicula.addRow(datos);
 
         }
 

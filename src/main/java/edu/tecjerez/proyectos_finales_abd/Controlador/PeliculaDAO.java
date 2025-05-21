@@ -40,6 +40,7 @@ public class PeliculaDAO {
             }
             
             return contFilas == 1; 
+            
     }catch (SQLException ex) {
             
         Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
