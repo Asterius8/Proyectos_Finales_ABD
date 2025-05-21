@@ -1,5 +1,6 @@
 package edu.tecjerez.proyectos_finales_abd.ConexionBD;
 
+import edu.tecjerez.proyectos_finales_abd.Modelo.CopiaPelicula;
 import edu.tecjerez.proyectos_finales_abd.Modelo.Pelicula;
 import edu.tecjerez.proyectos_finales_abd.Modelo.Sucursal;
 import edu.tecjerez.proyectos_finales_abd.Modelo.Usuario;
@@ -171,6 +172,33 @@ private ConexionBD() {
     
     }//Fin Agregar Pelicula
     
+    public static boolean agregarCopiaPelicula(CopiaPelicula cp){
+    
+        try {
+        
+            Connection conexion = getConexion();
+
+            pstm = conexion.prepareStatement("INSERT INTO copiapelicula VALUES(?,?,?,?)");
+            pstm.setString(1, cp.getNum_pelicula());
+            pstm.setString(2, cp.getEstado());
+            pstm.setString(3, cp.getNum_sucursal());
+            pstm.setString(4, cp.getNum_catalogo());
+            
+            pstm.execute();
+            
+            return true;
+
+        }catch (Exception e) {
+
+            System.out.println("Error en instrucción DML");
+            System.out.println(e);
+
+        }
+        
+        return false;
+        
+    }
+    
     
     //Ejecutar la consulta a tabla usuarios buscando el usuario -------------------------------------------------------------------------------------------------------------------
     public static ResultSet BuscarUsuarioIgual(String consulta) {
@@ -248,6 +276,47 @@ private ConexionBD() {
     
     }
     
+    public static ResultSet buscarNumSucursal(){
+    
+        try {
+        
+            Connection conexion = getConexion();
+            
+            String sentencia = "SELECT num_sucursal FROM sucursal";
+            
+            PreparedStatement stmt = conexion.prepareStatement(sentencia);
+        
+            ResultSet rs = stmt.executeQuery();
+            
+            return  rs;
+            
+        }catch (SQLException e) {
+        
+        }
+        return null;
+    }
+    
+    public static ResultSet buscarNumCatalogo(){
+    
+        try {
+        
+            Connection conexion = getConexion();
+            
+            String sentencia = "SELECT num_catalogo FROM pelicula";
+            
+            PreparedStatement stmt = conexion.prepareStatement(sentencia);
+        
+            ResultSet rs = stmt.executeQuery();
+            
+            return  rs;
+            
+        }catch (SQLException e) {
+        
+        }
+        return null;
+        
+    }
+    
     public static ResultSet buscarPeliculas(){
     
         try {
@@ -255,6 +324,27 @@ private ConexionBD() {
             Connection conexion = getConexion();
 
             String sentencia = "SELECT * FROM pelicula;";
+
+            Statement st = conexion.createStatement();
+            ResultSet rs = st.executeQuery(sentencia);
+            
+            return rs;
+        
+        } catch (Exception e) {
+
+        }
+
+        return null;
+    
+    }
+    
+        public static ResultSet buscarCopiasPeliculas(){
+    
+        try {
+        
+            Connection conexion = getConexion();
+
+            String sentencia = "SELECT * FROM copiapelicula;";
 
             Statement st = conexion.createStatement();
             ResultSet rs = st.executeQuery(sentencia);

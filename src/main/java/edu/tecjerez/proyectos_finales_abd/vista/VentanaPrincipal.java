@@ -1,7 +1,9 @@
 package edu.tecjerez.proyectos_finales_abd.vista;
 
+import edu.tecjerez.proyectos_finales_abd.Controlador.CopiaPeliculaDAO;
 import edu.tecjerez.proyectos_finales_abd.Controlador.PeliculaDAO;
 import edu.tecjerez.proyectos_finales_abd.Controlador.SucursalDAO;
+import edu.tecjerez.proyectos_finales_abd.Modelo.CopiaPelicula;
 import edu.tecjerez.proyectos_finales_abd.Modelo.Pelicula;
 import edu.tecjerez.proyectos_finales_abd.Modelo.Sucursal;
 import java.sql.ResultSet;
@@ -14,9 +16,9 @@ import javax.swing.table.DefaultTableModel;
 public class VentanaPrincipal extends javax.swing.JFrame {
     
     //Atributos
-    String num_Suc, calle, ciudad, estado, cod_pos, tel, num_catalogo, titulo, categoria, actores, director;
+    String num_Suc, calle, ciudad, estado, cod_pos, tel, num_catalogo, titulo, categoria, actores, director, estadoCP, num_CopiaPelicula;
     float cos_alqui, cos_adqui;
-    DefaultTableModel modelo, modeloPelicula;
+    DefaultTableModel modelo, modeloPelicula, modeloCopiaPelicula;
 
     public VentanaPrincipal() throws SQLException {
         
@@ -25,8 +27,34 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         modelo = (DefaultTableModel) tbl_sucursal.getModel();
         modeloPelicula = (DefaultTableModel)  tbl_Pelicula.getModel();
+        modeloCopiaPelicula = (DefaultTableModel)  tbl_CopiaPelicula.getModel();
         this.mostrar();
         this.mostrarPeliculas();
+        this.mostrarCopiasPeliculas();
+        
+        tpnVideo.addChangeListener(e -> {
+        
+        int index = tpnVideo.getSelectedIndex();
+        
+        String tituloPestania = tpnVideo.getTitleAt(index);
+        
+        if ("Copias de Peliculas".equals(tituloPestania)) {
+            
+            try {
+                
+                cargarSucursales();
+                cargarPeliculas();
+                validarDatosIniciales();
+                
+            } catch (SQLException ex) {
+                
+                Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                
+            }
+            
+        }
+        
+        });
         
     }
     
@@ -145,16 +173,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         lblNumCop = new javax.swing.JLabel();
         txtNumCop = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox7 = new javax.swing.JComboBox<>();
+        comboEstado = new javax.swing.JComboBox<>();
         lblSucursal = new javax.swing.JLabel();
-        jComboBox8 = new javax.swing.JComboBox<>();
+        comboSucursal = new javax.swing.JComboBox<>();
         lblNumCat = new javax.swing.JLabel();
-        jComboBox9 = new javax.swing.JComboBox<>();
+        comboPeliculas = new javax.swing.JComboBox<>();
         btnAgrCop = new javax.swing.JButton();
         btnCanCop = new javax.swing.JButton();
         jSeparator8 = new javax.swing.JSeparator();
         jScrollPane11 = new javax.swing.JScrollPane();
-        jTable9 = new javax.swing.JTable();
+        tbl_CopiaPelicula = new javax.swing.JTable();
         jPanel21 = new javax.swing.JPanel();
         jRadioButton35 = new javax.swing.JRadioButton();
         jRadioButton36 = new javax.swing.JRadioButton();
@@ -174,6 +202,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jTable10 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        tpnVideo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tpnVideoMouseClicked(evt);
+            }
+        });
 
         jPanel11.setBackground(new java.awt.Color(0, 204, 0));
 
@@ -808,6 +842,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         tpnVideo.addTab("Pelicula", panPel);
 
+        panCop.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panCopMouseClicked(evt);
+            }
+        });
+
         jPanel19.setBackground(new java.awt.Color(153, 153, 255));
 
         lblCop.setFont(new java.awt.Font("Arial", 3, 36)); // NOI18N
@@ -835,19 +875,26 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         lblNumCop.setText("Numero de Copia");
 
+        txtNumCop.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumCopKeyTyped(evt);
+            }
+        });
+
         jLabel1.setText("Estado");
 
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elija una opcion", "Disponible", "Rentada", "Dañada" }));
 
         lblSucursal.setText("Sucursal");
 
-        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         lblNumCat.setText("Numero de Catalogo");
 
-        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         btnAgrCop.setText("Agregar");
+        btnAgrCop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgrCopActionPerformed(evt);
+            }
+        });
 
         btnCanCop.setText("Cancelar");
         btnCanCop.addActionListener(new java.awt.event.ActionListener() {
@@ -856,7 +903,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jTable9.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_CopiaPelicula.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -867,7 +914,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane11.setViewportView(jTable9);
+        jScrollPane11.setViewportView(tbl_CopiaPelicula);
 
         javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
         jPanel20.setLayout(jPanel20Layout);
@@ -889,9 +936,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtNumCop)
-                                    .addComponent(jComboBox7, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jComboBox8, 0, 150, Short.MAX_VALUE)
-                                    .addComponent(jComboBox9, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(comboEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(comboSucursal, 0, 150, Short.MAX_VALUE)
+                                    .addComponent(comboPeliculas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jPanel20Layout.createSequentialGroup()
                                 .addComponent(btnAgrCop)
                                 .addGap(18, 18, 18)
@@ -912,16 +959,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addComponent(txtNumCop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboSucursal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblSucursal))))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblNumCat)
-                    .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboPeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgrCop)
@@ -1269,6 +1316,62 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtNumCatPelKeyTyped
 
+    private void tpnVideoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tpnVideoMouseClicked
+
+    }//GEN-LAST:event_tpnVideoMouseClicked
+
+    private void panCopMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panCopMouseClicked
+
+    }//GEN-LAST:event_panCopMouseClicked
+
+    private void txtNumCopKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumCopKeyTyped
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c)) {
+
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNumCopKeyTyped
+
+    private void btnAgrCopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgrCopActionPerformed
+        
+        num_CopiaPelicula = txtNumCop.getText();
+        estadoCP = String.valueOf(comboEstado.getSelectedItem());
+        num_Suc = String.valueOf(comboSucursal.getSelectedItem());
+        num_catalogo = String.valueOf(comboPeliculas.getSelectedItem());
+        
+        if( !(num_CopiaPelicula.equals("") || comboEstado.getSelectedIndex() == 0 || comboSucursal.getSelectedIndex() == 0 || comboPeliculas.getSelectedIndex() == 0 ) ){
+        
+            if(CopiaPeliculaDAO.numCopiaPeliculaIgual(num_CopiaPelicula)){
+            
+                JOptionPane.showMessageDialog(this, "El numero de copia ya existe.");
+                
+            }else{
+            
+                try {
+                    
+                CopiaPeliculaDAO.agregarCopiaPelicula(new CopiaPelicula(num_CopiaPelicula, estadoCP, num_Suc, num_catalogo));
+                
+                JOptionPane.showMessageDialog(this, "Pelicula agregada correctamente");
+                
+                this.mostrarCopiasPeliculas();
+                
+                }catch (SQLException ex) {
+                    
+                    Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                    
+                }
+                
+            }
+        
+        }else{
+        
+            JOptionPane.showMessageDialog(this, "Todos los campos deben de ser llenados.");
+            
+        }
+        
+    }//GEN-LAST:event_btnAgrCopActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1328,12 +1431,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnEliPel;
     private javax.swing.JButton btnEliSuc;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> comboEstado;
+    private javax.swing.JComboBox<String> comboPeliculas;
+    private javax.swing.JComboBox<String> comboSucursal;
     private javax.swing.JComboBox<String> jComboBox10;
     private javax.swing.JComboBox<String> jComboBox11;
     private javax.swing.JComboBox<String> jComboBox12;
-    private javax.swing.JComboBox<String> jComboBox7;
-    private javax.swing.JComboBox<String> jComboBox8;
-    private javax.swing.JComboBox<String> jComboBox9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel15;
@@ -1381,7 +1484,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTable jTable10;
     private javax.swing.JTable jTable6;
     private javax.swing.JTable jTable8;
-    private javax.swing.JTable jTable9;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lblActPel;
     private javax.swing.JLabel lblCalSuc;
@@ -1410,6 +1512,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel panCop;
     private javax.swing.JPanel panPel;
     private javax.swing.JPanel panSuc;
+    private javax.swing.JTable tbl_CopiaPelicula;
     private javax.swing.JTable tbl_Pelicula;
     private javax.swing.JTable tbl_sucursal;
     private javax.swing.JTabbedPane tpnVideo;
@@ -1441,6 +1544,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField txtTitPel;
     // End of variables declaration//GEN-END:variables
 
+    
+//Otros metodos    
     public void mostrar() throws SQLException {
 
         ResultSet rs = SucursalDAO.buscar();
@@ -1490,6 +1595,72 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
 
     }
+    
+    public void mostrarCopiasPeliculas() throws SQLException{
+    
+        ResultSet rs = CopiaPeliculaDAO.buscar();
+        
+        String datos[] = new String[4];
+        
+        //vaciar filas anteriores
+        modeloCopiaPelicula.setRowCount(0);
+        
+        while (rs.next()) {
+            
+            datos[0] = rs.getString(1);
+            datos[1] = rs.getString(2);
+            datos[2] = rs.getString(3);
+            datos[3] = rs.getString(4);
+            
+            modeloCopiaPelicula.addRow(datos);
+
+        }
+        
+    }
+    
+    //Metodos para comprobar la existencia de num sucursal y num catalogo
+    private void cargarSucursales() throws SQLException{
+
+        comboSucursal.removeAllItems();
+
+        ResultSet rs = CopiaPeliculaDAO.buscarNumSucursal();
+        comboSucursal.addItem("Elija una opcion");
+        while (rs.next()) {
+            
+            comboSucursal.addItem(rs.getString("num_sucursal"));
+            
+        }
+        
+    }
+    
+    private void cargarPeliculas() throws SQLException{
+
+        comboPeliculas.removeAllItems();
+
+        ResultSet rs = CopiaPeliculaDAO.buscarNumCatalogo();
+        comboPeliculas.addItem("Elija una opcion");
+        while (rs.next()) {
+            
+            comboPeliculas.addItem(rs.getString("num_catalogo"));
+            
+        }
+    
+    }
+    
+    private void validarDatosIniciales() {
+        
+    if (comboSucursal.getItemCount() == 0 || comboPeliculas.getItemCount() == 0) {
+        
+        btnAgrCop.setEnabled(false); // Desactiva si faltan datos
+        
+        JOptionPane.showMessageDialog(this, "Debes registrar al menos una sucursal y una película antes de agregar copias.");
+        
+    } else {
+        
+        btnAgrCop.setEnabled(true);
+        
+    }
+}
     
 }
 
