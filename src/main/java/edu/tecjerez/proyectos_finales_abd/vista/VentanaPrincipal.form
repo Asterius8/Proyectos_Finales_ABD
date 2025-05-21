@@ -618,7 +618,7 @@
                                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                                           <Component id="txtNumCatPel" max="32767" attributes="0"/>
                                                           <Component id="txtTitPel" max="32767" attributes="0"/>
-                                                          <Component id="txtGenPel" pref="150" max="32767" attributes="0"/>
+                                                          <Component id="txtCatPel" pref="150" max="32767" attributes="0"/>
                                                           <Component id="txtCosAlqPel" max="32767" attributes="0"/>
                                                           <Component id="txtDirPel" max="32767" attributes="0"/>
                                                       </Group>
@@ -664,7 +664,7 @@
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="lblGenPel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtGenPel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtCatPel" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
@@ -723,10 +723,10 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblGenPel">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="G&#xe9;nero"/>
+                        <Property name="text" type="java.lang.String" value="Categoria"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txtGenPel">
+                    <Component class="javax.swing.JTextField" name="txtCatPel">
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblCosAlqPel">
                       <Properties>
@@ -773,6 +773,9 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Agregar"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgrPelActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="btnCanPel">
                       <Properties>
@@ -833,7 +836,7 @@
                                                           <Component id="jRadioButton28" alignment="0" min="-2" max="-2" attributes="0"/>
                                                       </Group>
                                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                      <Component id="txtNumCatPel1" pref="150" max="32767" attributes="0"/>
+                                                      <Component id="txtNumCatPel1" pref="151" max="32767" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Group type="103" groupAlignment="0" attributes="0">

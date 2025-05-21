@@ -1,5 +1,6 @@
 package edu.tecjerez.proyectos_finales_abd.ConexionBD;
 
+import edu.tecjerez.proyectos_finales_abd.Modelo.Pelicula;
 import edu.tecjerez.proyectos_finales_abd.Modelo.Sucursal;
 import edu.tecjerez.proyectos_finales_abd.Modelo.Usuario;
 import java.sql.Connection;
@@ -137,7 +138,38 @@ private ConexionBD() {
 
         return false;
     
-    }
+    }//Fin Agregar Sucursal
+    
+    //Agregar una Pelicula a la base de datos ----------------------------------------------------------------------------------------------------------------------------------------------
+    public static boolean agregarPelicula(Pelicula p){
+    
+        try {
+
+            Connection conexion = getConexion();
+
+            pstm = conexion.prepareStatement("INSERT INTO pelicula VALUES(?,?,?,?,?,?)");
+            pstm.setString(1, p.getNum_cat());
+            pstm.setString(2, p.getTitulo());
+            pstm.setString(3, p.getCategoria());
+            pstm.setString(4, p.getCos_alqui());
+            pstm.setString(5, p.getCost_adqui());
+            pstm.setString(6, p.getAct());
+            pstm.setString(7, p.getDirector());
+            
+            pstm.execute();
+
+            return true;
+
+        } catch (Exception e) {
+
+            System.out.println("Error en instrucción DML");
+
+        }
+
+        return false;
+    
+    }//Fin Agregar Pelicula
+    
     
     //Ejecutar la consulta a tabla usuarios buscando el usuario -------------------------------------------------------------------------------------------------------------------
     public static ResultSet BuscarUsuarioIgual(String consulta) {
@@ -201,6 +233,27 @@ private ConexionBD() {
             Connection conexion = getConexion();
 
             String sentencia = "SELECT * FROM sucursal;";
+
+            Statement st = conexion.createStatement();
+            ResultSet rs = st.executeQuery(sentencia);
+            
+            return rs;
+        
+        } catch (Exception e) {
+
+        }
+
+        return null;
+    
+    }
+    
+    public static ResultSet buscarPeliculas(){
+    
+        try {
+        
+            Connection conexion = getConexion();
+
+            String sentencia = "SELECT * FROM pelicula;";
 
             Statement st = conexion.createStatement();
             ResultSet rs = st.executeQuery(sentencia);

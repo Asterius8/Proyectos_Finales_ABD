@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
 public class VentanaPrincipal extends javax.swing.JFrame {
     
     //Atributos
-    String num_Suc, calle, ciudad, estado, cod_pos, tel;
+    String num_Suc, calle, ciudad, estado, cod_pos, tel, num_catalogo, titulo, categoria, cos_alqui, cos_adqui, actores, director;
     DefaultTableModel modelo;
 
     public VentanaPrincipal() throws SQLException {
@@ -94,7 +94,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         lblTitPel = new javax.swing.JLabel();
         txtTitPel = new javax.swing.JTextField();
         lblGenPel = new javax.swing.JLabel();
-        txtGenPel = new javax.swing.JTextField();
+        txtCatPel = new javax.swing.JTextField();
         lblCosAlqPel = new javax.swing.JLabel();
         txtCosAlqPel = new javax.swing.JTextField();
         lblDirPel = new javax.swing.JLabel();
@@ -497,7 +497,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         lblTitPel.setText("Titulo");
 
-        lblGenPel.setText("Género");
+        lblGenPel.setText("Categoria");
 
         lblCosAlqPel.setText("Coste de Alquiler");
 
@@ -512,6 +512,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jScrollPane7.setViewportView(txaActPel);
 
         btnAgrPel.setText("Agregar");
+        btnAgrPel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgrPelActionPerformed(evt);
+            }
+        });
 
         btnCanPel.setText("Cancelar");
         btnCanPel.addActionListener(new java.awt.event.ActionListener() {
@@ -561,7 +566,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                         .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(txtNumCatPel)
                                             .addComponent(txtTitPel)
-                                            .addComponent(txtGenPel, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                            .addComponent(txtCatPel, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                                             .addComponent(txtCosAlqPel)
                                             .addComponent(txtDirPel))))
                                 .addGap(80, 80, 80)
@@ -595,7 +600,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblGenPel)
-                            .addComponent(txtGenPel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtCatPel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblDirPel)
@@ -683,7 +688,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                             .addComponent(jRadioButton29)
                                             .addComponent(jRadioButton28))
                                         .addGap(18, 18, 18)
-                                        .addComponent(txtNumCatPel1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
+                                        .addComponent(txtNumCatPel1, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE))
                                     .addGroup(jPanel17Layout.createSequentialGroup()
                                         .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jRadioButton32)
@@ -1147,6 +1152,35 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_txtCodSucKeyTyped
 
+    private void btnAgrPelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgrPelActionPerformed
+  
+        num_catalogo = txtNumCatPel.getText();
+        titulo = txtTitPel.getText();
+        categoria = txtCatPel.getText();
+        cos_alqui = txtCosAlqPel.getText();
+        cos_adqui = txtCosAdqPel.getText();
+        actores = txaActPel.getText();
+        director = txtDirPel.getText();
+        
+        if(!(num_catalogo.equals("") || titulo.equals("") || categoria.equals("") || cos_alqui.equals("") || cos_adqui.equals("") || actores.equals("") ||director.equals(""))){
+        
+            if(SucursalDAO.nunSucursalIgual(num_Suc)){
+            
+                JOptionPane.showMessageDialog(this, "El numero de catalogo ya existe.");
+            
+            }else{
+            
+                
+                
+            }
+            
+        
+        }
+        
+        
+        
+    }//GEN-LAST:event_btnAgrPelActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1294,6 +1328,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextArea txaActPel;
     private javax.swing.JTextField txtCalSuc;
     private javax.swing.JTextField txtCalSuc1;
+    private javax.swing.JTextField txtCatPel;
     private javax.swing.JTextField txtCatPel1;
     private javax.swing.JTextField txtCiuSuc;
     private javax.swing.JTextField txtCiuSuc1;
@@ -1307,7 +1342,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField txtDirPel1;
     private javax.swing.JTextField txtEstSuc;
     private javax.swing.JTextField txtEstSuc1;
-    private javax.swing.JTextField txtGenPel;
     private javax.swing.JTextField txtNumCatPel;
     private javax.swing.JTextField txtNumCatPel1;
     private javax.swing.JTextField txtNumCop;
