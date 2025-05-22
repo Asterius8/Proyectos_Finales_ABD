@@ -2,9 +2,11 @@
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
-    </Component>
     <Component class="javax.swing.ButtonGroup" name="btgSuc">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="btgPel">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="btgCop">
     </Component>
   </NonVisualComponents>
   <Properties>
@@ -40,9 +42,6 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JTabbedPane" name="tpnVideo">
-      <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tpnVideoMouseClicked"/>
-      </Events>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
@@ -504,7 +503,6 @@
                       </Properties>
                       <Events>
                         <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNumSuc1KeyReleased"/>
-                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNumSuc1KeyTyped"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtCalSuc1">
@@ -561,6 +559,9 @@
                         <Property name="text" type="java.lang.String" value="Editar"/>
                         <Property name="enabled" type="boolean" value="false"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEdiSucActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="btnCanSuc1">
                       <Properties>
@@ -633,7 +634,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jPanel15" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTabbedPane4" pref="597" max="32767" attributes="0"/>
+                      <Component id="jTabbedPane4" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -681,7 +682,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
               <SubComponents>
-                <Container class="javax.swing.JPanel" name="jPanel16">
+                <Container class="javax.swing.JPanel" name="panAgrPel">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                       <JTabbedPaneConstraints tabName="Agregar">
@@ -813,56 +814,56 @@
                         <Property name="text" type="java.lang.String" value="Numero de Cat&#xe1;logo"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txtNumCatPel">
-                      <Events>
-                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNumCatPelKeyTyped"/>
-                      </Events>
-                    </Component>
                     <Component class="javax.swing.JLabel" name="lblTitPel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Titulo"/>
                       </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="txtTitPel">
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblGenPel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Categoria"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txtCatPel">
-                    </Component>
                     <Component class="javax.swing.JLabel" name="lblCosAlqPel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Coste de Alquiler"/>
                       </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="txtCosAlqPel">
-                      <Events>
-                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCosAlqPelKeyTyped"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblDirPel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Director"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txtDirPel">
-                    </Component>
                     <Component class="javax.swing.JLabel" name="lblCosAdqPel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Coste de Adquisici&#xf3;n"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txtCosAdqPel">
-                      <Events>
-                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCosAdqPelKeyTyped"/>
-                      </Events>
-                    </Component>
                     <Component class="javax.swing.JLabel" name="lblActPel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Actores"/>
                       </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtNumCatPel">
+                      <Events>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNumCatPelKeyTyped"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtTitPel">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtCatPel">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtCosAlqPel">
+                      <Events>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCosAlqPelKeyTyped"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtDirPel">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtCosAdqPel">
+                      <Events>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCosAdqPelKeyTyped"/>
+                      </Events>
                     </Component>
                     <Container class="javax.swing.JScrollPane" name="jScrollPane7">
                       <AuxValues>
@@ -904,7 +905,7 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTable" name="tbl_Pelicula">
+                        <Component class="javax.swing.JTable" name="tbl_pelicula">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="7" rowCount="4">
@@ -923,7 +924,7 @@
                     </Container>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JPanel" name="jPanel17">
+                <Container class="javax.swing.JPanel" name="panBusPel">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                       <JTabbedPaneConstraints tabName="Buscar">
@@ -940,103 +941,118 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jSeparator7" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
+                                      <Component id="jScrollPane10" pref="1153" max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="jRadioButton29" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="jRadioButton28" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                      <Component id="txtNumCatPel1" pref="151" max="32767" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="jRadioButton32" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="jRadioButton31" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="jRadioButton30" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="jRadioButton33" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                          <Component id="txtCosAdqPel1" pref="150" max="32767" attributes="0"/>
-                                                          <Component id="txtCosAlqPel1" max="32767" attributes="0"/>
-                                                          <Component id="txtCatPel1" max="32767" attributes="0"/>
-                                                          <Component id="txtDirPel1" max="32767" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jrbNumCatPel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jrbMosTodPel" alignment="0" min="-2" max="-2" attributes="0"/>
                                               </Group>
-                                              <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
-                                              <Component id="jRadioButton34" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jScrollPane9" min="-2" pref="349" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="txtNumCatPel1" min="-2" pref="151" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="btnEliPel" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="btnDesPel" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Component id="btnEdiPel" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="btnBusPel" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                               <Component id="btnCanPel1" min="-2" max="-2" attributes="0"/>
                                           </Group>
+                                          <Component id="jrbTitPel" min="-2" pref="98" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jrbCatPel" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="txtTitPel1" max="32767" attributes="0"/>
+                                                  <Component id="txtCatPel1" pref="150" max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jrbCosAlqPel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jrbDirPel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="txtDirPel1" max="32767" attributes="0"/>
+                                                  <Component id="txtCosAlqPel1" pref="150" max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
                                       </Group>
-                                      <EmptySpace min="0" pref="368" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jrbCosAdqPel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jrbActPel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="txtCosAdqPel1" alignment="0" min="-2" pref="164" max="-2" attributes="0"/>
+                                          <Component id="jScrollPane9" alignment="0" min="-2" pref="349" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jScrollPane10" alignment="0" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jrbMosTodPel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jRadioButton28" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jRadioButton34" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jRadioButton29" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jrbNumCatPel" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="txtNumCatPel1" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jRadioButton30" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jrbTitPel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtTitPel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jrbCatPel" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="txtCatPel1" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jRadioButton31" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtCosAlqPel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jrbDirPel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtDirPel1" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jRadioButton32" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jrbCosAlqPel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtCosAlqPel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="btnEliPel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnEdiPel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnDesPel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnCanPel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jrbCosAdqPel" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="txtCosAdqPel1" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jRadioButton33" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtDirPel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jrbActPel" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jScrollPane9" min="-2" pref="211" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="jScrollPane9" alignment="0" min="-2" pref="211" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btnEliPel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnEdiPel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnBusPel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnCanPel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jSeparator7" min="-2" pref="10" max="-2" attributes="0"/>
+                              <EmptySpace pref="33" max="32767" attributes="0"/>
+                              <Component id="jSeparator7" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jScrollPane10" min="-2" pref="224" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
@@ -1045,50 +1061,81 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JRadioButton" name="jRadioButton28">
+                    <Component class="javax.swing.JRadioButton" name="jrbMosTodPel">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btgPel"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Mostrar Todo"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JRadioButton" name="jRadioButton29">
+                    <Component class="javax.swing.JRadioButton" name="jrbNumCatPel">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btgPel"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Numero de Catalogo"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JRadioButton" name="jRadioButton30">
+                    <Component class="javax.swing.JRadioButton" name="jrbCatPel">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btgPel"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Categoria"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JRadioButton" name="jRadioButton31">
+                    <Component class="javax.swing.JRadioButton" name="jrbCosAlqPel">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btgPel"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Coste de Alquiler"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JRadioButton" name="jRadioButton32">
+                    <Component class="javax.swing.JRadioButton" name="jrbCosAdqPel">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btgPel"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Coste de Adquisicion"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JRadioButton" name="jRadioButton33">
+                    <Component class="javax.swing.JRadioButton" name="jrbDirPel">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btgPel"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Director"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JRadioButton" name="jrbActPel">
+                      <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btgPel"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Actores"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JRadioButton" name="jrbTitPel">
+                      <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btgPel"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Titulo"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtCosAdqPel1">
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtCosAlqPel1">
                     </Component>
+                    <Component class="javax.swing.JTextField" name="txtTitPel1">
+                    </Component>
                     <Component class="javax.swing.JTextField" name="txtCatPel1">
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtNumCatPel1">
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtDirPel1">
-                    </Component>
-                    <Component class="javax.swing.JRadioButton" name="jRadioButton34">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Actores"/>
-                      </Properties>
                     </Component>
                     <Container class="javax.swing.JScrollPane" name="jScrollPane9">
                       <AuxValues>
@@ -1097,7 +1144,7 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTextArea" name="jTextArea1">
+                        <Component class="javax.swing.JTextArea" name="txaActPel1">
                           <Properties>
                             <Property name="columns" type="int" value="20"/>
                             <Property name="rows" type="int" value="5"/>
@@ -1115,9 +1162,9 @@
                         <Property name="text" type="java.lang.String" value="Editar"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btnBusPel">
+                    <Component class="javax.swing.JButton" name="btnDesPel">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Buscar"/>
+                        <Property name="text" type="java.lang.String" value="Deshacer"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JButton" name="btnCanPel1">
@@ -1137,14 +1184,17 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTable" name="jTable8">
+                        <Component class="javax.swing.JTable" name="tbl_pelicula1">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="4" rowCount="4">
-                                <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                              <Table columnCount="7" rowCount="4">
+                                <Column editable="false" title="Numero de Catalogo" type="java.lang.Object"/>
+                                <Column editable="false" title="Titulo" type="java.lang.Object"/>
+                                <Column editable="false" title="Categorias" type="java.lang.Object"/>
+                                <Column editable="false" title="Director" type="java.lang.Object"/>
+                                <Column editable="false" title="Coste de Alquiler" type="java.lang.Object"/>
+                                <Column editable="false" title="Coste de Adquisicion" type="java.lang.Object"/>
+                                <Column editable="false" title="Actores" type="java.lang.Object"/>
                               </Table>
                             </Property>
                           </Properties>
@@ -1158,9 +1208,6 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="panCop">
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panCopMouseClicked"/>
-          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Copias de Peliculas">
@@ -1229,7 +1276,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
               <SubComponents>
-                <Container class="javax.swing.JPanel" name="jPanel20">
+                <Container class="javax.swing.JPanel" name="panAgrCop">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                       <JTabbedPaneConstraints tabName="Agregar">
@@ -1327,20 +1374,10 @@
                         <Property name="text" type="java.lang.String" value="Ingrese la informacion de los siguientes campos"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblNumCop">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Numero de Copia"/>
-                      </Properties>
-                    </Component>
                     <Component class="javax.swing.JTextField" name="txtNumCop">
                       <Events>
                         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNumCopKeyTyped"/>
                       </Events>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel1">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Estado de la Pelicula"/>
-                      </Properties>
                     </Component>
                     <Component class="javax.swing.JComboBox" name="comboEstado">
                       <Properties>
@@ -1357,11 +1394,6 @@
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblSucursal">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Sucursal"/>
-                      </Properties>
-                    </Component>
                     <Component class="javax.swing.JComboBox" name="comboSucursal">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -1372,11 +1404,6 @@
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblNumCat">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Numero de Catalogo"/>
-                      </Properties>
-                    </Component>
                     <Component class="javax.swing.JComboBox" name="comboPeliculas">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -1386,6 +1413,26 @@
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblNumCop">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Numero de Copia"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel1">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Estado de la Pelicula"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblSucursal">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Numero de Sucursal"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="lblNumCat">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Numero de Catalogo"/>
+                      </Properties>
                     </Component>
                     <Component class="javax.swing.JButton" name="btnAgrCop">
                       <Properties>
@@ -1412,13 +1459,13 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTable" name="tbl_CopiaPelicula">
+                        <Component class="javax.swing.JTable" name="tbl_copiapelicula">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="4" rowCount="4">
                                 <Column editable="true" title="Numero de Copia" type="java.lang.Object"/>
                                 <Column editable="true" title="Estado de la Pelicula" type="java.lang.Object"/>
-                                <Column editable="true" title="Sucursal" type="java.lang.Object"/>
+                                <Column editable="true" title="Numero de Sucursal" type="java.lang.Object"/>
                                 <Column editable="true" title="Numero de Catalogo" type="java.lang.Object"/>
                               </Table>
                             </Property>
@@ -1455,7 +1502,7 @@
                     </Container>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JPanel" name="jPanel21">
+                <Container class="javax.swing.JPanel" name="panBusCop">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                       <JTabbedPaneConstraints tabName="Buscar">
@@ -1473,27 +1520,27 @@
                                   <Component id="jSeparator9" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jRadioButton35" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jrbMosTodCop" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jRadioButton36" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jRadioButton37" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jrbNumCopCop" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jrbEstCop" alignment="0" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jComboBox10" min="-2" pref="150" max="-2" attributes="0"/>
+                                                  <Component id="comboEstado1" min="-2" pref="150" max="-2" attributes="0"/>
                                                   <Component id="txtNumCop1" min="-2" pref="150" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jRadioButton39" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jRadioButton38" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jrbNumCatCop" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jrbNumSucCop" alignment="0" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="jComboBox11" pref="150" max="32767" attributes="0"/>
-                                                  <Component id="jComboBox12" max="32767" attributes="0"/>
+                                                  <Component id="comboSucursal1" pref="150" max="32767" attributes="0"/>
+                                                  <Component id="comboPeliculas1" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
@@ -1518,26 +1565,26 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jRadioButton35" min="-2" max="-2" attributes="0"/>
+                              <Component id="jrbMosTodCop" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jRadioButton36" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jrbNumCopCop" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtNumCop1" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jRadioButton37" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jComboBox10" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jrbEstCop" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="comboEstado1" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jRadioButton38" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jComboBox11" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jrbNumSucCop" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="comboSucursal1" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jRadioButton39" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jComboBox12" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jrbNumCatCop" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="comboPeliculas1" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -1556,41 +1603,56 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JRadioButton" name="jRadioButton35">
+                    <Component class="javax.swing.JRadioButton" name="jrbMosTodCop">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btgCop"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Mostar Todo"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JRadioButton" name="jRadioButton36">
+                    <Component class="javax.swing.JRadioButton" name="jrbNumCopCop">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btgCop"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Numero de Copia"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JRadioButton" name="jRadioButton37">
+                    <Component class="javax.swing.JRadioButton" name="jrbEstCop">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btgCop"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Estado"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JRadioButton" name="jRadioButton38">
+                    <Component class="javax.swing.JRadioButton" name="jrbNumSucCop">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btgCop"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Numero de Sucursal"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JRadioButton" name="jRadioButton39">
+                    <Component class="javax.swing.JRadioButton" name="jrbNumCatCop">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="btgCop"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Numero de Catalogo"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtNumCop1">
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBox10">
+                    <Component class="javax.swing.JComboBox" name="comboEstado1">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="4">
-                            <StringItem index="0" value="Item 1"/>
-                            <StringItem index="1" value="Item 2"/>
-                            <StringItem index="2" value="Item 3"/>
-                            <StringItem index="3" value="Item 4"/>
+                            <StringItem index="0" value="Elija una opcion"/>
+                            <StringItem index="1" value="Disponible"/>
+                            <StringItem index="2" value="Rentada"/>
+                            <StringItem index="3" value="Da&#xf1;ada"/>
                           </StringArray>
                         </Property>
                       </Properties>
@@ -1598,30 +1660,20 @@
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBox11">
+                    <Component class="javax.swing.JComboBox" name="comboSucursal1">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="4">
-                            <StringItem index="0" value="Item 1"/>
-                            <StringItem index="1" value="Item 2"/>
-                            <StringItem index="2" value="Item 3"/>
-                            <StringItem index="3" value="Item 4"/>
-                          </StringArray>
+                          <StringArray count="0"/>
                         </Property>
                       </Properties>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBox12">
+                    <Component class="javax.swing.JComboBox" name="comboPeliculas1">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="4">
-                            <StringItem index="0" value="Item 1"/>
-                            <StringItem index="1" value="Item 2"/>
-                            <StringItem index="2" value="Item 3"/>
-                            <StringItem index="3" value="Item 4"/>
-                          </StringArray>
+                          <StringArray count="0"/>
                         </Property>
                       </Properties>
                       <AuxValues>
@@ -1660,14 +1712,14 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTable" name="jTable10">
+                        <Component class="javax.swing.JTable" name="tbl_copiapelicula1">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="4" rowCount="4">
-                                <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                                <Column editable="true" title="Numero de Copia" type="java.lang.Object"/>
+                                <Column editable="true" title="Estado de la Pelicula" type="java.lang.Object"/>
+                                <Column editable="true" title="Numero de Sucursal" type="java.lang.Object"/>
+                                <Column editable="true" title="Numero de Catalogo" type="java.lang.Object"/>
                               </Table>
                             </Property>
                           </Properties>

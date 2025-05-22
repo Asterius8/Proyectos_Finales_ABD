@@ -17,12 +17,13 @@ import javax.swing.table.DefaultTableModel;
 
 public class VentanaPrincipal extends javax.swing.JFrame {
     
-    //Atributos
+//Atributos --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     String num_Suc, calle, ciudad, estado, cod_pos, tel, num_catalogo, titulo, categoria, actores, director, estadoCP, num_CopiaPelicula;
     float cos_alqui, cos_adqui;
-    DefaultTableModel modelo, modeloPelicula, modeloCopiaPelicula, modelo1;
+    DefaultTableModel modelo, modelo1, modeloPelicula, modeloCopiaPelicula;
     private HistorialSucursales historialSucursales = new HistorialSucursales();
 
+//Constructor ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     public VentanaPrincipal() throws SQLException {
         
         setTitle("VideoClub");
@@ -30,8 +31,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         modelo = (DefaultTableModel) tbl_sucursal.getModel();
         modelo1 = (DefaultTableModel) tbl_sucursal1.getModel();
-        modeloPelicula = (DefaultTableModel)  tbl_Pelicula.getModel();
-        modeloCopiaPelicula = (DefaultTableModel)  tbl_CopiaPelicula.getModel();
+        modeloPelicula = (DefaultTableModel)  tbl_pelicula.getModel();
+        modeloCopiaPelicula = (DefaultTableModel)  tbl_copiapelicula.getModel();
         
         
         this.mostrar();
@@ -64,21 +65,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         
     }
-    
-    public void cancelar(){
-    
-        Login l = new Login();
-        l.setVisible(true);
-        this.dispose();
-        
-    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
         btgSuc = new javax.swing.ButtonGroup();
+        btgPel = new javax.swing.ButtonGroup();
+        btgCop = new javax.swing.ButtonGroup();
         tpnVideo = new javax.swing.JTabbedPane();
         panSuc = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
@@ -128,94 +122,90 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel15 = new javax.swing.JPanel();
         lblPel = new javax.swing.JLabel();
         jTabbedPane4 = new javax.swing.JTabbedPane();
-        jPanel16 = new javax.swing.JPanel();
+        panAgrPel = new javax.swing.JPanel();
         lblInsPel = new javax.swing.JLabel();
         lblNumCatPel = new javax.swing.JLabel();
-        txtNumCatPel = new javax.swing.JTextField();
         lblTitPel = new javax.swing.JLabel();
-        txtTitPel = new javax.swing.JTextField();
         lblGenPel = new javax.swing.JLabel();
-        txtCatPel = new javax.swing.JTextField();
         lblCosAlqPel = new javax.swing.JLabel();
-        txtCosAlqPel = new javax.swing.JTextField();
         lblDirPel = new javax.swing.JLabel();
-        txtDirPel = new javax.swing.JTextField();
         lblCosAdqPel = new javax.swing.JLabel();
-        txtCosAdqPel = new javax.swing.JTextField();
         lblActPel = new javax.swing.JLabel();
+        txtNumCatPel = new javax.swing.JTextField();
+        txtTitPel = new javax.swing.JTextField();
+        txtCatPel = new javax.swing.JTextField();
+        txtCosAlqPel = new javax.swing.JTextField();
+        txtDirPel = new javax.swing.JTextField();
+        txtCosAdqPel = new javax.swing.JTextField();
         jScrollPane7 = new javax.swing.JScrollPane();
         txaActPel = new javax.swing.JTextArea();
         btnAgrPel = new javax.swing.JButton();
         btnCanPel = new javax.swing.JButton();
         jSeparator6 = new javax.swing.JSeparator();
         jScrollPane8 = new javax.swing.JScrollPane();
-        tbl_Pelicula = new javax.swing.JTable();
-        jPanel17 = new javax.swing.JPanel();
-        jRadioButton28 = new javax.swing.JRadioButton();
-        jRadioButton29 = new javax.swing.JRadioButton();
-        jRadioButton30 = new javax.swing.JRadioButton();
-        jRadioButton31 = new javax.swing.JRadioButton();
-        jRadioButton32 = new javax.swing.JRadioButton();
-        jRadioButton33 = new javax.swing.JRadioButton();
+        tbl_pelicula = new javax.swing.JTable();
+        panBusPel = new javax.swing.JPanel();
+        jrbMosTodPel = new javax.swing.JRadioButton();
+        jrbNumCatPel = new javax.swing.JRadioButton();
+        jrbCatPel = new javax.swing.JRadioButton();
+        jrbCosAlqPel = new javax.swing.JRadioButton();
+        jrbCosAdqPel = new javax.swing.JRadioButton();
+        jrbDirPel = new javax.swing.JRadioButton();
+        jrbActPel = new javax.swing.JRadioButton();
+        jrbTitPel = new javax.swing.JRadioButton();
         txtCosAdqPel1 = new javax.swing.JTextField();
         txtCosAlqPel1 = new javax.swing.JTextField();
+        txtTitPel1 = new javax.swing.JTextField();
         txtCatPel1 = new javax.swing.JTextField();
         txtNumCatPel1 = new javax.swing.JTextField();
         txtDirPel1 = new javax.swing.JTextField();
-        jRadioButton34 = new javax.swing.JRadioButton();
         jScrollPane9 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txaActPel1 = new javax.swing.JTextArea();
         btnEliPel = new javax.swing.JButton();
         btnEdiPel = new javax.swing.JButton();
-        btnBusPel = new javax.swing.JButton();
+        btnDesPel = new javax.swing.JButton();
         btnCanPel1 = new javax.swing.JButton();
         jSeparator7 = new javax.swing.JSeparator();
         jScrollPane10 = new javax.swing.JScrollPane();
-        jTable8 = new javax.swing.JTable();
+        tbl_pelicula1 = new javax.swing.JTable();
         panCop = new javax.swing.JPanel();
         jPanel19 = new javax.swing.JPanel();
         lblCop = new javax.swing.JLabel();
         jTabbedPane5 = new javax.swing.JTabbedPane();
-        jPanel20 = new javax.swing.JPanel();
+        panAgrCop = new javax.swing.JPanel();
         lblInsCop = new javax.swing.JLabel();
-        lblNumCop = new javax.swing.JLabel();
         txtNumCop = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         comboEstado = new javax.swing.JComboBox<>();
-        lblSucursal = new javax.swing.JLabel();
         comboSucursal = new javax.swing.JComboBox<>();
-        lblNumCat = new javax.swing.JLabel();
         comboPeliculas = new javax.swing.JComboBox<>();
+        lblNumCop = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        lblSucursal = new javax.swing.JLabel();
+        lblNumCat = new javax.swing.JLabel();
         btnAgrCop = new javax.swing.JButton();
         btnCanCop = new javax.swing.JButton();
         jSeparator8 = new javax.swing.JSeparator();
         jScrollPane11 = new javax.swing.JScrollPane();
-        tbl_CopiaPelicula = new javax.swing.JTable();
-        jPanel21 = new javax.swing.JPanel();
-        jRadioButton35 = new javax.swing.JRadioButton();
-        jRadioButton36 = new javax.swing.JRadioButton();
-        jRadioButton37 = new javax.swing.JRadioButton();
-        jRadioButton38 = new javax.swing.JRadioButton();
-        jRadioButton39 = new javax.swing.JRadioButton();
+        tbl_copiapelicula = new javax.swing.JTable();
+        panBusCop = new javax.swing.JPanel();
+        jrbMosTodCop = new javax.swing.JRadioButton();
+        jrbNumCopCop = new javax.swing.JRadioButton();
+        jrbEstCop = new javax.swing.JRadioButton();
+        jrbNumSucCop = new javax.swing.JRadioButton();
+        jrbNumCatCop = new javax.swing.JRadioButton();
         txtNumCop1 = new javax.swing.JTextField();
-        jComboBox10 = new javax.swing.JComboBox<>();
-        jComboBox11 = new javax.swing.JComboBox<>();
-        jComboBox12 = new javax.swing.JComboBox<>();
+        comboEstado1 = new javax.swing.JComboBox<>();
+        comboSucursal1 = new javax.swing.JComboBox<>();
+        comboPeliculas1 = new javax.swing.JComboBox<>();
         btnEliCop = new javax.swing.JButton();
         btnEdiCop = new javax.swing.JButton();
         btnBusCop = new javax.swing.JButton();
         btnCanCop1 = new javax.swing.JButton();
         jSeparator9 = new javax.swing.JSeparator();
         jScrollPane12 = new javax.swing.JScrollPane();
-        jTable10 = new javax.swing.JTable();
+        tbl_copiapelicula1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        tpnVideo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tpnVideoMouseClicked(evt);
-            }
-        });
 
         jPanel11.setBackground(new java.awt.Color(0, 204, 0));
 
@@ -445,9 +435,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtNumSuc1KeyReleased(evt);
             }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtNumSuc1KeyTyped(evt);
-            }
         });
 
         txtCalSuc1.setEnabled(false);
@@ -495,6 +482,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         btnEdiSuc.setText("Editar");
         btnEdiSuc.setEnabled(false);
+        btnEdiSuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEdiSucActionPerformed(evt);
+            }
+        });
 
         btnCanSuc1.setText("Cancelar");
         btnCanSuc1.addActionListener(new java.awt.event.ActionListener() {
@@ -653,17 +645,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         lblNumCatPel.setText("Numero de Catálogo");
 
-        txtNumCatPel.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtNumCatPelKeyTyped(evt);
-            }
-        });
-
         lblTitPel.setText("Titulo");
 
         lblGenPel.setText("Categoria");
 
         lblCosAlqPel.setText("Coste de Alquiler");
+
+        lblDirPel.setText("Director");
+
+        lblCosAdqPel.setText("Coste de Adquisición");
+
+        lblActPel.setText("Actores");
+
+        txtNumCatPel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumCatPelKeyTyped(evt);
+            }
+        });
 
         txtCosAlqPel.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -671,17 +669,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        lblDirPel.setText("Director");
-
-        lblCosAdqPel.setText("Coste de Adquisición");
-
         txtCosAdqPel.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCosAdqPelKeyTyped(evt);
             }
         });
-
-        lblActPel.setText("Actores");
 
         txaActPel.setColumns(20);
         txaActPel.setRows(5);
@@ -701,7 +693,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        tbl_Pelicula.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_pelicula.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -712,34 +704,34 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 "Numero de catalogo", "Titulo", "Categoria", "Director", "Costo de Alquiler", "Coste de Adquisicion", "Actores"
             }
         ));
-        jScrollPane8.setViewportView(tbl_Pelicula);
+        jScrollPane8.setViewportView(tbl_pelicula);
 
-        javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
-        jPanel16.setLayout(jPanel16Layout);
-        jPanel16Layout.setHorizontalGroup(
-            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel16Layout.createSequentialGroup()
+        javax.swing.GroupLayout panAgrPelLayout = new javax.swing.GroupLayout(panAgrPel);
+        panAgrPel.setLayout(panAgrPelLayout);
+        panAgrPelLayout.setHorizontalGroup(
+            panAgrPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panAgrPelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panAgrPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator6)
-                    .addGroup(jPanel16Layout.createSequentialGroup()
-                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panAgrPelLayout.createSequentialGroup()
+                        .addGroup(panAgrPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblInsPel)
-                            .addGroup(jPanel16Layout.createSequentialGroup()
-                                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel16Layout.createSequentialGroup()
+                            .addGroup(panAgrPelLayout.createSequentialGroup()
+                                .addGroup(panAgrPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panAgrPelLayout.createSequentialGroup()
                                         .addComponent(lblCosAdqPel)
                                         .addGap(18, 18, 18)
                                         .addComponent(txtCosAdqPel, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel16Layout.createSequentialGroup()
-                                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panAgrPelLayout.createSequentialGroup()
+                                        .addGroup(panAgrPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(lblNumCatPel)
                                             .addComponent(lblTitPel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(lblGenPel)
                                             .addComponent(lblCosAlqPel)
                                             .addComponent(lblDirPel))
                                         .addGap(18, 18, 18)
-                                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(panAgrPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(txtNumCatPel)
                                             .addComponent(txtTitPel)
                                             .addComponent(txtCatPel, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
@@ -749,7 +741,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 .addComponent(lblActPel)
                                 .addGap(18, 18, 18)
                                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel16Layout.createSequentialGroup()
+                            .addGroup(panAgrPelLayout.createSequentialGroup()
                                 .addComponent(btnAgrPel)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnCanPel)))
@@ -757,41 +749,41 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addComponent(jScrollPane8))
                 .addContainerGap())
         );
-        jPanel16Layout.setVerticalGroup(
-            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel16Layout.createSequentialGroup()
+        panAgrPelLayout.setVerticalGroup(
+            panAgrPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panAgrPelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblInsPel)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel16Layout.createSequentialGroup()
-                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panAgrPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(panAgrPelLayout.createSequentialGroup()
+                        .addGroup(panAgrPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblNumCatPel)
                             .addComponent(txtNumCatPel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblActPel))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(panAgrPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblTitPel)
                             .addComponent(txtTitPel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(panAgrPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblGenPel)
                             .addComponent(txtCatPel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(panAgrPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblDirPel)
                             .addComponent(txtDirPel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(panAgrPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblCosAlqPel)
                             .addComponent(txtCosAlqPel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(panAgrPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblCosAdqPel)
                             .addComponent(txtCosAdqPel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane7))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panAgrPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgrPel)
                     .addComponent(btnCanPel))
                 .addGap(18, 18, 18)
@@ -801,31 +793,41 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane4.addTab("Agregar", jPanel16);
+        jTabbedPane4.addTab("Agregar", panAgrPel);
 
-        jRadioButton28.setText("Mostrar Todo");
+        btgPel.add(jrbMosTodPel);
+        jrbMosTodPel.setText("Mostrar Todo");
 
-        jRadioButton29.setText("Numero de Catalogo");
+        btgPel.add(jrbNumCatPel);
+        jrbNumCatPel.setText("Numero de Catalogo");
 
-        jRadioButton30.setText("Categoria");
+        btgPel.add(jrbCatPel);
+        jrbCatPel.setText("Categoria");
 
-        jRadioButton31.setText("Coste de Alquiler");
+        btgPel.add(jrbCosAlqPel);
+        jrbCosAlqPel.setText("Coste de Alquiler");
 
-        jRadioButton32.setText("Coste de Adquisicion");
+        btgPel.add(jrbCosAdqPel);
+        jrbCosAdqPel.setText("Coste de Adquisicion");
 
-        jRadioButton33.setText("Director");
+        btgPel.add(jrbDirPel);
+        jrbDirPel.setText("Director");
 
-        jRadioButton34.setText("Actores");
+        btgPel.add(jrbActPel);
+        jrbActPel.setText("Actores");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane9.setViewportView(jTextArea1);
+        btgPel.add(jrbTitPel);
+        jrbTitPel.setText("Titulo");
+
+        txaActPel1.setColumns(20);
+        txaActPel1.setRows(5);
+        jScrollPane9.setViewportView(txaActPel1);
 
         btnEliPel.setText("Eliminar");
 
         btnEdiPel.setText("Editar");
 
-        btnBusPel.setText("Buscar");
+        btnDesPel.setText("Deshacer");
 
         btnCanPel1.setText("Cancelar");
         btnCanPel1.addActionListener(new java.awt.event.ActionListener() {
@@ -834,109 +836,127 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jTable8.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_pelicula1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Numero de Catalogo", "Titulo", "Categorias", "Director", "Coste de Alquiler", "Coste de Adquisicion", "Actores"
             }
-        ));
-        jScrollPane10.setViewportView(jTable8);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
 
-        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
-        jPanel17.setLayout(jPanel17Layout);
-        jPanel17Layout.setHorizontalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel17Layout.createSequentialGroup()
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane10.setViewportView(tbl_pelicula1);
+
+        javax.swing.GroupLayout panBusPelLayout = new javax.swing.GroupLayout(panBusPel);
+        panBusPel.setLayout(panBusPelLayout);
+        panBusPelLayout.setHorizontalGroup(
+            panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panBusPelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator7)
-                    .addGroup(jPanel17Layout.createSequentialGroup()
-                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel17Layout.createSequentialGroup()
-                                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel17Layout.createSequentialGroup()
-                                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jRadioButton29)
-                                            .addComponent(jRadioButton28))
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtNumCatPel1, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE))
-                                    .addGroup(jPanel17Layout.createSequentialGroup()
-                                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jRadioButton32)
-                                            .addComponent(jRadioButton31)
-                                            .addComponent(jRadioButton30)
-                                            .addComponent(jRadioButton33))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtCosAdqPel1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                            .addComponent(txtCosAlqPel1)
-                                            .addComponent(txtCatPel1)
-                                            .addComponent(txtDirPel1))))
-                                .addGap(64, 64, 64)
-                                .addComponent(jRadioButton34)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel17Layout.createSequentialGroup()
+                    .addGroup(panBusPelLayout.createSequentialGroup()
+                        .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 1153, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(panBusPelLayout.createSequentialGroup()
+                        .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panBusPelLayout.createSequentialGroup()
+                                .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jrbNumCatPel)
+                                    .addComponent(jrbMosTodPel))
+                                .addGap(18, 18, 18)
+                                .addComponent(txtNumCatPel1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panBusPelLayout.createSequentialGroup()
                                 .addComponent(btnEliPel)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnDesPel)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnEdiPel)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnBusPel)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnCanPel1)))
-                        .addGap(0, 368, Short.MAX_VALUE))
-                    .addComponent(jScrollPane10))
-                .addContainerGap())
-        );
-        jPanel17Layout.setVerticalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel17Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel17Layout.createSequentialGroup()
-                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jRadioButton28)
-                            .addComponent(jRadioButton34))
+                                .addComponent(btnCanPel1))
+                            .addComponent(jrbTitPel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panBusPelLayout.createSequentialGroup()
+                                .addComponent(jrbCatPel)
+                                .addGap(79, 79, 79)
+                                .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtTitPel1)
+                                    .addComponent(txtCatPel1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)))
+                            .addGroup(panBusPelLayout.createSequentialGroup()
+                                .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jrbCosAlqPel)
+                                    .addComponent(jrbDirPel))
+                                .addGap(40, 40, 40)
+                                .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtDirPel1)
+                                    .addComponent(txtCosAlqPel1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jrbCosAdqPel)
+                            .addComponent(jrbActPel))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jRadioButton29)
+                        .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtCosAdqPel1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(156, 156, 156))))
+        );
+        panBusPelLayout.setVerticalGroup(
+            panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panBusPelLayout.createSequentialGroup()
+                .addComponent(jrbMosTodPel)
+                .addGap(18, 18, 18)
+                .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panBusPelLayout.createSequentialGroup()
+                        .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jrbNumCatPel)
                             .addComponent(txtNumCatPel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jRadioButton30)
+                        .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jrbTitPel)
+                            .addComponent(txtTitPel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jrbCatPel)
                             .addComponent(txtCatPel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jRadioButton31)
-                            .addComponent(txtCosAlqPel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jrbDirPel)
+                            .addComponent(txtDirPel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jRadioButton32)
+                        .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jrbCosAlqPel)
+                            .addComponent(txtCosAlqPel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(46, 46, 46)
+                        .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnEliPel)
+                            .addComponent(btnEdiPel)
+                            .addComponent(btnDesPel)
+                            .addComponent(btnCanPel1)))
+                    .addGroup(panBusPelLayout.createSequentialGroup()
+                        .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jrbCosAdqPel)
                             .addComponent(txtCosAdqPel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jRadioButton33)
-                            .addComponent(txtDirPel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEliPel)
-                    .addComponent(btnEdiPel)
-                    .addComponent(btnBusPel)
-                    .addComponent(btnCanPel1))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jrbActPel)
+                            .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane4.addTab("Buscar", jPanel17);
+        jTabbedPane4.addTab("Buscar", panBusPel);
 
         javax.swing.GroupLayout panPelLayout = new javax.swing.GroupLayout(panPel);
         panPel.setLayout(panPelLayout);
@@ -950,16 +970,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(panPelLayout.createSequentialGroup()
                 .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE))
+                .addComponent(jTabbedPane4))
         );
 
         tpnVideo.addTab("Pelicula", panPel);
-
-        panCop.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                panCopMouseClicked(evt);
-            }
-        });
 
         jPanel19.setBackground(new java.awt.Color(153, 153, 255));
 
@@ -986,19 +1000,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         lblInsCop.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblInsCop.setText("Ingrese la informacion de los siguientes campos");
 
-        lblNumCop.setText("Numero de Copia");
-
         txtNumCop.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNumCopKeyTyped(evt);
             }
         });
 
-        jLabel1.setText("Estado de la Pelicula");
-
         comboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elija una opcion", "Disponible", "Rentada", "Dañada" }));
 
-        lblSucursal.setText("Sucursal");
+        lblNumCop.setText("Numero de Copia");
+
+        jLabel1.setText("Estado de la Pelicula");
+
+        lblSucursal.setText("Numero de Sucursal");
 
         lblNumCat.setText("Numero de Catalogo");
 
@@ -1016,7 +1030,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        tbl_CopiaPelicula.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_copiapelicula.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -1024,35 +1038,35 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Numero de Copia", "Estado de la Pelicula", "Sucursal", "Numero de Catalogo"
+                "Numero de Copia", "Estado de la Pelicula", "Numero de Sucursal", "Numero de Catalogo"
             }
         ));
-        jScrollPane11.setViewportView(tbl_CopiaPelicula);
+        jScrollPane11.setViewportView(tbl_copiapelicula);
 
-        javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
-        jPanel20.setLayout(jPanel20Layout);
-        jPanel20Layout.setHorizontalGroup(
-            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel20Layout.createSequentialGroup()
+        javax.swing.GroupLayout panAgrCopLayout = new javax.swing.GroupLayout(panAgrCop);
+        panAgrCop.setLayout(panAgrCopLayout);
+        panAgrCopLayout.setHorizontalGroup(
+            panAgrCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panAgrCopLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panAgrCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator8)
-                    .addGroup(jPanel20Layout.createSequentialGroup()
-                        .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panAgrCopLayout.createSequentialGroup()
+                        .addGroup(panAgrCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblInsCop)
-                            .addGroup(jPanel20Layout.createSequentialGroup()
-                                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(panAgrCopLayout.createSequentialGroup()
+                                .addGroup(panAgrCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(lblNumCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(lblNumCop)
                                     .addComponent(lblSucursal)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(panAgrCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtNumCop)
                                     .addComponent(comboEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(comboSucursal, 0, 150, Short.MAX_VALUE)
                                     .addComponent(comboPeliculas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(jPanel20Layout.createSequentialGroup()
+                            .addGroup(panAgrCopLayout.createSequentialGroup()
                                 .addComponent(btnAgrCop)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnCanCop)))
@@ -1060,30 +1074,30 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 1153, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel20Layout.setVerticalGroup(
-            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel20Layout.createSequentialGroup()
+        panAgrCopLayout.setVerticalGroup(
+            panAgrCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panAgrCopLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblInsCop)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panAgrCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblNumCop)
-                    .addGroup(jPanel20Layout.createSequentialGroup()
+                    .addGroup(panAgrCopLayout.createSequentialGroup()
                         .addComponent(txtNumCop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(panAgrCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(comboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(panAgrCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(comboSucursal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblSucursal))))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panAgrCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblNumCat)
                     .addComponent(comboPeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panAgrCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgrCop)
                     .addComponent(btnCanCop))
                 .addGap(18, 18, 18)
@@ -1093,23 +1107,24 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane5.addTab("Agregar", jPanel20);
+        jTabbedPane5.addTab("Agregar", panAgrCop);
 
-        jRadioButton35.setText("Mostar Todo");
+        btgCop.add(jrbMosTodCop);
+        jrbMosTodCop.setText("Mostar Todo");
 
-        jRadioButton36.setText("Numero de Copia");
+        btgCop.add(jrbNumCopCop);
+        jrbNumCopCop.setText("Numero de Copia");
 
-        jRadioButton37.setText("Estado");
+        btgCop.add(jrbEstCop);
+        jrbEstCop.setText("Estado");
 
-        jRadioButton38.setText("Numero de Sucursal");
+        btgCop.add(jrbNumSucCop);
+        jrbNumSucCop.setText("Numero de Sucursal");
 
-        jRadioButton39.setText("Numero de Catalogo");
+        btgCop.add(jrbNumCatCop);
+        jrbNumCatCop.setText("Numero de Catalogo");
 
-        jComboBox10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jComboBox11.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jComboBox12.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboEstado1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elija una opcion", "Disponible", "Rentada", "Dañada" }));
 
         btnEliCop.setText("Eliminar");
 
@@ -1124,7 +1139,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jTable10.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_copiapelicula1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -1132,39 +1147,39 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Numero de Copia", "Estado de la Pelicula", "Numero de Sucursal", "Numero de Catalogo"
             }
         ));
-        jScrollPane12.setViewportView(jTable10);
+        jScrollPane12.setViewportView(tbl_copiapelicula1);
 
-        javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
-        jPanel21.setLayout(jPanel21Layout);
-        jPanel21Layout.setHorizontalGroup(
-            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel21Layout.createSequentialGroup()
+        javax.swing.GroupLayout panBusCopLayout = new javax.swing.GroupLayout(panBusCop);
+        panBusCop.setLayout(panBusCopLayout);
+        panBusCopLayout.setHorizontalGroup(
+            panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panBusCopLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator9)
-                    .addGroup(jPanel21Layout.createSequentialGroup()
-                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButton35)
-                            .addGroup(jPanel21Layout.createSequentialGroup()
-                                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jRadioButton36)
-                                    .addComponent(jRadioButton37))
+                    .addGroup(panBusCopLayout.createSequentialGroup()
+                        .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jrbMosTodCop)
+                            .addGroup(panBusCopLayout.createSequentialGroup()
+                                .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jrbNumCopCop)
+                                    .addComponent(jrbEstCop))
                                 .addGap(36, 36, 36)
-                                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBox10, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(comboEstado1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtNumCop1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel21Layout.createSequentialGroup()
-                                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jRadioButton39)
-                                    .addComponent(jRadioButton38))
+                            .addGroup(panBusCopLayout.createSequentialGroup()
+                                .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jrbNumCatCop)
+                                    .addComponent(jrbNumSucCop))
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jComboBox11, 0, 150, Short.MAX_VALUE)
-                                    .addComponent(jComboBox12, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(jPanel21Layout.createSequentialGroup()
+                                .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(comboSucursal1, 0, 150, Short.MAX_VALUE)
+                                    .addComponent(comboPeliculas1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(panBusCopLayout.createSequentialGroup()
                                 .addComponent(btnEliCop)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnEdiCop)
@@ -1176,29 +1191,29 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 1152, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel21Layout.setVerticalGroup(
-            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel21Layout.createSequentialGroup()
+        panBusCopLayout.setVerticalGroup(
+            panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panBusCopLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jRadioButton35)
+                .addComponent(jrbMosTodCop)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton36)
+                .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jrbNumCopCop)
                     .addComponent(txtNumCop1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton37)
-                    .addComponent(jComboBox10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jrbEstCop)
+                    .addComponent(comboEstado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton38)
-                    .addComponent(jComboBox11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jrbNumSucCop)
+                    .addComponent(comboSucursal1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton39)
-                    .addComponent(jComboBox12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jrbNumCatCop)
+                    .addComponent(comboPeliculas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEliCop)
                     .addComponent(btnEdiCop)
                     .addComponent(btnBusCop)
@@ -1210,7 +1225,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        jTabbedPane5.addTab("Buscar", jPanel21);
+        jTabbedPane5.addTab("Buscar", panBusCop);
 
         javax.swing.GroupLayout panCopLayout = new javax.swing.GroupLayout(panCop);
         panCop.setLayout(panCopLayout);
@@ -1242,7 +1257,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+//Boton Cancelar --------------------------------------------------------------------------------------------------------------------------------------------------------------------
     private void btnCanSucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCanSucActionPerformed
        
         cancelar();
@@ -1278,7 +1293,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         cancelar();
         
     }//GEN-LAST:event_btnCanCop1ActionPerformed
-
+//Boton Agregar Sucursal -------------------------------------------------------------------------------------------------------------------------------------------------------------------
     private void btnAgrSucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgrSucActionPerformed
 
         num_Suc = txtNumSuc.getText();
@@ -1301,6 +1316,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     SucursalDAO.agregarSucursal(new Sucursal(num_Suc, calle, ciudad, estado, cod_pos,tel));
                     
                     JOptionPane.showMessageDialog(this, "Usuario creado correctamente");
+                    
+                    vaciarComponentesSuc();
                     
                     this.mostrar();
                 } catch (SQLException ex) {
@@ -1341,6 +1358,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_txtCodSucKeyTyped
 
+//Boton para Agregar Pelicula --------------------------------------------------------------------------------------------------------------------------------------------------------------    
     private void btnAgrPelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgrPelActionPerformed
   
         num_catalogo = txtNumCatPel.getText();
@@ -1438,14 +1456,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtNumCatPelKeyTyped
 
-    private void tpnVideoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tpnVideoMouseClicked
-
-    }//GEN-LAST:event_tpnVideoMouseClicked
-
-    private void panCopMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panCopMouseClicked
-
-    }//GEN-LAST:event_panCopMouseClicked
-
     private void txtNumCopKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumCopKeyTyped
         
         char c = evt.getKeyChar();
@@ -1456,7 +1466,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_txtNumCopKeyTyped
-
+//Boton Para Agregar Copia Pelicula --------------------------------------------------------------------------------------------------------------------------------------------------------
     private void btnAgrCopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgrCopActionPerformed
         
         num_CopiaPelicula = txtNumCop.getText();
@@ -1495,7 +1505,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btnAgrCopActionPerformed
-
+//RadioButon para seleccionar el filtro en sucursal ----------------------------------------------------------------------------------------------------------------------------------------
     private void jrbMosTodSucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbMosTodSucActionPerformed
 
         try {
@@ -1586,12 +1596,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jrbTelSucActionPerformed
 
-    private void txtNumSuc1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumSuc1KeyTyped
-
-        
-
-    }//GEN-LAST:event_txtNumSuc1KeyTyped
-
+//Filtra la tabla con lo que se ingresa en las cajas de texto
     private void txtNumSuc1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumSuc1KeyReleased
         
         try{
@@ -1674,6 +1679,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtTelSuc1KeyReleased
 
+//Click a la tabla de sucursal1 para cargar los datos y poder eliminar o modificar
     private void tbl_sucursal1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_sucursal1MouseClicked
         
         jrbMosTodSuc.setSelected(true);
@@ -1704,6 +1710,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         txtTelSuc1.setText(modelo1.getValueAt(tbl_sucursal1.getSelectedRow(), 5).toString());
     }//GEN-LAST:event_tbl_sucursal1MouseClicked
 
+//Boton para eliminar el registro de sucursal seleccionado
     private void btnEliSucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliSucActionPerformed
         
         int opcion = JOptionPane.showConfirmDialog(
@@ -1730,13 +1737,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                             
                     );
                     
+                    
+                    
                     historialSucursales.guardar(memento);
                     
+                    //System.out.println(historialSucursales.toString());
+                    
                     SucursalDAO.eliminarSucursal(txtNumSuc1.getText());
+                                    
+                    JOptionPane.showMessageDialog(null, "Sucursal eliminado correctamente");
+                    
+                    vaciarComponentesSuc1();
                     
                     mostrar1();
-                                    
-                    JOptionPane.showMessageDialog(null, "Alumno eliminado correctamente");
                     
                 }
                 
@@ -1752,31 +1765,71 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
                 
     }//GEN-LAST:event_btnEliSucActionPerformed
-
+//Boton de deshacer para traer el ultimo registro borrado
     private void btnDesSucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesSucActionPerformed
        
         SucursalMemento memento = historialSucursales.deshacer();
+        
+        //System.out.println(memento.toString());
         
         if (memento != null) {
         
             if(SucursalDAO.restaurarSucursal(memento)){
             
-                JOptionPane.showMessageDialog(this, "Alumno restaurado correctamente");
+                JOptionPane.showMessageDialog(this, "Sucursal restaurado correctamente");
+                
                 try {
+                    
                     mostrar1();
+                    
                 } catch (SQLException ex) {
+                    
                     Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                    
                 }
             
             } else {
-                JOptionPane.showMessageDialog(this, "No se pudo restaurar el alumno");
+                
+                JOptionPane.showMessageDialog(this, "No se pudo restaurar la sucursal");
+                
             }
         } else {
-            JOptionPane.showMessageDialog(this, "No hay alumnos para restaurar");
+            
+            JOptionPane.showMessageDialog(this, "No hay sucursal para restaurar");
         
         }
         
     }//GEN-LAST:event_btnDesSucActionPerformed
+
+    private void btnEdiSucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEdiSucActionPerformed
+
+        if(!(txtCalSuc1.getText().equals("") || txtCiuSuc1.getText().equals("") || txtEstSuc1.getText().equals("") || txtCodSuc1.getText().equals("") || txtTelSuc1.getText().equals(""))){
+        
+            num_Suc = txtNumSuc1.getText();
+            calle = txtCalSuc1.getText();
+            ciudad = txtCiuSuc1.getText();
+            estado = txtEstSuc1.getText();
+            cod_pos = txtCodSuc1.getText();
+            tel = txtTelSuc1.getText();
+            
+            if(SucursalDAO.cambiosSucursal(new Sucursal(num_Suc, calle, ciudad, estado, cod_pos, tel))){
+            
+                try {
+                    
+                    JOptionPane.showMessageDialog(this, "Exito");
+                    mostrar1();
+                    
+                } catch (SQLException ex) {
+                    
+                    Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                    
+                }
+                
+            }
+        
+        }
+
+    }//GEN-LAST:event_btnEdiSucActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1818,18 +1871,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup btgCop;
+    private javax.swing.ButtonGroup btgPel;
     private javax.swing.ButtonGroup btgSuc;
     private javax.swing.JButton btnAgrCop;
     private javax.swing.JButton btnAgrPel;
     private javax.swing.JButton btnAgrSuc;
     private javax.swing.JButton btnBusCop;
-    private javax.swing.JButton btnBusPel;
     private javax.swing.JButton btnCanCop;
     private javax.swing.JButton btnCanCop1;
     private javax.swing.JButton btnCanPel;
     private javax.swing.JButton btnCanPel1;
     private javax.swing.JButton btnCanSuc;
     private javax.swing.JButton btnCanSuc1;
+    private javax.swing.JButton btnDesPel;
     private javax.swing.JButton btnDesSuc;
     private javax.swing.JButton btnEdiCop;
     private javax.swing.JButton btnEdiPel;
@@ -1837,33 +1892,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnEliCop;
     private javax.swing.JButton btnEliPel;
     private javax.swing.JButton btnEliSuc;
-    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> comboEstado;
+    private javax.swing.JComboBox<String> comboEstado1;
     private javax.swing.JComboBox<String> comboPeliculas;
+    private javax.swing.JComboBox<String> comboPeliculas1;
     private javax.swing.JComboBox<String> comboSucursal;
-    private javax.swing.JComboBox<String> jComboBox10;
-    private javax.swing.JComboBox<String> jComboBox11;
-    private javax.swing.JComboBox<String> jComboBox12;
+    private javax.swing.JComboBox<String> comboSucursal1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel15;
-    private javax.swing.JPanel jPanel16;
-    private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel19;
-    private javax.swing.JPanel jPanel20;
-    private javax.swing.JPanel jPanel21;
-    private javax.swing.JRadioButton jRadioButton28;
-    private javax.swing.JRadioButton jRadioButton29;
-    private javax.swing.JRadioButton jRadioButton30;
-    private javax.swing.JRadioButton jRadioButton31;
-    private javax.swing.JRadioButton jRadioButton32;
-    private javax.swing.JRadioButton jRadioButton33;
-    private javax.swing.JRadioButton jRadioButton34;
-    private javax.swing.JRadioButton jRadioButton35;
-    private javax.swing.JRadioButton jRadioButton36;
-    private javax.swing.JRadioButton jRadioButton37;
-    private javax.swing.JRadioButton jRadioButton38;
-    private javax.swing.JRadioButton jRadioButton39;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
@@ -1881,16 +1919,26 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTabbedPane jTabbedPane5;
-    private javax.swing.JTable jTable10;
-    private javax.swing.JTable jTable8;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JRadioButton jrbActPel;
     private javax.swing.JRadioButton jrbCalleSuc;
+    private javax.swing.JRadioButton jrbCatPel;
     private javax.swing.JRadioButton jrbCiudadSuc;
     private javax.swing.JRadioButton jrbCodPosSuc;
+    private javax.swing.JRadioButton jrbCosAdqPel;
+    private javax.swing.JRadioButton jrbCosAlqPel;
+    private javax.swing.JRadioButton jrbDirPel;
+    private javax.swing.JRadioButton jrbEstCop;
     private javax.swing.JRadioButton jrbEstadoSuc;
+    private javax.swing.JRadioButton jrbMosTodCop;
+    private javax.swing.JRadioButton jrbMosTodPel;
     private javax.swing.JRadioButton jrbMosTodSuc;
+    private javax.swing.JRadioButton jrbNumCatCop;
+    private javax.swing.JRadioButton jrbNumCatPel;
+    private javax.swing.JRadioButton jrbNumCopCop;
     private javax.swing.JRadioButton jrbNumSuc;
+    private javax.swing.JRadioButton jrbNumSucCop;
     private javax.swing.JRadioButton jrbTelSuc;
+    private javax.swing.JRadioButton jrbTitPel;
     private javax.swing.JLabel lblActPel;
     private javax.swing.JLabel lblCalSuc;
     private javax.swing.JLabel lblCiuSuc;
@@ -1913,17 +1961,24 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblSucursal;
     private javax.swing.JLabel lblTelSuc;
     private javax.swing.JLabel lblTitPel;
+    private javax.swing.JPanel panAgrCop;
+    private javax.swing.JPanel panAgrPel;
     private javax.swing.JPanel panAgrSuc;
+    private javax.swing.JPanel panBusCop;
+    private javax.swing.JPanel panBusPel;
     private javax.swing.JPanel panBusSuc;
     private javax.swing.JPanel panCop;
     private javax.swing.JPanel panPel;
     private javax.swing.JPanel panSuc;
-    private javax.swing.JTable tbl_CopiaPelicula;
-    private javax.swing.JTable tbl_Pelicula;
+    private javax.swing.JTable tbl_copiapelicula;
+    private javax.swing.JTable tbl_copiapelicula1;
+    private javax.swing.JTable tbl_pelicula;
+    private javax.swing.JTable tbl_pelicula1;
     private javax.swing.JTable tbl_sucursal;
     private javax.swing.JTable tbl_sucursal1;
     private javax.swing.JTabbedPane tpnVideo;
     private javax.swing.JTextArea txaActPel;
+    private javax.swing.JTextArea txaActPel1;
     private javax.swing.JTextField txtCalSuc;
     private javax.swing.JTextField txtCalSuc1;
     private javax.swing.JTextField txtCatPel;
@@ -1949,10 +2004,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField txtTelSuc;
     private javax.swing.JTextField txtTelSuc1;
     private javax.swing.JTextField txtTitPel;
+    private javax.swing.JTextField txtTitPel1;
     // End of variables declaration//GEN-END:variables
 
     
 //Otros metodos   
+    
+    //Cancelar
+    public void cancelar(){
+    
+        Login l = new Login();
+        l.setVisible(true);
+        this.dispose();
+        
+    }
     
     //
     public void vaciarComponentesSuc(){

@@ -3,6 +3,7 @@ package edu.tecjerez.proyectos_finales_abd.ConexionBD;
 import edu.tecjerez.proyectos_finales_abd.Modelo.CopiaPelicula;
 import edu.tecjerez.proyectos_finales_abd.Modelo.Pelicula;
 import edu.tecjerez.proyectos_finales_abd.Modelo.Sucursal;
+import edu.tecjerez.proyectos_finales_abd.Modelo.SucursalMemento;
 import edu.tecjerez.proyectos_finales_abd.Modelo.Usuario;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -87,6 +88,8 @@ private ConexionBD() {
         }
     }//Fin Cerrar Conexion
     
+//Agregar -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    
     //Agregar un Usuario la base de datos -----------------------------------------------------------------------------------------------------------------------------------------
     public static boolean agregarUsuario(Usuario u) {
 
@@ -141,6 +144,36 @@ private ConexionBD() {
     
     }//Fin Agregar Sucursal
     
+    public static boolean restaurarSucursal(SucursalMemento sm){
+    
+        try {
+        
+            Connection conexion = getConexion();
+            conexion.setAutoCommit(true); 
+            
+            pstm = conexion.prepareStatement("INSERT INTO sucursal VALUES(?,?,?,?,?,?)");
+            pstm.setString(1, sm.getNum_Suc());
+            pstm.setString(2, sm.getCalle());
+            pstm.setString(3, sm.getCiudad() );
+            pstm.setString(4, sm.getEstado());
+            pstm.setString(5, sm.getCod_pos());
+            pstm.setString(6, sm.getTel());
+            
+            pstm.executeUpdate();
+        
+            return true;
+            
+        }catch (Exception e) {
+
+             e.printStackTrace();
+
+        }
+
+        return false;
+
+        
+    }
+    
     //Agregar una Pelicula a la base de datos ----------------------------------------------------------------------------------------------------------------------------------------------
     public static boolean agregarPelicula(Pelicula p){
     
@@ -172,6 +205,7 @@ private ConexionBD() {
     
     }//Fin Agregar Pelicula
     
+    //Agregar una  Copia de Pelicula a la base de datos ----------------------------------------------------------------------------------------------------------------------------------------------
     public static boolean agregarCopiaPelicula(CopiaPelicula cp){
     
         try {
@@ -199,9 +233,10 @@ private ConexionBD() {
         
     }
     
-    //Eliminar
+//Eliminar -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
-        public static boolean eliminarSucursal(String filtro) {
+    //Eliminar una Sucursal de la base de datos ----------------------------------------------------------------------------------------------------------------------------------------------
+    public static boolean eliminarSucursal(String filtro) {
 
         try {
 
@@ -239,6 +274,42 @@ private ConexionBD() {
 
     }
     
+//Cambiar -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    
+    public static boolean cambioSucursal(Sucursal s){
+    
+        try {
+        
+            Connection conexion = getConexion();
+            
+            pstm = conexion.prepareStatement("UPDATE sucursal SET num_sucursal = ?, calle = ?, ciudad = ?, estado = ?, codigo_postal = ?, telefono = ? WHERE num_sucursal = ?");
+
+            
+            pstm.setString(1, s.getNum_Suc());
+            pstm.setString(2, s.getCalle());
+            pstm.setString(3, s.getCiudad());
+            pstm.setString(4, s.getEstado());
+            pstm.setString(5, s.getCod_pos());
+            pstm.setString(6, s.getTel());
+            pstm.setString(7, s.getNum_Suc());
+            
+            System.out.println(s.toString());
+            
+            pstm.execute();
+
+            return true;
+            
+        }catch (Exception e) {
+
+            System.out.println("Error en instrucción DML \n" + e);
+
+        }
+    
+        return false;
+        
+    }
+    
+//Consultar ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
     //Ejecutar la consulta a tabla usuarios buscando el usuario -------------------------------------------------------------------------------------------------------------------
     public static ResultSet BuscarUsuarioIgual(String consulta) {
@@ -268,6 +339,7 @@ private ConexionBD() {
         
     }//Fin Consulta Usuarios
     
+    //Consulta General -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
     public static ResultSet BuscarUsuario(String consulta){
     
     try {
@@ -294,7 +366,7 @@ private ConexionBD() {
         return null;
         
     }
-    
+    //Consulta de Sucursales de la base de datos ---------------------------------------------------------------------------------------------------------------------------------------------
     public static ResultSet buscarSucursales(){
     
         try {
@@ -316,6 +388,7 @@ private ConexionBD() {
     
     }
     
+    //Consulta de numero de Sucursales de la base de datos ---------------------------------------------------------------------------------------------------------------------------------------------
     public static ResultSet buscarNumSucursal(){
     
         try {
@@ -336,6 +409,7 @@ private ConexionBD() {
         return null;
     }
     
+    //Consulta de numero de catalogo de Peliculas de la base de datos ---------------------------------------------------------------------------------------------------------------------------------------------
     public static ResultSet buscarNumCatalogo(){
     
         try {
@@ -357,6 +431,7 @@ private ConexionBD() {
         
     }
     
+    //Consulta de Peliculas de la base de datos ---------------------------------------------------------------------------------------------------------------------------------------------
     public static ResultSet buscarPeliculas(){
     
         try {
@@ -377,8 +452,9 @@ private ConexionBD() {
         return null;
     
     }
-    
-        public static ResultSet buscarCopiasPeliculas(){
+
+    //Consulta de Copias de Peliculas de la base de datos ---------------------------------------------------------------------------------------------------------------------------------------------
+    public static ResultSet buscarCopiasPeliculas(){
     
         try {
         

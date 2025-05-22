@@ -1,8 +1,10 @@
 package edu.tecjerez.proyectos_finales_abd.Controlador;
 
 import edu.tecjerez.proyectos_finales_abd.ConexionBD.ConexionBD;
+import static edu.tecjerez.proyectos_finales_abd.ConexionBD.ConexionBD.getConexion;
 import edu.tecjerez.proyectos_finales_abd.Modelo.Sucursal;
 import edu.tecjerez.proyectos_finales_abd.Modelo.SucursalMemento;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,28 +25,12 @@ public class SucursalDAO {
     }
     
     public static boolean restaurarSucursal(SucursalMemento sm){
-    
-        String query = "INSERT INTO sucursal (num_sucursal, calle, ciudad, estado, codigo_postal, telefono) "
-                 + "VALUES (?, ?, ?, ?, ?, ?)";
-    
-        try (PreparedStatement stmt = ConexionBD.getConexion().prepareStatement(query)) {
         
-            stmt.setString(1, sm.getNum_Suc());
-            stmt.setString(2, sm.getCalle());
-            stmt.setString(3, sm.getCiudad());
-            stmt.setString(4, sm.getEstado());
-            stmt.setString(5, sm.getCod_pos());
-            stmt.setString(6, sm.getTel());
-
-            return stmt.executeUpdate() > 0;
+        boolean res = false;
         
-        } catch (SQLException e) {
+        res = ConexionBD.restaurarSucursal(sm);
         
-            e.printStackTrace();
-        
-            return false;
-        
-        }
+        return res;
         
     }
     
@@ -60,7 +46,15 @@ public class SucursalDAO {
     }
     
     //------------------------------- Cambio -------------------------------------------------------------------------------------------------------------------------------------------------
+    public static boolean cambiosSucursal(Sucursal s){
     
+        boolean res = false;
+        
+        res = ConexionBD.cambioSucursal(s);
+        
+        return res;
+        
+    }
     
     //------------------------------- Consultas ----------------------------------------------------------------------------------------------------------------------------------------------
     public static boolean nunSucursalIgual(String filtro){

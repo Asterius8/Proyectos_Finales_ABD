@@ -2,27 +2,29 @@ package edu.tecjerez.proyectos_finales_abd.Modelo;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class HistorialSucursales {
 
-    private List<SucursalMemento> historial = new ArrayList<>();
+    private final Stack<SucursalMemento> history = new Stack<>();
     
     public void guardar(SucursalMemento m) {
         
-        historial.add(m);
+        history.push(m);
         
     }
     
     public SucursalMemento deshacer() {
         
-        if (!historial.isEmpty()) {
-            
-            return historial.remove(historial.size() - 1);
-            
-        }
-        
-        return null;
+        return history.isEmpty() ? null : history.pop();
         
     }
+
+    @Override
+    public String toString() {
+        return "HistorialSucursales{" + "history=" + history + '}';
+    }
+    
+    
     
 }
