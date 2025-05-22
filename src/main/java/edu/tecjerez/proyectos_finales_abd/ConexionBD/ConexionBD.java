@@ -199,6 +199,46 @@ private ConexionBD() {
         
     }
     
+    //Eliminar
+    
+        public static boolean eliminarSucursal(String filtro) {
+
+        try {
+
+            Connection conexion = getConexion();
+            
+            conexion.setAutoCommit(false);
+
+            String queryCopiaPeliculas = "DELETE FROM copiapelicula WHERE sucursal_num_sucursal = ?";
+            
+            PreparedStatement pstmCopiaPeliculas = conexion.prepareStatement(queryCopiaPeliculas);
+            
+            pstmCopiaPeliculas.setString(1, filtro);
+
+            pstmCopiaPeliculas.execute();
+
+            String querySucursal = "DELETE FROM sucursal WHERE num_sucursal = ?";
+            
+            PreparedStatement pstmSucursal = conexion.prepareStatement(querySucursal);
+            
+            pstmSucursal.setString(1, filtro);
+
+            pstmSucursal.execute();
+
+            conexion.commit();
+
+            return true;
+
+        } catch (Exception e) {
+
+            System.err.println("Error en la ejecución de la instrucción SQL: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+
+        }
+
+    }
+    
     
     //Ejecutar la consulta a tabla usuarios buscando el usuario -------------------------------------------------------------------------------------------------------------------
     public static ResultSet BuscarUsuarioIgual(String consulta) {
@@ -244,13 +284,13 @@ private ConexionBD() {
 
                 System.out.println("Error: No se pudo obtener la conexión a la base de datos.");
 
-            }
+        }
     
     }catch (SQLException e) {
 
             System.out.println("Error en instrucción SQL a nivel conexion BD");
 
-        }
+    }
         return null;
         
     }

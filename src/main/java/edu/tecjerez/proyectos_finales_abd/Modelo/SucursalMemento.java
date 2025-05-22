@@ -1,13 +1,10 @@
 package edu.tecjerez.proyectos_finales_abd.Modelo;
 
-public class Sucursal {
+public class SucursalMemento {
     
-    //Atributos
     private String num_Suc, calle, ciudad, estado, cod_pos, tel;
-    
-    //Constructor(es)
-    public Sucursal() {}
-    public Sucursal(String num_Suc, String calle, String ciudad, String estado, String cod_pos, String tel) {
+
+    public SucursalMemento(String num_Suc, String calle, String ciudad, String estado, String cod_pos, String tel) {
         this.num_Suc = num_Suc;
         this.calle = calle;
         this.ciudad = ciudad;
@@ -15,21 +12,7 @@ public class Sucursal {
         this.cod_pos = cod_pos;
         this.tel = tel;
     }
-    
-    public SucursalMemento guardarEstado() {
-        return new SucursalMemento(num_Suc, calle, ciudad, estado, cod_pos, tel);
-    }
 
-    public void restaurarEstado(SucursalMemento memento) {
-        this.num_Suc = memento.getNum_Suc();
-        this.calle = memento.getCalle();
-        this.ciudad = memento.getCiudad();
-        this.estado = memento.getEstado();
-        this.cod_pos = memento.getCod_pos();
-        this.tel = memento.getTel();
-    }
-    
-    //Getter & Setter
     public String getNum_Suc() {
         return num_Suc;
     }
@@ -77,19 +60,8 @@ public class Sucursal {
     public void setTel(String tel) {
         this.tel = tel;
     }
-    
-    //Metodos Sobreesctritos
-
-    @Override
-    public String toString() {
-        return "Sucursal{" + "num_Suc=" + num_Suc + ", calle=" + calle + ", ciudad=" + ciudad + ", estado=" + estado + ", cod_pos=" + cod_pos + ", tel=" + tel + '}';
-    }
 
     
-
-
-
-
     
     
 }

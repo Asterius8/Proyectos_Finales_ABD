@@ -4,8 +4,10 @@ import edu.tecjerez.proyectos_finales_abd.Controlador.CopiaPeliculaDAO;
 import edu.tecjerez.proyectos_finales_abd.Controlador.PeliculaDAO;
 import edu.tecjerez.proyectos_finales_abd.Controlador.SucursalDAO;
 import edu.tecjerez.proyectos_finales_abd.Modelo.CopiaPelicula;
+import edu.tecjerez.proyectos_finales_abd.Modelo.HistorialSucursales;
 import edu.tecjerez.proyectos_finales_abd.Modelo.Pelicula;
 import edu.tecjerez.proyectos_finales_abd.Modelo.Sucursal;
+import edu.tecjerez.proyectos_finales_abd.Modelo.SucursalMemento;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -18,7 +20,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     //Atributos
     String num_Suc, calle, ciudad, estado, cod_pos, tel, num_catalogo, titulo, categoria, actores, director, estadoCP, num_CopiaPelicula;
     float cos_alqui, cos_adqui;
-    DefaultTableModel modelo, modeloPelicula, modeloCopiaPelicula;
+    DefaultTableModel modelo, modeloPelicula, modeloCopiaPelicula, modelo1;
+    private HistorialSucursales historialSucursales = new HistorialSucursales();
 
     public VentanaPrincipal() throws SQLException {
         
@@ -26,9 +29,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         modelo = (DefaultTableModel) tbl_sucursal.getModel();
+        modelo1 = (DefaultTableModel) tbl_sucursal1.getModel();
         modeloPelicula = (DefaultTableModel)  tbl_Pelicula.getModel();
         modeloCopiaPelicula = (DefaultTableModel)  tbl_CopiaPelicula.getModel();
+        
+        
         this.mostrar();
+        this.mostrar1();
         this.mostrarPeliculas();
         this.mostrarCopiasPeliculas();
         
@@ -71,6 +78,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        btgSuc = new javax.swing.ButtonGroup();
         tpnVideo = new javax.swing.JTabbedPane();
         panSuc = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
@@ -79,16 +87,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panAgrSuc = new javax.swing.JPanel();
         lblInsSuc = new javax.swing.JLabel();
         lblNumSuc = new javax.swing.JLabel();
-        txtNumSuc = new javax.swing.JTextField();
         lblCalSuc = new javax.swing.JLabel();
-        txtCalSuc = new javax.swing.JTextField();
         lblCiuSuc = new javax.swing.JLabel();
-        txtCiuSuc = new javax.swing.JTextField();
         lblEstSuc = new javax.swing.JLabel();
-        txtEstSuc = new javax.swing.JTextField();
         lblCodSuc = new javax.swing.JLabel();
-        txtCodSuc = new javax.swing.JTextField();
         lblTelSuc = new javax.swing.JLabel();
+        txtNumSuc = new javax.swing.JTextField();
+        txtCalSuc = new javax.swing.JTextField();
+        txtCiuSuc = new javax.swing.JTextField();
+        txtEstSuc = new javax.swing.JTextField();
+        txtCodSuc = new javax.swing.JTextField();
         txtTelSuc = new javax.swing.JTextField();
         btnAgrSuc = new javax.swing.JButton();
         btnCanSuc = new javax.swing.JButton();
@@ -96,26 +104,26 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         tbl_sucursal = new javax.swing.JTable();
         panBusSuc = new javax.swing.JPanel();
-        jRadioButton21 = new javax.swing.JRadioButton();
-        jRadioButton22 = new javax.swing.JRadioButton();
+        jrbMosTodSuc = new javax.swing.JRadioButton();
+        jrbNumSuc = new javax.swing.JRadioButton();
+        jrbCalleSuc = new javax.swing.JRadioButton();
+        jrbCiudadSuc = new javax.swing.JRadioButton();
+        jrbEstadoSuc = new javax.swing.JRadioButton();
+        jrbCodPosSuc = new javax.swing.JRadioButton();
+        jrbTelSuc = new javax.swing.JRadioButton();
         txtNumSuc1 = new javax.swing.JTextField();
-        jRadioButton23 = new javax.swing.JRadioButton();
         txtCalSuc1 = new javax.swing.JTextField();
-        jRadioButton25 = new javax.swing.JRadioButton();
         txtCiuSuc1 = new javax.swing.JTextField();
-        jRadioButton26 = new javax.swing.JRadioButton();
         txtEstSuc1 = new javax.swing.JTextField();
-        jRadioButton24 = new javax.swing.JRadioButton();
         txtCodSuc1 = new javax.swing.JTextField();
-        jRadioButton27 = new javax.swing.JRadioButton();
         txtTelSuc1 = new javax.swing.JTextField();
         btnEliSuc = new javax.swing.JButton();
         btnEdiSuc = new javax.swing.JButton();
-        btnBusSuc = new javax.swing.JButton();
         btnCanSuc1 = new javax.swing.JButton();
         jSeparator5 = new javax.swing.JSeparator();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTable6 = new javax.swing.JTable();
+        tbl_sucursal1 = new javax.swing.JTable();
+        btnDesSuc = new javax.swing.JButton();
         panPel = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
         lblPel = new javax.swing.JLabel();
@@ -236,12 +244,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         lblNumSuc.setText("Numero de Sucursal");
 
-        txtNumSuc.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtNumSucKeyTyped(evt);
-            }
-        });
-
         lblCalSuc.setText("Calle");
 
         lblCiuSuc.setText("Ciudad");
@@ -250,13 +252,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         lblCodSuc.setText("Codigo Postal");
 
+        lblTelSuc.setText("Teléfono");
+
+        txtNumSuc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumSucKeyTyped(evt);
+            }
+        });
+
         txtCodSuc.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCodSucKeyTyped(evt);
             }
         });
-
-        lblTelSuc.setText("Teléfono");
 
         txtTelSuc.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -336,7 +344,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 .addComponent(btnAgrSuc)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnCanSuc)))
-                        .addGap(0, 542, Short.MAX_VALUE)))
+                        .addGap(0, 543, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panAgrSucLayout.setVerticalGroup(
@@ -375,25 +383,118 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jTabbedPane3.addTab("Agregar", panAgrSuc);
 
-        jRadioButton21.setText("Mostrar Todo");
+        btgSuc.add(jrbMosTodSuc);
+        jrbMosTodSuc.setSelected(true);
+        jrbMosTodSuc.setText("Mostrar Todo");
+        jrbMosTodSuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbMosTodSucActionPerformed(evt);
+            }
+        });
 
-        jRadioButton22.setText("Numero de Sucursal");
+        btgSuc.add(jrbNumSuc);
+        jrbNumSuc.setText("Numero de Sucursal");
+        jrbNumSuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbNumSucActionPerformed(evt);
+            }
+        });
 
-        jRadioButton23.setText("Calle");
+        btgSuc.add(jrbCalleSuc);
+        jrbCalleSuc.setText("Calle");
+        jrbCalleSuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbCalleSucActionPerformed(evt);
+            }
+        });
 
-        jRadioButton25.setText("Ciudad");
+        btgSuc.add(jrbCiudadSuc);
+        jrbCiudadSuc.setText("Ciudad");
+        jrbCiudadSuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbCiudadSucActionPerformed(evt);
+            }
+        });
 
-        jRadioButton26.setText("Estado");
+        btgSuc.add(jrbEstadoSuc);
+        jrbEstadoSuc.setText("Estado");
+        jrbEstadoSuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbEstadoSucActionPerformed(evt);
+            }
+        });
 
-        jRadioButton24.setText("Codigo Postal");
+        btgSuc.add(jrbCodPosSuc);
+        jrbCodPosSuc.setText("Codigo Postal");
+        jrbCodPosSuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbCodPosSucActionPerformed(evt);
+            }
+        });
 
-        jRadioButton27.setText("Teléfono");
+        btgSuc.add(jrbTelSuc);
+        jrbTelSuc.setText("Teléfono");
+        jrbTelSuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbTelSucActionPerformed(evt);
+            }
+        });
+
+        txtNumSuc1.setEnabled(false);
+        txtNumSuc1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNumSuc1KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumSuc1KeyTyped(evt);
+            }
+        });
+
+        txtCalSuc1.setEnabled(false);
+        txtCalSuc1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCalSuc1KeyReleased(evt);
+            }
+        });
+
+        txtCiuSuc1.setEnabled(false);
+        txtCiuSuc1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCiuSuc1KeyReleased(evt);
+            }
+        });
+
+        txtEstSuc1.setEnabled(false);
+        txtEstSuc1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtEstSuc1KeyReleased(evt);
+            }
+        });
+
+        txtCodSuc1.setEnabled(false);
+        txtCodSuc1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCodSuc1KeyReleased(evt);
+            }
+        });
+
+        txtTelSuc1.setEnabled(false);
+        txtTelSuc1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTelSuc1KeyReleased(evt);
+            }
+        });
 
         btnEliSuc.setText("Eliminar");
+        btnEliSuc.setEnabled(false);
+        btnEliSuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliSucActionPerformed(evt);
+            }
+        });
 
         btnEdiSuc.setText("Editar");
-
-        btnBusSuc.setText("Buscar");
+        btnEdiSuc.setEnabled(false);
 
         btnCanSuc1.setText("Cancelar");
         btnCanSuc1.addActionListener(new java.awt.event.ActionListener() {
@@ -402,96 +503,108 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jTable6.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_sucursal1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Numero de Sucursal", "Calle", "Ciudad", "Estado", "Codigo Postal", "Telefono"
             }
         ));
-        jScrollPane6.setViewportView(jTable6);
+        tbl_sucursal1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_sucursal1MouseClicked(evt);
+            }
+        });
+        jScrollPane6.setViewportView(tbl_sucursal1);
+
+        btnDesSuc.setText("Deshacer");
+        btnDesSuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDesSucActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panBusSucLayout = new javax.swing.GroupLayout(panBusSuc);
         panBusSuc.setLayout(panBusSucLayout);
         panBusSucLayout.setHorizontalGroup(
             panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panBusSucLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton21)
-                    .addGroup(panBusSucLayout.createSequentialGroup()
-                        .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButton22)
-                            .addComponent(jRadioButton23)
-                            .addComponent(jRadioButton25))
-                        .addGap(18, 18, 18)
-                        .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNumSuc1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                            .addComponent(txtCalSuc1)
-                            .addComponent(txtCiuSuc1))
-                        .addGap(126, 126, 126)
-                        .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButton24)
-                            .addComponent(jRadioButton26)
-                            .addComponent(jRadioButton27))
-                        .addGap(18, 18, 18)
-                        .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtEstSuc1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                            .addComponent(txtCodSuc1)
-                            .addComponent(txtTelSuc1)))
-                    .addGroup(panBusSucLayout.createSequentialGroup()
-                        .addComponent(btnEliSuc)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnEdiSuc)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnBusSuc)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCanSuc1)))
-                .addGap(470, 470, 470))
             .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(panBusSucLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane6)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 1153, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(panBusSucLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jrbMosTodSuc)
+                    .addGroup(panBusSucLayout.createSequentialGroup()
+                        .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jrbNumSuc)
+                            .addComponent(jrbCalleSuc)
+                            .addComponent(jrbCiudadSuc))
+                        .addGap(18, 18, 18)
+                        .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtNumSuc1)
+                            .addComponent(txtCalSuc1)
+                            .addComponent(txtCiuSuc1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(126, 126, 126)
+                        .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jrbCodPosSuc)
+                            .addComponent(jrbEstadoSuc)
+                            .addComponent(jrbTelSuc))
+                        .addGap(18, 18, 18)
+                        .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtEstSuc1)
+                            .addComponent(txtCodSuc1)
+                            .addComponent(txtTelSuc1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panBusSucLayout.createSequentialGroup()
+                        .addComponent(btnEliSuc)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnDesSuc)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEdiSuc)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCanSuc1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panBusSucLayout.setVerticalGroup(
             panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panBusSucLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jRadioButton21)
+                .addGap(18, 18, 18)
+                .addComponent(jrbMosTodSuc)
                 .addGap(18, 18, 18)
                 .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton22)
+                    .addComponent(jrbNumSuc)
                     .addComponent(txtNumSuc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton26)
+                    .addComponent(jrbEstadoSuc)
                     .addComponent(txtEstSuc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton23)
+                    .addComponent(jrbCalleSuc)
                     .addComponent(txtCalSuc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton24)
+                    .addComponent(jrbCodPosSuc)
                     .addComponent(txtCodSuc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton25)
+                    .addComponent(jrbCiudadSuc)
                     .addComponent(txtCiuSuc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton27)
+                    .addComponent(jrbTelSuc)
                     .addComponent(txtTelSuc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEliSuc)
                     .addComponent(btnEdiSuc)
-                    .addComponent(btnBusSuc)
-                    .addComponent(btnCanSuc1))
-                .addGap(18, 18, 18)
+                    .addComponent(btnCanSuc1)
+                    .addComponent(btnDesSuc))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Buscar", panBusSuc);
@@ -596,7 +709,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7"
+                "Numero de catalogo", "Titulo", "Categoria", "Director", "Costo de Alquiler", "Coste de Adquisicion", "Actores"
             }
         ));
         jScrollPane8.setViewportView(tbl_Pelicula);
@@ -776,7 +889,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 .addComponent(btnBusPel)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnCanPel1)))
-                        .addGap(0, 366, Short.MAX_VALUE))
+                        .addGap(0, 368, Short.MAX_VALUE))
                     .addComponent(jScrollPane10))
                 .addContainerGap())
         );
@@ -881,7 +994,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Estado");
+        jLabel1.setText("Estado de la Pelicula");
 
         comboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elija una opcion", "Disponible", "Rentada", "Dañada" }));
 
@@ -911,7 +1024,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Numero de Copia", "Estado de la Pelicula", "Sucursal", "Numero de Catalogo"
             }
         ));
         jScrollPane11.setViewportView(tbl_CopiaPelicula);
@@ -928,11 +1041,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblInsCop)
                             .addGroup(jPanel20Layout.createSequentialGroup()
-                                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblNumCat)
+                                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lblNumCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(lblNumCop)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblSucursal))
+                                    .addComponent(lblSucursal)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtNumCop)
@@ -944,7 +1057,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(btnCanCop)))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 1152, Short.MAX_VALUE))
+                    .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 1153, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel20Layout.setVerticalGroup(
@@ -1220,7 +1333,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         char c = evt.getKeyChar();
 
-        if (!Character.isDigit(c) || txtTelSuc.getText().length() >= 5) {
+        if (!Character.isDigit(c) || txtCodSuc.getText().length() >= 5) {
 
             evt.consume();
 
@@ -1276,21 +1389,30 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         char c = evt.getKeyChar();
 
-        if (!Character.isDigit(c)) {
-
+        if (!Character.isDigit(c) && c != '.') {
+            
+            evt.consume(); 
+            
+        } else if (c == '.' && txtCosAlqPel.getText().contains(".")) {
+            
             evt.consume();
-
+            
         }
         
     }//GEN-LAST:event_txtCosAlqPelKeyTyped
 
     private void txtCosAdqPelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCosAdqPelKeyTyped
+        
         char c = evt.getKeyChar();
 
-        if (!Character.isDigit(c)) {
-
+        if (!Character.isDigit(c) && c != '.') {
+            
             evt.consume();
-
+            
+        } else if (c == '.' && txtCosAdqPel.getText().contains(".")) {
+            
+            evt.consume();
+            
         }
     }//GEN-LAST:event_txtCosAdqPelKeyTyped
 
@@ -1325,12 +1447,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_panCopMouseClicked
 
     private void txtNumCopKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumCopKeyTyped
+        
         char c = evt.getKeyChar();
 
         if (!Character.isDigit(c)) {
 
             evt.consume();
         }
+        
     }//GEN-LAST:event_txtNumCopKeyTyped
 
     private void btnAgrCopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgrCopActionPerformed
@@ -1372,6 +1496,288 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnAgrCopActionPerformed
 
+    private void jrbMosTodSucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbMosTodSucActionPerformed
+
+        try {
+            
+            txtNumSuc1.enable(false);
+            txtCalSuc1.enable(false);
+            txtCiuSuc1.enable(false);
+            txtEstSuc1.enable(false);
+            txtCodSuc1.enable(false);
+            txtTelSuc1.enable(false);
+            vaciarComponentesSuc1();
+            mostrar1();
+            
+        } catch (SQLException ex) {
+            
+            Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        
+    }//GEN-LAST:event_jrbMosTodSucActionPerformed
+
+    private void jrbNumSucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbNumSucActionPerformed
+
+        txtNumSuc1.enable(true);
+        txtCalSuc1.enable(false);
+        txtCiuSuc1.enable(false);
+        txtEstSuc1.enable(false);
+        txtCodSuc1.enable(false);
+        txtTelSuc1.enable(false);
+        vaciarComponentesSuc1();
+
+    }//GEN-LAST:event_jrbNumSucActionPerformed
+
+    private void jrbCalleSucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbCalleSucActionPerformed
+        txtNumSuc1.enable(false);
+        txtCalSuc1.enable(true);
+        txtCiuSuc1.enable(false);
+        txtEstSuc1.enable(false);
+        txtCodSuc1.enable(false);
+        txtTelSuc1.enable(false);
+        vaciarComponentesSuc1();
+    }//GEN-LAST:event_jrbCalleSucActionPerformed
+
+    private void jrbCiudadSucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbCiudadSucActionPerformed
+
+        txtNumSuc1.enable(false);
+        txtCalSuc1.enable(false);
+        txtCiuSuc1.enable(true);
+        txtEstSuc1.enable(false);
+        txtCodSuc1.enable(false);
+        txtTelSuc1.enable(false);
+        vaciarComponentesSuc1();
+
+    }//GEN-LAST:event_jrbCiudadSucActionPerformed
+
+    private void jrbEstadoSucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbEstadoSucActionPerformed
+        
+        txtNumSuc1.enable(false);
+        txtCalSuc1.enable(false);
+        txtCiuSuc1.enable(false);
+        txtEstSuc1.enable(true);
+        txtCodSuc1.enable(false);
+        txtTelSuc1.enable(false);
+        vaciarComponentesSuc1();
+    }//GEN-LAST:event_jrbEstadoSucActionPerformed
+
+    private void jrbCodPosSucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbCodPosSucActionPerformed
+
+        txtNumSuc1.enable(false);
+        txtCalSuc1.enable(false);
+        txtCiuSuc1.enable(false);
+        txtEstSuc1.enable(false);
+        txtCodSuc1.enable(true);
+        txtTelSuc1.enable(false);
+        vaciarComponentesSuc1();
+
+    }//GEN-LAST:event_jrbCodPosSucActionPerformed
+
+    private void jrbTelSucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbTelSucActionPerformed
+        
+        txtNumSuc1.enable(false);
+        txtCalSuc1.enable(false);
+        txtCiuSuc1.enable(false);
+        txtEstSuc1.enable(false);
+        txtCodSuc1.enable(false);
+        txtTelSuc1.enable(true);
+        vaciarComponentesSuc1();
+        
+    }//GEN-LAST:event_jrbTelSucActionPerformed
+
+    private void txtNumSuc1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumSuc1KeyTyped
+
+        
+
+    }//GEN-LAST:event_txtNumSuc1KeyTyped
+
+    private void txtNumSuc1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumSuc1KeyReleased
+        
+        try{
+        
+            ResultSet rs = SucursalDAO.numSucursal(txtNumSuc1.getText());
+            mostrarfiltrados(rs);
+        
+        }catch (SQLException ex) {
+
+                Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                
+        }
+        
+    }//GEN-LAST:event_txtNumSuc1KeyReleased
+
+    private void txtCalSuc1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCalSuc1KeyReleased
+        
+        try{
+        
+            ResultSet rs = SucursalDAO.calSucursal(txtCalSuc1.getText());
+            mostrarfiltrados(rs);
+        
+        }catch (SQLException ex) {
+
+                Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                
+        }
+        
+    }//GEN-LAST:event_txtCalSuc1KeyReleased
+
+    private void txtCiuSuc1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCiuSuc1KeyReleased
+        try{
+        
+            ResultSet rs = SucursalDAO.ciuSucursal(txtCiuSuc1.getText());
+            mostrarfiltrados(rs);
+        
+        }catch (SQLException ex) {
+
+                Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                
+        }
+    }//GEN-LAST:event_txtCiuSuc1KeyReleased
+
+    private void txtEstSuc1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEstSuc1KeyReleased
+        try{
+        
+            ResultSet rs = SucursalDAO.estSucursal(txtEstSuc1.getText());
+            mostrarfiltrados(rs);
+        
+        }catch (SQLException ex) {
+
+                Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                
+        }
+    }//GEN-LAST:event_txtEstSuc1KeyReleased
+
+    private void txtCodSuc1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodSuc1KeyReleased
+        try{
+        
+            ResultSet rs = SucursalDAO.codSucursal(txtCodSuc1.getText());
+            mostrarfiltrados(rs);
+        
+        }catch (SQLException ex) {
+
+                Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                
+        }
+    }//GEN-LAST:event_txtCodSuc1KeyReleased
+
+    private void txtTelSuc1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelSuc1KeyReleased
+        try{
+        
+            ResultSet rs = SucursalDAO.telSucursal(txtTelSuc1.getText());
+            mostrarfiltrados(rs);
+        
+        }catch (SQLException ex) {
+
+                Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                
+        }
+    }//GEN-LAST:event_txtTelSuc1KeyReleased
+
+    private void tbl_sucursal1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_sucursal1MouseClicked
+        
+        jrbMosTodSuc.setSelected(true);
+        
+        jrbMosTodSuc.setEnabled(false);
+        jrbNumSuc.setEnabled(false);
+        jrbCalleSuc.setEnabled(false);
+        jrbCiudadSuc.setEnabled(false);
+        jrbEstadoSuc.setEnabled(false);
+        jrbCodPosSuc.setEnabled(false);
+        jrbTelSuc.setEnabled(false);
+        
+        btnEliSuc.setEnabled(true);
+        btnEdiSuc.setEnabled(true);
+        
+        txtNumSuc1.enable(false);
+        txtCalSuc1.enable(true);
+        txtCiuSuc1.enable(true);
+        txtEstSuc1.enable(true);
+        txtCodSuc1.enable(true);
+        txtTelSuc1.enable(true);
+        
+        txtNumSuc1.setText(modelo1.getValueAt(tbl_sucursal1.getSelectedRow(), 0).toString());
+        txtCalSuc1.setText(modelo1.getValueAt(tbl_sucursal1.getSelectedRow(), 1).toString());
+        txtCiuSuc1.setText(modelo1.getValueAt(tbl_sucursal1.getSelectedRow(), 2).toString());
+        txtEstSuc1.setText(modelo1.getValueAt(tbl_sucursal1.getSelectedRow(), 3).toString());
+        txtCodSuc1.setText(modelo1.getValueAt(tbl_sucursal1.getSelectedRow(), 4).toString());
+        txtTelSuc1.setText(modelo1.getValueAt(tbl_sucursal1.getSelectedRow(), 5).toString());
+    }//GEN-LAST:event_tbl_sucursal1MouseClicked
+
+    private void btnEliSucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliSucActionPerformed
+        
+        int opcion = JOptionPane.showConfirmDialog(
+        null, 
+        "¿Estás seguro de que deseas eliminar el registro?", 
+        "Confirmación", 
+        JOptionPane.YES_NO_OPTION
+        );
+
+        if (opcion == JOptionPane.YES_OPTION) {
+            
+            try {
+                // El usuario hizo clic en "Sí"
+                System.out.println("Acción confirmada");
+                
+                ResultSet sucursal = SucursalDAO.numSucursal(txtNumSuc1.getText());
+                
+                if(sucursal.next()){
+                    
+                    SucursalMemento memento = new SucursalMemento(
+                            
+                            sucursal.getString(1), sucursal.getString(2), sucursal.getString(3),
+                            sucursal.getString(4), sucursal.getString(5), sucursal.getString(6)
+                            
+                    );
+                    
+                    historialSucursales.guardar(memento);
+                    
+                    SucursalDAO.eliminarSucursal(txtNumSuc1.getText());
+                    
+                    mostrar1();
+                                    
+                    JOptionPane.showMessageDialog(null, "Alumno eliminado correctamente");
+                    
+                }
+                
+            } catch (SQLException ex) {
+                
+                Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                
+            }
+            
+        } else {
+            // El usuario hizo clic en "No" o cerró el cuadro
+            System.out.println("Acción cancelada");
+        }
+                
+    }//GEN-LAST:event_btnEliSucActionPerformed
+
+    private void btnDesSucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesSucActionPerformed
+       
+        SucursalMemento memento = historialSucursales.deshacer();
+        
+        if (memento != null) {
+        
+            if(SucursalDAO.restaurarSucursal(memento)){
+            
+                JOptionPane.showMessageDialog(this, "Alumno restaurado correctamente");
+                try {
+                    mostrar1();
+                } catch (SQLException ex) {
+                    Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            
+            } else {
+                JOptionPane.showMessageDialog(this, "No se pudo restaurar el alumno");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "No hay alumnos para restaurar");
+        
+        }
+        
+    }//GEN-LAST:event_btnDesSucActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1412,18 +1818,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup btgSuc;
     private javax.swing.JButton btnAgrCop;
     private javax.swing.JButton btnAgrPel;
     private javax.swing.JButton btnAgrSuc;
     private javax.swing.JButton btnBusCop;
     private javax.swing.JButton btnBusPel;
-    private javax.swing.JButton btnBusSuc;
     private javax.swing.JButton btnCanCop;
     private javax.swing.JButton btnCanCop1;
     private javax.swing.JButton btnCanPel;
     private javax.swing.JButton btnCanPel1;
     private javax.swing.JButton btnCanSuc;
     private javax.swing.JButton btnCanSuc1;
+    private javax.swing.JButton btnDesSuc;
     private javax.swing.JButton btnEdiCop;
     private javax.swing.JButton btnEdiPel;
     private javax.swing.JButton btnEdiSuc;
@@ -1445,13 +1852,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
-    private javax.swing.JRadioButton jRadioButton21;
-    private javax.swing.JRadioButton jRadioButton22;
-    private javax.swing.JRadioButton jRadioButton23;
-    private javax.swing.JRadioButton jRadioButton24;
-    private javax.swing.JRadioButton jRadioButton25;
-    private javax.swing.JRadioButton jRadioButton26;
-    private javax.swing.JRadioButton jRadioButton27;
     private javax.swing.JRadioButton jRadioButton28;
     private javax.swing.JRadioButton jRadioButton29;
     private javax.swing.JRadioButton jRadioButton30;
@@ -1482,9 +1882,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTabbedPane jTabbedPane5;
     private javax.swing.JTable jTable10;
-    private javax.swing.JTable jTable6;
     private javax.swing.JTable jTable8;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JRadioButton jrbCalleSuc;
+    private javax.swing.JRadioButton jrbCiudadSuc;
+    private javax.swing.JRadioButton jrbCodPosSuc;
+    private javax.swing.JRadioButton jrbEstadoSuc;
+    private javax.swing.JRadioButton jrbMosTodSuc;
+    private javax.swing.JRadioButton jrbNumSuc;
+    private javax.swing.JRadioButton jrbTelSuc;
     private javax.swing.JLabel lblActPel;
     private javax.swing.JLabel lblCalSuc;
     private javax.swing.JLabel lblCiuSuc;
@@ -1515,6 +1921,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTable tbl_CopiaPelicula;
     private javax.swing.JTable tbl_Pelicula;
     private javax.swing.JTable tbl_sucursal;
+    private javax.swing.JTable tbl_sucursal1;
     private javax.swing.JTabbedPane tpnVideo;
     private javax.swing.JTextArea txaActPel;
     private javax.swing.JTextField txtCalSuc;
@@ -1545,7 +1952,31 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     
-//Otros metodos    
+//Otros metodos   
+    
+    //
+    public void vaciarComponentesSuc(){
+        
+        txtNumSuc.setText("");
+        txtCalSuc.setText("");
+        txtCiuSuc.setText("");
+        txtEstSuc.setText("");
+        txtCodSuc.setText("");
+        txtTelSuc.setText("");
+
+    }
+    
+    public void vaciarComponentesSuc1(){
+        
+        txtNumSuc1.setText("");
+        txtCalSuc1.setText("");
+        txtCiuSuc1.setText("");
+        txtEstSuc1.setText("");
+        txtCodSuc1.setText("");
+        txtTelSuc1.setText("");
+
+    }
+    
     public void mostrar() throws SQLException {
 
         ResultSet rs = SucursalDAO.buscar();
@@ -1566,6 +1997,31 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             
             
             modelo.addRow(datos);
+
+        }
+
+    }
+    
+    public void mostrar1() throws SQLException {
+
+        ResultSet rs = SucursalDAO.buscar();
+
+        String datos[] = new String[6];
+
+        //vaciar filas anteriores
+        modelo1.setRowCount(0);
+
+        while (rs.next()) {
+            
+            datos[0] = rs.getString(1);
+            datos[1] = rs.getString(2);
+            datos[2] = rs.getString(3);
+            datos[3] = rs.getString(4);
+            datos[4] = rs.getString(5);
+            datos[5] = rs.getString(6);
+            
+            
+            modelo1.addRow(datos);
 
         }
 
@@ -1649,18 +2105,39 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     private void validarDatosIniciales() {
         
-    if (comboSucursal.getItemCount() == 0 || comboPeliculas.getItemCount() == 0) {
+        if (comboSucursal.getItemCount() == 0 || comboPeliculas.getItemCount() == 0) {
         
-        btnAgrCop.setEnabled(false); // Desactiva si faltan datos
+            btnAgrCop.setEnabled(false); // Desactiva si faltan datos
         
-        JOptionPane.showMessageDialog(this, "Debes registrar al menos una sucursal y una película antes de agregar copias.");
+            JOptionPane.showMessageDialog(this, "Debes registrar al menos una sucursal y una película antes de agregar copias.");
         
-    } else {
+        } else {
         
-        btnAgrCop.setEnabled(true);
+            btnAgrCop.setEnabled(true);
         
+        }
+    
     }
-}
+    
+    public void mostrarfiltrados(ResultSet rs) throws SQLException {
+
+        String datos[] = new String[6];
+
+        //vaciar filas anteriores
+        modelo1.setRowCount(0);
+
+        while (rs.next()) {
+            
+            datos[0] = rs.getString(1);
+            datos[1] = rs.getString(2);
+            datos[2] = rs.getString(3);
+            datos[3] = rs.getString(4);
+            datos[4] = rs.getString(5);
+            datos[5] = rs.getString(6);
+            modelo1.addRow(datos);
+        }
+          
+    }
     
 }
 
