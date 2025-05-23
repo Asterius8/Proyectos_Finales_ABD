@@ -274,6 +274,44 @@ private ConexionBD() {
 
     }
     
+      public static boolean eliminarPelicula(String filtro) {
+
+        try {
+
+            Connection conexion = getConexion();
+            
+            conexion.setAutoCommit(false);
+
+            String queryCopiaPeliculas = "DELETE FROM copiapelicula WHERE pelicula_num_catalogo = ?";
+            
+            PreparedStatement pstmCopiaPeliculas = conexion.prepareStatement(queryCopiaPeliculas);
+            
+            pstmCopiaPeliculas.setString(1, filtro);
+
+            pstmCopiaPeliculas.execute();
+
+            String querySucursal = "DELETE FROM pelicula WHERE num_catalogo = ?";
+            
+            PreparedStatement pstmSucursal = conexion.prepareStatement(querySucursal);
+            
+            pstmSucursal.setString(1, filtro);
+
+            pstmSucursal.execute();
+
+            conexion.commit();
+
+            return true;
+
+        } catch (Exception e) {
+
+            System.err.println("Error en la ejecución de la instrucción SQL: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+
+        }
+
+    }
+    
 //Cambiar -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
     public static boolean cambioSucursal(Sucursal s){

@@ -20,7 +20,17 @@ public class PeliculaDAO {
     
     }
     
+    // Bajas ----------------------------------------------------------------------------------
     
+       public static boolean eliminarPelicula(String filtro1) {
+
+        boolean res = false;
+
+        res = ConexionBD.eliminarPelicula(filtro1);
+
+        return res;
+
+    }
     
     //------------------------------- Consultas --------------------------------------------------------------------------------------------------------------------------------------
     public static boolean numPeliculaIgual(String filtro){

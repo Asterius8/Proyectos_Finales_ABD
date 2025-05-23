@@ -468,6 +468,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(panBusSucLayout.createSequentialGroup()
                 .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panBusSucLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 1153, Short.MAX_VALUE))
+                    .addGroup(panBusSucLayout.createSequentialGroup()
                         .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panBusSucLayout.createSequentialGroup()
                                 .addGap(13, 13, 13)
@@ -498,13 +501,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtEstSuc1)
                                     .addComponent(txtCodSuc1)
-                                    .addComponent(txtTelSuc1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 432, Short.MAX_VALUE))
-                    .addGroup(panBusSucLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 1153, Short.MAX_VALUE))
-                    .addGroup(panBusSucLayout.createSequentialGroup()
-                        .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtTelSuc1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(panBusSucLayout.createSequentialGroup()
                                 .addGap(485, 485, 485)
                                 .addComponent(btnEliSuc)
@@ -704,7 +701,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -722,7 +719,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(panSucLayout.createSequentialGroup()
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tpnSucursal))
+                .addComponent(tpnSucursal, javax.swing.GroupLayout.DEFAULT_SIZE, 674, Short.MAX_VALUE))
         );
 
         tpnVideo.addTab("Sucursal", panSuc);
@@ -871,8 +868,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jScrollPane9.setViewportView(txaActPel1);
 
         btnEliPel.setText("Eliminar");
+        btnEliPel.setEnabled(false);
+        btnEliPel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliPelActionPerformed(evt);
+            }
+        });
 
         btnEdiPel.setText("Editar");
+        btnEdiPel.setEnabled(false);
 
         btnDesPel.setText("Deshacer");
 
@@ -893,6 +897,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tbl_pelicula1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_pelicula1MouseClicked(evt);
             }
         });
         jScrollPane10.setViewportView(tbl_pelicula1);
@@ -918,6 +927,26 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panBusPelLayout.setHorizontalGroup(
             panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panBusPelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator7)
+                    .addGroup(panBusPelLayout.createSequentialGroup()
+                        .addComponent(jScrollPane10)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panBusPelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lblResultadoPel)
+                        .addGap(483, 483, 483))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panBusPelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lblTituloPel, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(490, 490, 490))
+                    .addGroup(panBusPelLayout.createSequentialGroup()
+                        .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jrbMosFilPel)
+                            .addComponent(jrbMosTodPel))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(panBusPelLayout.createSequentialGroup()
                 .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panBusPelLayout.createSequentialGroup()
                         .addGap(37, 37, 37)
@@ -940,45 +969,27 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                             .addGroup(panBusPelLayout.createSequentialGroup()
                                 .addComponent(jrbCosAdqPel)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtCosAdqPel1))))
+                                .addComponent(txtCosAdqPel1)))
+                        .addGap(76, 76, 76)
+                        .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jrbActPel)
+                            .addComponent(jrbDirPel))
+                        .addGap(88, 88, 88)
+                        .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtDirPel1)
+                            .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)))
                     .addGroup(panBusPelLayout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(btnEliPel)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnDesPel)
-                        .addGap(18, 18, 18)
+                        .addGap(497, 497, 497)
                         .addComponent(btnEdiPel)
                         .addGap(18, 18, 18)
                         .addComponent(btnAcePel)))
-                .addGap(51, 51, 51)
-                .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jrbActPel)
-                    .addComponent(jrbDirPel))
-                .addGap(88, 88, 88)
-                .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtDirPel1)
-                    .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(247, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panBusPelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblTituloPel, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(490, 490, 490))
-            .addGroup(panBusPelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jrbMosFilPel)
-                    .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jSeparator7)
-                        .addGroup(panBusPelLayout.createSequentialGroup()
-                            .addComponent(jScrollPane10)
-                            .addContainerGap())
-                        .addGroup(panBusPelLayout.createSequentialGroup()
-                            .addComponent(jrbMosTodPel)
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panBusPelLayout.createSequentialGroup()
-                            .addGap(0, 0, Short.MAX_VALUE)
-                            .addComponent(lblResultadoPel)
-                            .addGap(483, 483, 483)))))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnEliPel)
+                .addGap(18, 18, 18)
+                .addComponent(btnDesPel)
+                .addGap(494, 494, 494))
         );
         panBusPelLayout.setVerticalGroup(
             panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1010,25 +1021,28 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addComponent(jrbActPel)
                     .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jrbCosAlqPel)
-                    .addComponent(txtCosAlqPel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jrbDirPel)
-                        .addComponent(txtDirPel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtDirPel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jrbCosAlqPel)
+                        .addComponent(txtCosAlqPel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(27, 27, 27)
                 .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEliPel)
                     .addComponent(btnEdiPel)
-                    .addComponent(btnDesPel)
                     .addComponent(btnAcePel))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblResultadoPel)
-                .addGap(20, 20, 20)
-                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEliPel)
+                    .addComponent(btnDesPel))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         jTabbedPane4.addTab("Buscar", panBusPel);
@@ -1200,7 +1214,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(panPelLayout.createSequentialGroup()
                 .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane4))
+                .addComponent(jTabbedPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 674, Short.MAX_VALUE))
         );
 
         tpnVideo.addTab("Pelicula", panPel);
@@ -1452,7 +1466,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(203, Short.MAX_VALUE))
+                .addContainerGap(108, Short.MAX_VALUE))
         );
 
         jTabbedPane5.addTab("Buscar", panBusCop);
@@ -1469,7 +1483,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(panCopLayout.createSequentialGroup()
                 .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane5))
+                .addComponent(jTabbedPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 674, Short.MAX_VALUE))
         );
 
         tpnVideo.addTab("Copias de Peliculas", panCop);
@@ -1482,7 +1496,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tpnVideo)
+            .addComponent(tpnVideo, javax.swing.GroupLayout.DEFAULT_SIZE, 769, Short.MAX_VALUE)
         );
 
         pack();
@@ -1954,6 +1968,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         txtEstSuc1.setText(modelo1.getValueAt(tbl_sucursal1.getSelectedRow(), 3).toString());
         txtCodSuc1.setText(modelo1.getValueAt(tbl_sucursal1.getSelectedRow(), 4).toString());
         txtTelSuc1.setText(modelo1.getValueAt(tbl_sucursal1.getSelectedRow(), 5).toString());
+        
     }//GEN-LAST:event_tbl_sucursal1MouseClicked
 
 //Boton para eliminar el registro de sucursal seleccionado
@@ -2128,6 +2143,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void jrbNumCatPelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbNumCatPelActionPerformed
 
+        vaciarCajasPel();
         txtNumCatPel1.setEnabled(true);
         txtTitPel1.setEnabled(false);
         txtCatPel1.setEnabled(false);
@@ -2141,6 +2157,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void jrbTitPelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbTitPelActionPerformed
 
+        vaciarCajasPel();
         txtNumCatPel1.setEnabled(false);
         txtTitPel1.setEnabled(true);
         txtCatPel1.setEnabled(false);
@@ -2153,6 +2170,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jrbTitPelActionPerformed
 
     private void jrbCatPelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbCatPelActionPerformed
+        
+        vaciarCajasPel();
         txtNumCatPel1.setEnabled(false);
         txtTitPel1.setEnabled(false);
         txtCatPel1.setEnabled(true);
@@ -2164,6 +2183,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jrbCatPelActionPerformed
 
     private void jrbDirPelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbDirPelActionPerformed
+        
+        vaciarCajasPel();
         txtNumCatPel1.setEnabled(false);
         txtTitPel1.setEnabled(false);
         txtCatPel1.setEnabled(false);
@@ -2175,6 +2196,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jrbDirPelActionPerformed
 
     private void jrbCosAlqPelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbCosAlqPelActionPerformed
+        vaciarCajasPel();
         txtNumCatPel1.setEnabled(false);
         txtTitPel1.setEnabled(false);
         txtCatPel1.setEnabled(false);
@@ -2186,7 +2208,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jrbCosAlqPelActionPerformed
 
     private void jrbCosAdqPelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbCosAdqPelActionPerformed
-
+    vaciarCajasPel();
         txtNumCatPel1.setEnabled(false);
         txtTitPel1.setEnabled(false);
         txtCatPel1.setEnabled(false);
@@ -2199,7 +2221,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jrbCosAdqPelActionPerformed
 
     private void jrbActPelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbActPelActionPerformed
-
+        vaciarCajasPel();
         txtNumCatPel1.setEnabled(false);
         txtTitPel1.setEnabled(false);
         txtCatPel1.setEnabled(false);
@@ -2308,6 +2330,54 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 
         }
     }//GEN-LAST:event_txaActPel1KeyReleased
+
+    private void tbl_pelicula1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_pelicula1MouseClicked
+
+        btnEdiPel.setEnabled(true);
+        btnEliPel.setEnabled(true);
+        
+        txtNumCatPel1.setText(modeloPelicula1.getValueAt(tbl_pelicula1.getSelectedRow(), 0).toString());
+        txtTitPel1.setText(modeloPelicula1.getValueAt(tbl_pelicula1.getSelectedRow(), 1).toString());
+        txtCatPel1.setText(modeloPelicula1.getValueAt(tbl_pelicula1.getSelectedRow(), 2).toString());
+        txtCosAlqPel1.setText(modeloPelicula1.getValueAt(tbl_pelicula1.getSelectedRow(), 3).toString());
+        txtCosAdqPel1.setText(modeloPelicula1.getValueAt(tbl_pelicula1.getSelectedRow(), 4).toString());
+        txaActPel1.setText(modeloPelicula1.getValueAt(tbl_pelicula1.getSelectedRow(), 5).toString());
+        txtDirPel1.setText(modeloPelicula1.getValueAt(tbl_pelicula1.getSelectedRow(), 6).toString());
+
+    }//GEN-LAST:event_tbl_pelicula1MouseClicked
+
+    private void btnEliPelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliPelActionPerformed
+
+        int opcion = JOptionPane.showConfirmDialog(
+        null, 
+        "¿Estás seguro de que deseas eliminar la pelicula?", 
+        "Confirmación", 
+        JOptionPane.YES_NO_OPTION
+        );
+
+        if (opcion == JOptionPane.YES_OPTION) {
+            
+            try {
+                
+                
+                
+                System.out.println("Acción aceptada");
+            
+                PeliculaDAO.eliminarPelicula(txtNumCatPel1.getText());
+            
+                JOptionPane.showMessageDialog(null, "Pelicula eliminada correctamente");
+                
+                mostrarPeliculas1();
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else {
+            // El usuario hizo clic en "No" o cerró el cuadro
+            System.out.println("Acción cancelada");
+        }
+
+    }//GEN-LAST:event_btnEliPelActionPerformed
     
     
     
@@ -2531,6 +2601,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         txtCodSuc1.setText("");
         txtTelSuc1.setText("");
 
+    }
+    
+    public void vaciarCajasPel (){
+        
+        txtNumCatPel1.setText("");
+        txtTitPel1.setText("");
+        txtCatPel1.setText("");
+        txtCosAlqPel1.setText("");
+        txtCosAdqPel1.setText("");
+        txaActPel1.setText("");
+        txtDirPel1.setText("");
+        panBusPel.revalidate();
+        panBusPel.repaint();
     }
     
     public void restaurarJRBSuc(){

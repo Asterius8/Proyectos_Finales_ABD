@@ -40,7 +40,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="tpnVideo" alignment="0" max="32767" attributes="0"/>
+          <Component id="tpnVideo" alignment="0" pref="769" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -70,7 +70,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jPanel11" min="-2" pref="54" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="tpnSucursal" max="32767" attributes="0"/>
+                      <Component id="tpnSucursal" pref="674" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -149,6 +149,10 @@
                           <Component id="jSeparator5" alignment="1" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jScrollPane6" pref="1153" max="32767" attributes="0"/>
+                                  </Group>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
@@ -189,15 +193,6 @@
                                                   <Component id="txtTelSuc1" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                      </Group>
-                                      <EmptySpace min="0" pref="432" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jScrollPane6" pref="1153" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace min="-2" pref="485" max="-2" attributes="0"/>
                                               <Component id="btnEliSuc" min="-2" max="-2" attributes="0"/>
@@ -585,7 +580,7 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jSeparator4" min="-2" pref="10" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane5" pref="505" max="32767" attributes="0"/>
+                              <Component id="jScrollPane5" pref="410" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -719,7 +714,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jPanel15" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTabbedPane4" max="32767" attributes="0"/>
+                      <Component id="jTabbedPane4" pref="674" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -792,7 +787,34 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jSeparator7" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jScrollPane10" max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <Component id="lblResultadoPel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="483" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <Component id="lblTituloPel" min="-2" pref="167" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="490" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jrbMosFilPel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jrbMosTodPel" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
@@ -822,56 +844,32 @@
                                               <Component id="txtCosAdqPel1" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
+                                      <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jrbActPel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jrbDirPel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="txtDirPel1" max="32767" attributes="0"/>
+                                          <Component id="jScrollPane9" pref="349" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                                      <Component id="btnEliPel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btnDesPel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="497" max="-2" attributes="0"/>
                                       <Component id="btnEdiPel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="btnAcePel" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jrbActPel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jrbDirPel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtDirPel1" max="32767" attributes="0"/>
-                                  <Component id="jScrollPane9" pref="349" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="247" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="lblTituloPel" min="-2" pref="167" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="490" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jrbMosFilPel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jSeparator7" max="32767" attributes="0"/>
-                                      <Group type="102" attributes="0">
-                                          <Component id="jScrollPane10" max="32767" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="jrbMosTodPel" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="1065" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                          <Component id="lblResultadoPel" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="483" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="btnEliPel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="btnDesPel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="494" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -911,28 +909,33 @@
                                   <Component id="jScrollPane9" min="-2" pref="142" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jrbCosAlqPel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtCosAlqPel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                       <Component id="jrbDirPel" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtDirPel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jrbCosAlqPel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtCosAlqPel1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btnEliPel" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnEdiPel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnDesPel" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnAcePel" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jSeparator7" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="lblResultadoPel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                              <Component id="jScrollPane10" min="-2" pref="224" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jScrollPane10" min="-2" pref="110" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="btnEliPel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnDesPel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="23" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1078,11 +1081,16 @@
                     <Component class="javax.swing.JButton" name="btnEliPel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Eliminar"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliPelActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="btnEdiPel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Editar"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JButton" name="btnDesPel">
@@ -1113,6 +1121,9 @@
                               </Table>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbl_pelicula1MouseClicked"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -1417,7 +1428,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jPanel19" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTabbedPane5" max="32767" attributes="0"/>
+                      <Component id="jTabbedPane5" pref="674" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1786,7 +1797,7 @@
                               <Component id="jSeparator9" min="-2" pref="10" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jScrollPane12" min="-2" pref="269" max="-2" attributes="0"/>
-                              <EmptySpace pref="203" max="32767" attributes="0"/>
+                              <EmptySpace pref="108" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
