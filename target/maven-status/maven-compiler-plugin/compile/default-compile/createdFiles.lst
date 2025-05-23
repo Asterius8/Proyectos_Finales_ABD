@@ -45,6 +45,7 @@ edu\tecjerez\proyectos_finales_abd\vista\VentanaPrincipal$31.class
 edu\tecjerez\proyectos_finales_abd\vista\VentanaPrincipal$41.class
 edu\tecjerez\proyectos_finales_abd\vista\VentanaPrincipal$51.class
 edu\tecjerez\proyectos_finales_abd\vista\VentanaPrincipal$11.class
+edu\tecjerez\proyectos_finales_abd\vista\VentanaPrincipal$58.class
 edu\tecjerez\proyectos_finales_abd\Modelo\Pelicula.class
 edu\tecjerez\proyectos_finales_abd\vista\VentanaRegistro$2.class
 edu\tecjerez\proyectos_finales_abd\Controlador\UsuarioDAO.class
@@ -59,9 +60,11 @@ edu\tecjerez\proyectos_finales_abd\vista\Login.class
 edu\tecjerez\proyectos_finales_abd\vista\VentanaPrincipal$39.class
 edu\tecjerez\proyectos_finales_abd\vista\VentanaPrincipal$24.class
 edu\tecjerez\proyectos_finales_abd\vista\VentanaPrincipal$55.class
+edu\tecjerez\proyectos_finales_abd\vista\VentanaPrincipal$59.class
 edu\tecjerez\proyectos_finales_abd\vista\VentanaPrincipal$19.class
 edu\tecjerez\proyectos_finales_abd\vista\VentanaPrincipal$3.class
 edu\tecjerez\proyectos_finales_abd\vista\VentanaPrincipal$40.class
+edu\tecjerez\proyectos_finales_abd\vista\VentanaPrincipal$60.class
 edu\tecjerez\proyectos_finales_abd\vista\VentanaPrincipal$20.class
 edu\tecjerez\proyectos_finales_abd\ConexionBD\ConexionBD.class
 edu\tecjerez\proyectos_finales_abd\vista\VentanaPrincipal$44.class

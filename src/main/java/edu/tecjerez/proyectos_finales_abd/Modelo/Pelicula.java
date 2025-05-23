@@ -3,7 +3,7 @@ package edu.tecjerez.proyectos_finales_abd.Modelo;
 public class Pelicula {
     
     //Atributos
-    private String num_cat, titulo, categoria, act, director;
+    private String num_cat, titulo, categoria, actores, director;
     private float cos_alqui, cost_adqui;
     
     //Constructor(es)
@@ -11,13 +11,13 @@ public class Pelicula {
     public Pelicula() {
     }
 
-    public Pelicula(String num_cat, String titulo, String categoria, float cos_alqui, float cost_adqui, String act, String director) {
+    public Pelicula(String num_cat, String titulo, String categoria, float cos_alqui, float cost_adqui, String actores, String director) {
         this.num_cat = num_cat;
         this.titulo = titulo;
         this.categoria = categoria;
         this.cos_alqui = cos_alqui;
         this.cost_adqui = cost_adqui;
-        this.act = act;
+        this.actores = actores;
         this.director = director;
     }
     
@@ -64,11 +64,11 @@ public class Pelicula {
     }
 
     public String getAct() {
-        return act;
+        return actores;
     }
 
     public void setAct(String act) {
-        this.act = act;
+        this.actores = act;
     }
 
     public String getDirector() {
@@ -83,7 +83,7 @@ public class Pelicula {
 
     @Override
     public String toString() {
-        return "Pelicula{" + "num_cat=" + num_cat + ", titulo=" + titulo + ", categoria=" + categoria + ", cos_alqui=" + cos_alqui + ", cost_adqui=" + cost_adqui + ", act=" + act + ", director=" + director + '}';
+        return "Pelicula{" + "num_cat=" + num_cat + ", titulo=" + titulo + ", categoria=" + categoria + ", cos_alqui=" + cos_alqui + ", cost_adqui=" + cost_adqui + ", actores=" + actores + ", director=" + director + '}';
     }
     
     

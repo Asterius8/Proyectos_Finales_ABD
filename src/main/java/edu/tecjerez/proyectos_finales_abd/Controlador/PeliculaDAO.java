@@ -31,6 +31,17 @@ public class PeliculaDAO {
         return res;
 
     }
+       
+    //Cambios
+    public static boolean cambiosPelicula(Pelicula p){
+    
+        boolean res = false;
+        
+        res = ConexionBD.cambioPelicula(p);
+        
+        return res;
+        
+    }
     
     //------------------------------- Consultas --------------------------------------------------------------------------------------------------------------------------------------
     public static boolean numPeliculaIgual(String filtro){

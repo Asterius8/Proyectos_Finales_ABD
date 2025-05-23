@@ -46,7 +46,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         this.mostrarPeliculas();
         this.mostrarPeliculas1();
         this.mostrarCopiasPeliculas();
-        
+        //Evento para detectar el cambio de pestañas dentro de la VentanaPrincipal
         tpnVideo.addChangeListener(e -> {
         
         int index = tpnVideo.getSelectedIndex();
@@ -70,6 +70,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
         
         });
+        
         //Evento para detectar el cambio de pestañas dentro de la pestaña Sucursal
         tpnSucursal.addChangeListener(new javax.swing.event.ChangeListener() {
             
@@ -97,6 +98,46 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     try {
                         
                         mostrar1();
+                        
+                    } catch (SQLException ex) {
+                        
+                        Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                        
+                    }
+            
+                }
+        
+            }
+        
+        });
+        
+        //Evento para detectar el cambio de pestañas dentro de pelicula
+        tpnPelicula.addChangeListener(new javax.swing.event.ChangeListener() {
+            
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+            
+                int selectedIndex = tpnPelicula.getSelectedIndex();
+        
+                String selectedTitle = tpnPelicula.getTitleAt(selectedIndex);
+
+                if (selectedTitle.equals("Agregar")) {
+            
+                    try {
+                        
+                        mostrarPeliculas();
+                        
+                    } catch (SQLException ex) {
+                        
+                        Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                        
+                    }
+            
+            
+                } else if (selectedTitle.equals("Buscar")) {
+            
+                    try {
+                        
+                        mostrarPeliculas1();
                         
                     } catch (SQLException ex) {
                         
@@ -174,7 +215,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel15 = new javax.swing.JPanel();
         lblPel = new javax.swing.JLabel();
         btnCanPel1 = new javax.swing.JButton();
-        jTabbedPane4 = new javax.swing.JTabbedPane();
+        tpnPelicula = new javax.swing.JTabbedPane();
         panBusPel = new javax.swing.JPanel();
         jrbMosTodPel = new javax.swing.JRadioButton();
         jrbNumCatPel = new javax.swing.JRadioButton();
@@ -719,7 +760,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(panSucLayout.createSequentialGroup()
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tpnSucursal, javax.swing.GroupLayout.DEFAULT_SIZE, 674, Short.MAX_VALUE))
+                .addComponent(tpnSucursal))
         );
 
         tpnVideo.addTab("Sucursal", panSuc);
@@ -822,36 +863,42 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        txtCosAdqPel1.setEnabled(false);
         txtCosAdqPel1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtCosAdqPel1KeyReleased(evt);
             }
         });
 
+        txtCosAlqPel1.setEnabled(false);
         txtCosAlqPel1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtCosAlqPel1KeyReleased(evt);
             }
         });
 
+        txtTitPel1.setEnabled(false);
         txtTitPel1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtTitPel1KeyReleased(evt);
             }
         });
 
+        txtCatPel1.setEnabled(false);
         txtCatPel1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtCatPel1KeyReleased(evt);
             }
         });
 
+        txtNumCatPel1.setEnabled(false);
         txtNumCatPel1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtNumCatPel1KeyReleased(evt);
             }
         });
 
+        txtDirPel1.setEnabled(false);
         txtDirPel1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtDirPel1KeyReleased(evt);
@@ -860,6 +907,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         txaActPel1.setColumns(20);
         txaActPel1.setRows(5);
+        txaActPel1.setEnabled(false);
         txaActPel1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txaActPel1KeyReleased(evt);
@@ -877,6 +925,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         btnEdiPel.setText("Editar");
         btnEdiPel.setEnabled(false);
+        btnEdiPel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEdiPelActionPerformed(evt);
+            }
+        });
 
         btnDesPel.setText("Deshacer");
 
@@ -921,6 +974,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         lblResultadoPel.setText("Resultados");
 
         btnAcePel.setText("Aceptar");
+        btnAcePel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAcePelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panBusPelLayout = new javax.swing.GroupLayout(panBusPel);
         panBusPel.setLayout(panBusPelLayout);
@@ -933,19 +991,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addGroup(panBusPelLayout.createSequentialGroup()
                         .addComponent(jScrollPane10)
                         .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panBusPelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(lblResultadoPel)
-                        .addGap(483, 483, 483))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panBusPelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(lblTituloPel, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(490, 490, 490))
                     .addGroup(panBusPelLayout.createSequentialGroup()
                         .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jrbMosFilPel)
                             .addComponent(jrbMosTodPel))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panBusPelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panBusPelLayout.createSequentialGroup()
+                                .addComponent(lblResultadoPel)
+                                .addGap(483, 483, 483))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panBusPelLayout.createSequentialGroup()
+                                .addComponent(lblTituloPel, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(490, 490, 490))))))
             .addGroup(panBusPelLayout.createSequentialGroup()
                 .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panBusPelLayout.createSequentialGroup()
@@ -983,7 +1042,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addComponent(btnEdiPel)
                         .addGap(18, 18, 18)
                         .addComponent(btnAcePel)))
-                .addContainerGap(247, Short.MAX_VALUE))
+                .addContainerGap(249, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panBusPelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btnEliPel)
@@ -1045,7 +1104,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        jTabbedPane4.addTab("Buscar", panBusPel);
+        tpnPelicula.addTab("Buscar", panBusPel);
 
         lblInsPel.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblInsPel.setText("Ingrese la informacion de los siguientes campos");
@@ -1200,21 +1259,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane4.addTab("Agregar", panAgrPel);
+        tpnPelicula.addTab("Agregar", panAgrPel);
 
         javax.swing.GroupLayout panPelLayout = new javax.swing.GroupLayout(panPel);
         panPel.setLayout(panPelLayout);
         panPelLayout.setHorizontalGroup(
             panPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jTabbedPane4)
+            .addComponent(tpnPelicula)
         );
         panPelLayout.setVerticalGroup(
             panPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panPelLayout.createSequentialGroup()
                 .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 674, Short.MAX_VALUE))
+                .addComponent(tpnPelicula))
         );
 
         tpnVideo.addTab("Pelicula", panPel);
@@ -1300,7 +1359,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                             .addComponent(lblInsCop)
                             .addGroup(panAgrCopLayout.createSequentialGroup()
                                 .addGroup(panAgrCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lblNumCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblNumCat, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
                                     .addComponent(lblNumCop)
                                     .addComponent(lblSucursal)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -1483,7 +1542,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(panCopLayout.createSequentialGroup()
                 .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 674, Short.MAX_VALUE))
+                .addComponent(jTabbedPane5))
         );
 
         tpnVideo.addTab("Copias de Peliculas", panCop);
@@ -1496,7 +1555,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tpnVideo, javax.swing.GroupLayout.DEFAULT_SIZE, 769, Short.MAX_VALUE)
+            .addComponent(tpnVideo)
         );
 
         pack();
@@ -2336,6 +2395,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnEdiPel.setEnabled(true);
         btnEliPel.setEnabled(true);
         
+        reaparecerComPel();
+        
         txtNumCatPel1.setText(modeloPelicula1.getValueAt(tbl_pelicula1.getSelectedRow(), 0).toString());
         txtTitPel1.setText(modeloPelicula1.getValueAt(tbl_pelicula1.getSelectedRow(), 1).toString());
         txtCatPel1.setText(modeloPelicula1.getValueAt(tbl_pelicula1.getSelectedRow(), 2).toString());
@@ -2359,8 +2420,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             
             try {
                 
-                
-                
                 System.out.println("Acción aceptada");
             
                 PeliculaDAO.eliminarPelicula(txtNumCatPel1.getText());
@@ -2378,6 +2437,59 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnEliPelActionPerformed
+
+    private void btnEdiPelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEdiPelActionPerformed
+        
+        txtTitPel1.setEnabled(true);
+        txtCatPel1.setEnabled(true);
+        txtCosAlqPel1.setEnabled(true);
+        txtCosAdqPel1.setEnabled(true);
+        txaActPel1.setEnabled(true);
+        jScrollPane9.setEnabled(true);
+        txtDirPel1.setEnabled(true);
+        
+        btnAcePel.setVisible(true);
+        
+        panBusPel.revalidate();
+        panBusPel.repaint();
+
+        
+    }//GEN-LAST:event_btnEdiPelActionPerformed
+
+    private void btnAcePelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcePelActionPerformed
+        
+        if( !( txtNumCatPel1.getText().equals("") || txtTitPel1.getText().equals("") || txtCatPel1.getText().equals("") ||
+               txtCosAlqPel1.getText().equals("") || txtCosAdqPel1.getText().equals("") || txaActPel1.getText().equals("") || txtDirPel1.getText().equals("") ) ){
+        
+            num_catalogo = txtNumCatPel1.getText();
+            titulo = txtTitPel1.getText();
+            categoria = txtCatPel1.getText();
+            cos_alqui = Float.parseFloat(txtCosAlqPel1.getText());
+            cos_adqui = Float.parseFloat(txtCosAdqPel1.getText());
+            actores = txaActPel1.getText();
+            director = txtDirPel1.getText();
+
+           
+            if(PeliculaDAO.cambiosPelicula(new Pelicula(num_catalogo, titulo, categoria, cos_alqui, cos_adqui, actores, director) )){
+            
+                try {
+                    
+                    //vaciarComponentesSuc1();
+                    JOptionPane.showMessageDialog(this, "Pelicula modifica exitosamente");
+                    //restaurarJRBSuc();
+                    btnAcePel.setVisible(false);
+                    mostrarPeliculas1();
+                    
+                } catch (SQLException ex) {
+                    
+                    Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                    
+                }
+                
+            }
+        
+        }
+    }//GEN-LAST:event_btnAcePelActionPerformed
     
     
     
@@ -2471,7 +2583,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTabbedPane jTabbedPane5;
     private javax.swing.JRadioButton jrbActPel;
     private javax.swing.JRadioButton jrbCalleSuc;
@@ -2536,6 +2647,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTable tbl_pelicula1;
     private javax.swing.JTable tbl_sucursal;
     private javax.swing.JTable tbl_sucursal1;
+    private javax.swing.JTabbedPane tpnPelicula;
     private javax.swing.JTabbedPane tpnSucursal;
     private javax.swing.JTabbedPane tpnVideo;
     private javax.swing.JTextArea txaActPel;

@@ -40,7 +40,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="tpnVideo" alignment="0" pref="769" max="32767" attributes="0"/>
+          <Component id="tpnVideo" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -70,7 +70,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jPanel11" min="-2" pref="54" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="tpnSucursal" pref="674" max="32767" attributes="0"/>
+                      <Component id="tpnSucursal" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -706,7 +706,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jPanel15" max="32767" attributes="0"/>
-                  <Component id="jTabbedPane4" alignment="0" max="32767" attributes="0"/>
+                  <Component id="tpnPelicula" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -714,7 +714,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jPanel15" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTabbedPane4" pref="674" max="32767" attributes="0"/>
+                      <Component id="tpnPelicula" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -771,7 +771,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JTabbedPane" name="jTabbedPane4">
+            <Container class="javax.swing.JTabbedPane" name="tpnPelicula">
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
               <SubComponents>
@@ -795,22 +795,25 @@
                                       <Component id="jScrollPane10" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                      <Component id="lblResultadoPel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="483" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                      <Component id="lblTituloPel" min="-2" pref="167" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="490" max="-2" attributes="0"/>
-                                  </Group>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jrbMosFilPel" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jrbMosTodPel" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="lblResultadoPel" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="483" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="lblTituloPel" min="-2" pref="167" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="490" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
                                   </Group>
                               </Group>
                           </Group>
@@ -862,7 +865,7 @@
                                       <Component id="btnAcePel" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="247" max="32767" attributes="0"/>
+                              <EmptySpace pref="249" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -1031,31 +1034,49 @@
                       </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtCosAdqPel1">
+                      <Properties>
+                        <Property name="enabled" type="boolean" value="false"/>
+                      </Properties>
                       <Events>
                         <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCosAdqPel1KeyReleased"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtCosAlqPel1">
+                      <Properties>
+                        <Property name="enabled" type="boolean" value="false"/>
+                      </Properties>
                       <Events>
                         <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCosAlqPel1KeyReleased"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtTitPel1">
+                      <Properties>
+                        <Property name="enabled" type="boolean" value="false"/>
+                      </Properties>
                       <Events>
                         <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTitPel1KeyReleased"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtCatPel1">
+                      <Properties>
+                        <Property name="enabled" type="boolean" value="false"/>
+                      </Properties>
                       <Events>
                         <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCatPel1KeyReleased"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtNumCatPel1">
+                      <Properties>
+                        <Property name="enabled" type="boolean" value="false"/>
+                      </Properties>
                       <Events>
                         <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNumCatPel1KeyReleased"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtDirPel1">
+                      <Properties>
+                        <Property name="enabled" type="boolean" value="false"/>
+                      </Properties>
                       <Events>
                         <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDirPel1KeyReleased"/>
                       </Events>
@@ -1071,6 +1092,7 @@
                           <Properties>
                             <Property name="columns" type="int" value="20"/>
                             <Property name="rows" type="int" value="5"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                           </Properties>
                           <Events>
                             <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txaActPel1KeyReleased"/>
@@ -1092,6 +1114,9 @@
                         <Property name="text" type="java.lang.String" value="Editar"/>
                         <Property name="enabled" type="boolean" value="false"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEdiPelActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="btnDesPel">
                       <Properties>
@@ -1158,6 +1183,9 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Aceptar"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAcePelActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -1428,7 +1456,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jPanel19" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTabbedPane5" pref="674" max="32767" attributes="0"/>
+                      <Component id="jTabbedPane5" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1497,7 +1525,7 @@
                                           <Component id="lblInsCop" min="-2" max="-2" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="lblNumCat" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="lblNumCat" alignment="0" pref="112" max="32767" attributes="0"/>
                                                   <Component id="lblNumCop" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="lblSucursal" min="-2" max="-2" attributes="0"/>
                                                   <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>

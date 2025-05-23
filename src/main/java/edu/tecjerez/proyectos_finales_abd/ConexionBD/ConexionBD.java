@@ -347,6 +347,39 @@ private ConexionBD() {
         
     }
     
+       public static boolean cambioPelicula(Pelicula p){
+    
+        try {
+        
+            Connection conexion = getConexion();
+            
+            pstm = conexion.prepareStatement("UPDATE pelicula SET num_catalogo = ?, titulo = ?, categoria = ?, coste_alquiler = ?, costo_adquisicion = ?, actores = ?, director = ? WHERE num_catalogo = ?");
+
+            pstm.setString(1, p.getNum_cat());
+            pstm.setString(2, p.getTitulo());
+            pstm.setString(3, p.getCategoria());
+            pstm.setFloat(4, p.getCos_alqui());
+            pstm.setFloat(5, p.getCost_adqui());
+            pstm.setString(6, p.getAct());
+            pstm.setString(7, p.getDirector());
+            pstm.setString(8, p.getNum_cat());
+            
+            System.out.println(p.toString());
+            
+            pstm.execute();
+
+            return true;
+            
+        }catch (Exception e) {
+
+            System.out.println("Error en instrucción DML \n" + e);
+
+        }
+    
+        return false;
+        
+    }
+    
 //Consultar ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
     //Ejecutar la consulta a tabla usuarios buscando el usuario -------------------------------------------------------------------------------------------------------------------
