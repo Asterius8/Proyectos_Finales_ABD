@@ -57,7 +57,61 @@ public class PeliculaDAO {
 
     }
     
+    //------------------------------ Consultas con patron -----------------------------------------------------------------------------------------------------------------------------
+    public static ResultSet numCatPelicula(String patron){
     
+        String sql = "SELECT * FROM pelicula WHERE num_catalogo like '%" + patron + "%'";
+        ResultSet rs = ConexionBD.BuscarUsuario(sql);
+        return  rs;
+        
+    }
     
+    public static ResultSet titPelicula(String patron){
+    
+        String sql = "SELECT * FROM pelicula WHERE titulo like '%" + patron + "%'";
+        ResultSet rs = ConexionBD.BuscarUsuario(sql);
+        return  rs;
+        
+    }
+        
+    public static ResultSet catPelicula(String patron){
+    
+        String sql = "SELECT * FROM pelicula WHERE categoria like '%" + patron + "%'";
+        ResultSet rs = ConexionBD.BuscarUsuario(sql);
+        return  rs;
+        
+    }
+    
+    public static ResultSet cosPelicula(String patron){
+         
+        String sql = "SELECT * FROM pelicula WHERE CAST(coste_alquiler AS TEXT) LIKE '%" + patron + "%'";
+        ResultSet rs = ConexionBD.BuscarUsuario(sql);
+        return  rs;
+        
+    }
+        
+    public static ResultSet cosAdPelicula(String patron){
+    
+        String sql = "SELECT * FROM pelicula WHERE CAST(costo_adquisicion AS TEXT) LIKE '%" + patron + "%'";
+        ResultSet rs = ConexionBD.BuscarUsuario(sql);
+        return  rs;
+        
+    }
+        
+    public static ResultSet actPelicula(String patron){
+    
+        String sql = "SELECT * FROM pelicula WHERE actores like '%" + patron + "%'";
+        ResultSet rs = ConexionBD.BuscarUsuario(sql);
+        return  rs;
+        
+    }
+        
+    public static ResultSet dirPelicula(String patron){
+    
+        String sql = "SELECT * FROM pelicula WHERE director like '%" + patron + "%'";
+        ResultSet rs = ConexionBD.BuscarUsuario(sql);
+        return  rs;
+        
+    }
     
 }

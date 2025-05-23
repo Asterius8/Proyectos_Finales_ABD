@@ -13,6 +13,8 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
 
 public class VentanaPrincipal extends javax.swing.JFrame {
@@ -20,7 +22,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 //Atributos --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     String num_Suc, calle, ciudad, estado, cod_pos, tel, num_catalogo, titulo, categoria, actores, director, estadoCP, num_CopiaPelicula;
     float cos_alqui, cos_adqui;
-    DefaultTableModel modelo, modelo1, modeloPelicula, modeloCopiaPelicula;
+    DefaultTableModel modelo, modelo1, modeloPelicula, modeloPelicula1, modeloCopiaPelicula;
     private HistorialSucursales historialSucursales = new HistorialSucursales();
 
 //Constructor ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -29,15 +31,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         setTitle("VideoClub");
         initComponents();
         setLocationRelativeTo(null);
+        
         modelo = (DefaultTableModel) tbl_sucursal.getModel();
         modelo1 = (DefaultTableModel) tbl_sucursal1.getModel();
         modeloPelicula = (DefaultTableModel)  tbl_pelicula.getModel();
+        modeloPelicula1 = (DefaultTableModel) tbl_pelicula1.getModel();
         modeloCopiaPelicula = (DefaultTableModel)  tbl_copiapelicula.getModel();
         
+        ocultarSucursal();
+        ocultarPelicula();
         
         this.mostrar();
         this.mostrar1();
         this.mostrarPeliculas();
+        this.mostrarPeliculas1();
         this.mostrarCopiasPeliculas();
         
         tpnVideo.addChangeListener(e -> {
@@ -63,6 +70,45 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
         
         });
+        //Evento para detectar el cambio de pestañas dentro de la pestaña Sucursal
+        tpnSucursal.addChangeListener(new javax.swing.event.ChangeListener() {
+            
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+            
+                int selectedIndex = tpnSucursal.getSelectedIndex();
+        
+                String selectedTitle = tpnSucursal.getTitleAt(selectedIndex);
+
+                if (selectedTitle.equals("Agregar")) {
+            
+                    try {
+                        
+                        mostrar();
+                        
+                    } catch (SQLException ex) {
+                        
+                        Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                        
+                    }
+            
+            
+                } else if (selectedTitle.equals("Buscar")) {
+            
+                    try {
+                        
+                        mostrar1();
+                        
+                    } catch (SQLException ex) {
+                        
+                        Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                        
+                    }
+            
+                }
+        
+            }
+        
+        });
         
     }
 
@@ -71,13 +117,40 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         btgSuc = new javax.swing.ButtonGroup();
+        btgSuc1 = new javax.swing.ButtonGroup();
         btgPel = new javax.swing.ButtonGroup();
+        btgPel1 = new javax.swing.ButtonGroup();
         btgCop = new javax.swing.ButtonGroup();
         tpnVideo = new javax.swing.JTabbedPane();
         panSuc = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         lblSuc = new javax.swing.JLabel();
-        jTabbedPane3 = new javax.swing.JTabbedPane();
+        btnCanSuc1 = new javax.swing.JButton();
+        tpnSucursal = new javax.swing.JTabbedPane();
+        panBusSuc = new javax.swing.JPanel();
+        jrbMosTodSuc = new javax.swing.JRadioButton();
+        jrbNumSuc = new javax.swing.JRadioButton();
+        jrbCalleSuc = new javax.swing.JRadioButton();
+        jrbCiudadSuc = new javax.swing.JRadioButton();
+        jrbEstadoSuc = new javax.swing.JRadioButton();
+        jrbCodPosSuc = new javax.swing.JRadioButton();
+        jrbTelSuc = new javax.swing.JRadioButton();
+        txtNumSuc1 = new javax.swing.JTextField();
+        txtCalSuc1 = new javax.swing.JTextField();
+        txtCiuSuc1 = new javax.swing.JTextField();
+        txtEstSuc1 = new javax.swing.JTextField();
+        txtCodSuc1 = new javax.swing.JTextField();
+        txtTelSuc1 = new javax.swing.JTextField();
+        btnEliSuc = new javax.swing.JButton();
+        btnEdiSuc = new javax.swing.JButton();
+        jSeparator5 = new javax.swing.JSeparator();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tbl_sucursal1 = new javax.swing.JTable();
+        btnDesSuc = new javax.swing.JButton();
+        btnConfSuc = new javax.swing.JButton();
+        lblTituloSuc = new javax.swing.JLabel();
+        jrbMosFilSuc = new javax.swing.JRadioButton();
+        lblResultadoSuc = new javax.swing.JLabel();
         panAgrSuc = new javax.swing.JPanel();
         lblInsSuc = new javax.swing.JLabel();
         lblNumSuc = new javax.swing.JLabel();
@@ -97,31 +170,38 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jSeparator4 = new javax.swing.JSeparator();
         jScrollPane5 = new javax.swing.JScrollPane();
         tbl_sucursal = new javax.swing.JTable();
-        panBusSuc = new javax.swing.JPanel();
-        jrbMosTodSuc = new javax.swing.JRadioButton();
-        jrbNumSuc = new javax.swing.JRadioButton();
-        jrbCalleSuc = new javax.swing.JRadioButton();
-        jrbCiudadSuc = new javax.swing.JRadioButton();
-        jrbEstadoSuc = new javax.swing.JRadioButton();
-        jrbCodPosSuc = new javax.swing.JRadioButton();
-        jrbTelSuc = new javax.swing.JRadioButton();
-        txtNumSuc1 = new javax.swing.JTextField();
-        txtCalSuc1 = new javax.swing.JTextField();
-        txtCiuSuc1 = new javax.swing.JTextField();
-        txtEstSuc1 = new javax.swing.JTextField();
-        txtCodSuc1 = new javax.swing.JTextField();
-        txtTelSuc1 = new javax.swing.JTextField();
-        btnEliSuc = new javax.swing.JButton();
-        btnEdiSuc = new javax.swing.JButton();
-        btnCanSuc1 = new javax.swing.JButton();
-        jSeparator5 = new javax.swing.JSeparator();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        tbl_sucursal1 = new javax.swing.JTable();
-        btnDesSuc = new javax.swing.JButton();
         panPel = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
         lblPel = new javax.swing.JLabel();
+        btnCanPel1 = new javax.swing.JButton();
         jTabbedPane4 = new javax.swing.JTabbedPane();
+        panBusPel = new javax.swing.JPanel();
+        jrbMosTodPel = new javax.swing.JRadioButton();
+        jrbNumCatPel = new javax.swing.JRadioButton();
+        jrbCatPel = new javax.swing.JRadioButton();
+        jrbCosAlqPel = new javax.swing.JRadioButton();
+        jrbCosAdqPel = new javax.swing.JRadioButton();
+        jrbDirPel = new javax.swing.JRadioButton();
+        jrbActPel = new javax.swing.JRadioButton();
+        jrbTitPel = new javax.swing.JRadioButton();
+        txtCosAdqPel1 = new javax.swing.JTextField();
+        txtCosAlqPel1 = new javax.swing.JTextField();
+        txtTitPel1 = new javax.swing.JTextField();
+        txtCatPel1 = new javax.swing.JTextField();
+        txtNumCatPel1 = new javax.swing.JTextField();
+        txtDirPel1 = new javax.swing.JTextField();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        txaActPel1 = new javax.swing.JTextArea();
+        btnEliPel = new javax.swing.JButton();
+        btnEdiPel = new javax.swing.JButton();
+        btnDesPel = new javax.swing.JButton();
+        jSeparator7 = new javax.swing.JSeparator();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        tbl_pelicula1 = new javax.swing.JTable();
+        lblTituloPel = new javax.swing.JLabel();
+        jrbMosFilPel = new javax.swing.JRadioButton();
+        lblResultadoPel = new javax.swing.JLabel();
+        btnAcePel = new javax.swing.JButton();
         panAgrPel = new javax.swing.JPanel();
         lblInsPel = new javax.swing.JLabel();
         lblNumCatPel = new javax.swing.JLabel();
@@ -144,30 +224,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jSeparator6 = new javax.swing.JSeparator();
         jScrollPane8 = new javax.swing.JScrollPane();
         tbl_pelicula = new javax.swing.JTable();
-        panBusPel = new javax.swing.JPanel();
-        jrbMosTodPel = new javax.swing.JRadioButton();
-        jrbNumCatPel = new javax.swing.JRadioButton();
-        jrbCatPel = new javax.swing.JRadioButton();
-        jrbCosAlqPel = new javax.swing.JRadioButton();
-        jrbCosAdqPel = new javax.swing.JRadioButton();
-        jrbDirPel = new javax.swing.JRadioButton();
-        jrbActPel = new javax.swing.JRadioButton();
-        jrbTitPel = new javax.swing.JRadioButton();
-        txtCosAdqPel1 = new javax.swing.JTextField();
-        txtCosAlqPel1 = new javax.swing.JTextField();
-        txtTitPel1 = new javax.swing.JTextField();
-        txtCatPel1 = new javax.swing.JTextField();
-        txtNumCatPel1 = new javax.swing.JTextField();
-        txtDirPel1 = new javax.swing.JTextField();
-        jScrollPane9 = new javax.swing.JScrollPane();
-        txaActPel1 = new javax.swing.JTextArea();
-        btnEliPel = new javax.swing.JButton();
-        btnEdiPel = new javax.swing.JButton();
-        btnDesPel = new javax.swing.JButton();
-        btnCanPel1 = new javax.swing.JButton();
-        jSeparator7 = new javax.swing.JSeparator();
-        jScrollPane10 = new javax.swing.JScrollPane();
-        tbl_pelicula1 = new javax.swing.JTable();
         panCop = new javax.swing.JPanel();
         jPanel19 = new javax.swing.JPanel();
         lblCop = new javax.swing.JLabel();
@@ -212,22 +268,303 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         lblSuc.setFont(new java.awt.Font("Arial", 3, 36)); // NOI18N
         lblSuc.setText("Sucursal");
 
+        btnCanSuc1.setText("Cerrar Sesion");
+        btnCanSuc1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCanSuc1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblSuc, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(324, 324, 324)
+                .addComponent(btnCanSuc1)
+                .addGap(13, 13, 13))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblSuc)
+                .addGap(9, 9, 9)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addComponent(lblSuc)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(btnCanSuc1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        btgSuc1.add(jrbMosTodSuc);
+        jrbMosTodSuc.setSelected(true);
+        jrbMosTodSuc.setText("Mostrar Todo");
+        jrbMosTodSuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbMosTodSucActionPerformed(evt);
+            }
+        });
+
+        btgSuc.add(jrbNumSuc);
+        jrbNumSuc.setText("Numero de Sucursal");
+        jrbNumSuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbNumSucActionPerformed(evt);
+            }
+        });
+
+        btgSuc.add(jrbCalleSuc);
+        jrbCalleSuc.setText("Calle");
+        jrbCalleSuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbCalleSucActionPerformed(evt);
+            }
+        });
+
+        btgSuc.add(jrbCiudadSuc);
+        jrbCiudadSuc.setText("Ciudad");
+        jrbCiudadSuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbCiudadSucActionPerformed(evt);
+            }
+        });
+
+        btgSuc.add(jrbEstadoSuc);
+        jrbEstadoSuc.setText("Estado");
+        jrbEstadoSuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbEstadoSucActionPerformed(evt);
+            }
+        });
+
+        btgSuc.add(jrbCodPosSuc);
+        jrbCodPosSuc.setText("Codigo Postal");
+        jrbCodPosSuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbCodPosSucActionPerformed(evt);
+            }
+        });
+
+        btgSuc.add(jrbTelSuc);
+        jrbTelSuc.setText("Teléfono");
+        jrbTelSuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbTelSucActionPerformed(evt);
+            }
+        });
+
+        txtNumSuc1.setEnabled(false);
+        txtNumSuc1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNumSuc1KeyReleased(evt);
+            }
+        });
+
+        txtCalSuc1.setEnabled(false);
+        txtCalSuc1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCalSuc1KeyReleased(evt);
+            }
+        });
+
+        txtCiuSuc1.setEnabled(false);
+        txtCiuSuc1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCiuSuc1KeyReleased(evt);
+            }
+        });
+
+        txtEstSuc1.setEnabled(false);
+        txtEstSuc1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtEstSuc1KeyReleased(evt);
+            }
+        });
+
+        txtCodSuc1.setEnabled(false);
+        txtCodSuc1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCodSuc1KeyReleased(evt);
+            }
+        });
+
+        txtTelSuc1.setEnabled(false);
+        txtTelSuc1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTelSuc1KeyReleased(evt);
+            }
+        });
+
+        btnEliSuc.setText("Eliminar");
+        btnEliSuc.setEnabled(false);
+        btnEliSuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliSucActionPerformed(evt);
+            }
+        });
+
+        btnEdiSuc.setText("Editar");
+        btnEdiSuc.setEnabled(false);
+        btnEdiSuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEdiSucActionPerformed(evt);
+            }
+        });
+
+        tbl_sucursal1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Numero de Sucursal", "Calle", "Ciudad", "Estado", "Codigo Postal", "Telefono"
+            }
+        ));
+        tbl_sucursal1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_sucursal1MouseClicked(evt);
+            }
+        });
+        jScrollPane6.setViewportView(tbl_sucursal1);
+
+        btnDesSuc.setText("Deshacer");
+        btnDesSuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDesSucActionPerformed(evt);
+            }
+        });
+
+        btnConfSuc.setText("Aceptar");
+        btnConfSuc.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnConfSuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfSucActionPerformed(evt);
+            }
+        });
+
+        lblTituloSuc.setFont(new java.awt.Font("Arial", 3, 36)); // NOI18N
+        lblTituloSuc.setText("Buscar");
+
+        btgSuc1.add(jrbMosFilSuc);
+        jrbMosFilSuc.setText("Mostrar Filtros");
+        jrbMosFilSuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbMosFilSucActionPerformed(evt);
+            }
+        });
+
+        lblResultadoSuc.setFont(new java.awt.Font("Arial", 3, 36)); // NOI18N
+        lblResultadoSuc.setText("Resultados");
+
+        javax.swing.GroupLayout panBusSucLayout = new javax.swing.GroupLayout(panBusSuc);
+        panBusSuc.setLayout(panBusSucLayout);
+        panBusSucLayout.setHorizontalGroup(
+            panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(panBusSucLayout.createSequentialGroup()
+                .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panBusSucLayout.createSequentialGroup()
+                        .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panBusSucLayout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jrbMosTodSuc)
+                                    .addComponent(jrbMosFilSuc)
+                                    .addGroup(panBusSucLayout.createSequentialGroup()
+                                        .addComponent(btnEdiSuc)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnConfSuc))))
+                            .addGroup(panBusSucLayout.createSequentialGroup()
+                                .addGap(38, 38, 38)
+                                .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jrbNumSuc)
+                                    .addComponent(jrbCalleSuc)
+                                    .addComponent(jrbCiudadSuc))
+                                .addGap(18, 18, 18)
+                                .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtNumSuc1)
+                                    .addComponent(txtCalSuc1)
+                                    .addComponent(txtCiuSuc1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(126, 126, 126)
+                                .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jrbCodPosSuc)
+                                    .addComponent(jrbEstadoSuc)
+                                    .addComponent(jrbTelSuc))
+                                .addGap(18, 18, 18)
+                                .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtEstSuc1)
+                                    .addComponent(txtCodSuc1)
+                                    .addComponent(txtTelSuc1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 432, Short.MAX_VALUE))
+                    .addGroup(panBusSucLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 1153, Short.MAX_VALUE))
+                    .addGroup(panBusSucLayout.createSequentialGroup()
+                        .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panBusSucLayout.createSequentialGroup()
+                                .addGap(485, 485, 485)
+                                .addComponent(btnEliSuc)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnDesSuc))
+                            .addGroup(panBusSucLayout.createSequentialGroup()
+                                .addGap(487, 487, 487)
+                                .addComponent(lblTituloSuc, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(panBusSucLayout.createSequentialGroup()
+                .addGap(461, 461, 461)
+                .addComponent(lblResultadoSuc)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+        panBusSucLayout.setVerticalGroup(
+            panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panBusSucLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(lblTituloSuc)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jrbMosTodSuc)
+                .addGap(17, 17, 17)
+                .addComponent(jrbMosFilSuc)
+                .addGap(18, 18, 18)
+                .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jrbNumSuc)
+                    .addComponent(txtNumSuc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jrbEstadoSuc)
+                    .addComponent(txtEstSuc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jrbCalleSuc)
+                    .addComponent(txtCalSuc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jrbCodPosSuc)
+                    .addComponent(txtCodSuc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jrbCiudadSuc)
+                    .addComponent(txtCiuSuc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jrbTelSuc)
+                    .addComponent(txtTelSuc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEdiSuc)
+                    .addComponent(btnConfSuc))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblResultadoSuc)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEliSuc)
+                    .addComponent(btnDesSuc))
+                .addContainerGap())
+        );
+
+        tpnSucursal.addTab("Buscar", panBusSuc);
 
         lblInsSuc.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblInsSuc.setText("Ingrese la informacion de los siguientes campos");
@@ -367,253 +704,25 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jTabbedPane3.addTab("Agregar", panAgrSuc);
-
-        btgSuc.add(jrbMosTodSuc);
-        jrbMosTodSuc.setSelected(true);
-        jrbMosTodSuc.setText("Mostrar Todo");
-        jrbMosTodSuc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrbMosTodSucActionPerformed(evt);
-            }
-        });
-
-        btgSuc.add(jrbNumSuc);
-        jrbNumSuc.setText("Numero de Sucursal");
-        jrbNumSuc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrbNumSucActionPerformed(evt);
-            }
-        });
-
-        btgSuc.add(jrbCalleSuc);
-        jrbCalleSuc.setText("Calle");
-        jrbCalleSuc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrbCalleSucActionPerformed(evt);
-            }
-        });
-
-        btgSuc.add(jrbCiudadSuc);
-        jrbCiudadSuc.setText("Ciudad");
-        jrbCiudadSuc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrbCiudadSucActionPerformed(evt);
-            }
-        });
-
-        btgSuc.add(jrbEstadoSuc);
-        jrbEstadoSuc.setText("Estado");
-        jrbEstadoSuc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrbEstadoSucActionPerformed(evt);
-            }
-        });
-
-        btgSuc.add(jrbCodPosSuc);
-        jrbCodPosSuc.setText("Codigo Postal");
-        jrbCodPosSuc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrbCodPosSucActionPerformed(evt);
-            }
-        });
-
-        btgSuc.add(jrbTelSuc);
-        jrbTelSuc.setText("Teléfono");
-        jrbTelSuc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrbTelSucActionPerformed(evt);
-            }
-        });
-
-        txtNumSuc1.setEnabled(false);
-        txtNumSuc1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtNumSuc1KeyReleased(evt);
-            }
-        });
-
-        txtCalSuc1.setEnabled(false);
-        txtCalSuc1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtCalSuc1KeyReleased(evt);
-            }
-        });
-
-        txtCiuSuc1.setEnabled(false);
-        txtCiuSuc1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtCiuSuc1KeyReleased(evt);
-            }
-        });
-
-        txtEstSuc1.setEnabled(false);
-        txtEstSuc1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtEstSuc1KeyReleased(evt);
-            }
-        });
-
-        txtCodSuc1.setEnabled(false);
-        txtCodSuc1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtCodSuc1KeyReleased(evt);
-            }
-        });
-
-        txtTelSuc1.setEnabled(false);
-        txtTelSuc1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtTelSuc1KeyReleased(evt);
-            }
-        });
-
-        btnEliSuc.setText("Eliminar");
-        btnEliSuc.setEnabled(false);
-        btnEliSuc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliSucActionPerformed(evt);
-            }
-        });
-
-        btnEdiSuc.setText("Editar");
-        btnEdiSuc.setEnabled(false);
-        btnEdiSuc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEdiSucActionPerformed(evt);
-            }
-        });
-
-        btnCanSuc1.setText("Cancelar");
-        btnCanSuc1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCanSuc1ActionPerformed(evt);
-            }
-        });
-
-        tbl_sucursal1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Numero de Sucursal", "Calle", "Ciudad", "Estado", "Codigo Postal", "Telefono"
-            }
-        ));
-        tbl_sucursal1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbl_sucursal1MouseClicked(evt);
-            }
-        });
-        jScrollPane6.setViewportView(tbl_sucursal1);
-
-        btnDesSuc.setText("Deshacer");
-        btnDesSuc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDesSucActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panBusSucLayout = new javax.swing.GroupLayout(panBusSuc);
-        panBusSuc.setLayout(panBusSucLayout);
-        panBusSucLayout.setHorizontalGroup(
-            panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(panBusSucLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 1153, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(panBusSucLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jrbMosTodSuc)
-                    .addGroup(panBusSucLayout.createSequentialGroup()
-                        .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jrbNumSuc)
-                            .addComponent(jrbCalleSuc)
-                            .addComponent(jrbCiudadSuc))
-                        .addGap(18, 18, 18)
-                        .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNumSuc1)
-                            .addComponent(txtCalSuc1)
-                            .addComponent(txtCiuSuc1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(126, 126, 126)
-                        .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jrbCodPosSuc)
-                            .addComponent(jrbEstadoSuc)
-                            .addComponent(jrbTelSuc))
-                        .addGap(18, 18, 18)
-                        .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtEstSuc1)
-                            .addComponent(txtCodSuc1)
-                            .addComponent(txtTelSuc1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panBusSucLayout.createSequentialGroup()
-                        .addComponent(btnEliSuc)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnDesSuc)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnEdiSuc)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCanSuc1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        panBusSucLayout.setVerticalGroup(
-            panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panBusSucLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jrbMosTodSuc)
-                .addGap(18, 18, 18)
-                .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jrbNumSuc)
-                    .addComponent(txtNumSuc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jrbEstadoSuc)
-                    .addComponent(txtEstSuc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jrbCalleSuc)
-                    .addComponent(txtCalSuc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jrbCodPosSuc)
-                    .addComponent(txtCodSuc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jrbCiudadSuc)
-                    .addComponent(txtCiuSuc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jrbTelSuc)
-                    .addComponent(txtTelSuc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEliSuc)
-                    .addComponent(btnEdiSuc)
-                    .addComponent(btnCanSuc1)
-                    .addComponent(btnDesSuc))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
-        );
-
-        jTabbedPane3.addTab("Buscar", panBusSuc);
+        tpnSucursal.addTab("Agregar", panAgrSuc);
 
         javax.swing.GroupLayout panSucLayout = new javax.swing.GroupLayout(panSuc);
         panSuc.setLayout(panSucLayout);
         panSucLayout.setHorizontalGroup(
             panSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jTabbedPane3)
+            .addComponent(tpnSucursal)
         );
         panSucLayout.setVerticalGroup(
             panSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panSucLayout.createSequentialGroup()
-                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane3))
+                .addComponent(tpnSucursal))
         );
 
         tpnVideo.addTab("Sucursal", panSuc);
@@ -623,22 +732,306 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         lblPel.setFont(new java.awt.Font("Arial", 3, 36)); // NOI18N
         lblPel.setText("Pelicula");
 
+        btnCanPel1.setText("Cerrar Sesion");
+        btnCanPel1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCanPel1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblPel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(420, 420, 420)
+                .addComponent(btnCanPel1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblPel)
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnCanPel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblPel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        btgPel1.add(jrbMosTodPel);
+        jrbMosTodPel.setSelected(true);
+        jrbMosTodPel.setText("Mostrar Todo");
+        jrbMosTodPel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbMosTodPelActionPerformed(evt);
+            }
+        });
+
+        btgPel.add(jrbNumCatPel);
+        jrbNumCatPel.setText("Numero de Catalogo");
+        jrbNumCatPel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbNumCatPelActionPerformed(evt);
+            }
+        });
+
+        btgPel.add(jrbCatPel);
+        jrbCatPel.setText("Categoria");
+        jrbCatPel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbCatPelActionPerformed(evt);
+            }
+        });
+
+        btgPel.add(jrbCosAlqPel);
+        jrbCosAlqPel.setText("Coste de Alquiler");
+        jrbCosAlqPel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbCosAlqPelActionPerformed(evt);
+            }
+        });
+
+        btgPel.add(jrbCosAdqPel);
+        jrbCosAdqPel.setText("Coste de Adquisicion");
+        jrbCosAdqPel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbCosAdqPelActionPerformed(evt);
+            }
+        });
+
+        btgPel.add(jrbDirPel);
+        jrbDirPel.setText("Director");
+        jrbDirPel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbDirPelActionPerformed(evt);
+            }
+        });
+
+        btgPel.add(jrbActPel);
+        jrbActPel.setText("Actores");
+        jrbActPel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbActPelActionPerformed(evt);
+            }
+        });
+
+        btgPel.add(jrbTitPel);
+        jrbTitPel.setText("Titulo");
+        jrbTitPel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbTitPelActionPerformed(evt);
+            }
+        });
+
+        txtCosAdqPel1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCosAdqPel1KeyReleased(evt);
+            }
+        });
+
+        txtCosAlqPel1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCosAlqPel1KeyReleased(evt);
+            }
+        });
+
+        txtTitPel1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTitPel1KeyReleased(evt);
+            }
+        });
+
+        txtCatPel1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCatPel1KeyReleased(evt);
+            }
+        });
+
+        txtNumCatPel1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNumCatPel1KeyReleased(evt);
+            }
+        });
+
+        txtDirPel1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtDirPel1KeyReleased(evt);
+            }
+        });
+
+        txaActPel1.setColumns(20);
+        txaActPel1.setRows(5);
+        txaActPel1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txaActPel1KeyReleased(evt);
+            }
+        });
+        jScrollPane9.setViewportView(txaActPel1);
+
+        btnEliPel.setText("Eliminar");
+
+        btnEdiPel.setText("Editar");
+
+        btnDesPel.setText("Deshacer");
+
+        tbl_pelicula1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Numero de Catalogo", "Titulo", "Categorias", "Coste de Alquiler", "Coste de Adquisicion", "Actores", "Director"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane10.setViewportView(tbl_pelicula1);
+
+        lblTituloPel.setFont(new java.awt.Font("Arial", 3, 36)); // NOI18N
+        lblTituloPel.setText("Buscar");
+
+        btgPel1.add(jrbMosFilPel);
+        jrbMosFilPel.setText("Mostrar Filtros");
+        jrbMosFilPel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbMosFilPelActionPerformed(evt);
+            }
+        });
+
+        lblResultadoPel.setFont(new java.awt.Font("Arial", 3, 36)); // NOI18N
+        lblResultadoPel.setText("Resultados");
+
+        btnAcePel.setText("Aceptar");
+
+        javax.swing.GroupLayout panBusPelLayout = new javax.swing.GroupLayout(panBusPel);
+        panBusPel.setLayout(panBusPelLayout);
+        panBusPelLayout.setHorizontalGroup(
+            panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panBusPelLayout.createSequentialGroup()
+                .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panBusPelLayout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(panBusPelLayout.createSequentialGroup()
+                                .addComponent(jrbNumCatPel)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtNumCatPel1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jrbTitPel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panBusPelLayout.createSequentialGroup()
+                                .addComponent(jrbCatPel)
+                                .addGap(79, 79, 79)
+                                .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtTitPel1)
+                                    .addComponent(txtCatPel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(panBusPelLayout.createSequentialGroup()
+                                .addComponent(jrbCosAlqPel)
+                                .addGap(40, 40, 40)
+                                .addComponent(txtCosAlqPel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panBusPelLayout.createSequentialGroup()
+                                .addComponent(jrbCosAdqPel)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtCosAdqPel1))))
+                    .addGroup(panBusPelLayout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(btnEliPel)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnDesPel)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEdiPel)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAcePel)))
+                .addGap(51, 51, 51)
+                .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jrbActPel)
+                    .addComponent(jrbDirPel))
+                .addGap(88, 88, 88)
+                .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtDirPel1)
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panBusPelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblTituloPel, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(490, 490, 490))
+            .addGroup(panBusPelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jrbMosFilPel)
+                    .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jSeparator7)
+                        .addGroup(panBusPelLayout.createSequentialGroup()
+                            .addComponent(jScrollPane10)
+                            .addContainerGap())
+                        .addGroup(panBusPelLayout.createSequentialGroup()
+                            .addComponent(jrbMosTodPel)
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panBusPelLayout.createSequentialGroup()
+                            .addGap(0, 0, Short.MAX_VALUE)
+                            .addComponent(lblResultadoPel)
+                            .addGap(483, 483, 483)))))
+        );
+        panBusPelLayout.setVerticalGroup(
+            panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panBusPelLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(lblTituloPel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jrbMosTodPel)
+                .addGap(18, 18, 18)
+                .addComponent(jrbMosFilPel)
+                .addGap(18, 18, 18)
+                .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panBusPelLayout.createSequentialGroup()
+                        .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jrbNumCatPel)
+                            .addComponent(txtNumCatPel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jrbTitPel)
+                            .addComponent(txtTitPel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jrbCatPel)
+                            .addComponent(txtCatPel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jrbCosAdqPel)
+                            .addComponent(txtCosAdqPel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jrbActPel)
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jrbCosAlqPel)
+                    .addComponent(txtCosAlqPel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jrbDirPel)
+                        .addComponent(txtDirPel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(27, 27, 27)
+                .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEliPel)
+                    .addComponent(btnEdiPel)
+                    .addComponent(btnDesPel)
+                    .addComponent(btnAcePel))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblResultadoPel)
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
+        );
+
+        jTabbedPane4.addTab("Buscar", panBusPel);
 
         lblInsPel.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblInsPel.setText("Ingrese la informacion de los siguientes campos");
@@ -794,169 +1187,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         );
 
         jTabbedPane4.addTab("Agregar", panAgrPel);
-
-        btgPel.add(jrbMosTodPel);
-        jrbMosTodPel.setText("Mostrar Todo");
-
-        btgPel.add(jrbNumCatPel);
-        jrbNumCatPel.setText("Numero de Catalogo");
-
-        btgPel.add(jrbCatPel);
-        jrbCatPel.setText("Categoria");
-
-        btgPel.add(jrbCosAlqPel);
-        jrbCosAlqPel.setText("Coste de Alquiler");
-
-        btgPel.add(jrbCosAdqPel);
-        jrbCosAdqPel.setText("Coste de Adquisicion");
-
-        btgPel.add(jrbDirPel);
-        jrbDirPel.setText("Director");
-
-        btgPel.add(jrbActPel);
-        jrbActPel.setText("Actores");
-
-        btgPel.add(jrbTitPel);
-        jrbTitPel.setText("Titulo");
-
-        txaActPel1.setColumns(20);
-        txaActPel1.setRows(5);
-        jScrollPane9.setViewportView(txaActPel1);
-
-        btnEliPel.setText("Eliminar");
-
-        btnEdiPel.setText("Editar");
-
-        btnDesPel.setText("Deshacer");
-
-        btnCanPel1.setText("Cancelar");
-        btnCanPel1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCanPel1ActionPerformed(evt);
-            }
-        });
-
-        tbl_pelicula1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Numero de Catalogo", "Titulo", "Categorias", "Director", "Coste de Alquiler", "Coste de Adquisicion", "Actores"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane10.setViewportView(tbl_pelicula1);
-
-        javax.swing.GroupLayout panBusPelLayout = new javax.swing.GroupLayout(panBusPel);
-        panBusPel.setLayout(panBusPelLayout);
-        panBusPelLayout.setHorizontalGroup(
-            panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panBusPelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator7)
-                    .addGroup(panBusPelLayout.createSequentialGroup()
-                        .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 1153, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(panBusPelLayout.createSequentialGroup()
-                        .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panBusPelLayout.createSequentialGroup()
-                                .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jrbNumCatPel)
-                                    .addComponent(jrbMosTodPel))
-                                .addGap(18, 18, 18)
-                                .addComponent(txtNumCatPel1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panBusPelLayout.createSequentialGroup()
-                                .addComponent(btnEliPel)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnDesPel)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnEdiPel)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnCanPel1))
-                            .addComponent(jrbTitPel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panBusPelLayout.createSequentialGroup()
-                                .addComponent(jrbCatPel)
-                                .addGap(79, 79, 79)
-                                .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtTitPel1)
-                                    .addComponent(txtCatPel1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)))
-                            .addGroup(panBusPelLayout.createSequentialGroup()
-                                .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jrbCosAlqPel)
-                                    .addComponent(jrbDirPel))
-                                .addGap(40, 40, 40)
-                                .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtDirPel1)
-                                    .addComponent(txtCosAlqPel1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jrbCosAdqPel)
-                            .addComponent(jrbActPel))
-                        .addGap(18, 18, 18)
-                        .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCosAdqPel1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(156, 156, 156))))
-        );
-        panBusPelLayout.setVerticalGroup(
-            panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panBusPelLayout.createSequentialGroup()
-                .addComponent(jrbMosTodPel)
-                .addGap(18, 18, 18)
-                .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panBusPelLayout.createSequentialGroup()
-                        .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jrbNumCatPel)
-                            .addComponent(txtNumCatPel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jrbTitPel)
-                            .addComponent(txtTitPel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jrbCatPel)
-                            .addComponent(txtCatPel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jrbDirPel)
-                            .addComponent(txtDirPel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jrbCosAlqPel)
-                            .addComponent(txtCosAlqPel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(46, 46, 46)
-                        .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnEliPel)
-                            .addComponent(btnEdiPel)
-                            .addComponent(btnDesPel)
-                            .addComponent(btnCanPel1)))
-                    .addGroup(panBusPelLayout.createSequentialGroup()
-                        .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jrbCosAdqPel)
-                            .addComponent(txtCosAdqPel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jrbActPel)
-                            .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jTabbedPane4.addTab("Buscar", panBusPel);
 
         javax.swing.GroupLayout panPelLayout = new javax.swing.GroupLayout(panPel);
         panPel.setLayout(panPelLayout);
@@ -1188,7 +1418,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(btnCanCop1)))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 1152, Short.MAX_VALUE))
+                    .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 1153, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panBusCopLayout.setVerticalGroup(
@@ -1222,7 +1452,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(203, Short.MAX_VALUE))
         );
 
         jTabbedPane5.addTab("Buscar", panBusCop);
@@ -1508,6 +1738,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 //RadioButon para seleccionar el filtro en sucursal ----------------------------------------------------------------------------------------------------------------------------------------
     private void jrbMosTodSucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbMosTodSucActionPerformed
 
+        ocultarSucursal();
+        
         try {
             
             txtNumSuc1.enable(false);
@@ -1536,6 +1768,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         txtCodSuc1.enable(false);
         txtTelSuc1.enable(false);
         vaciarComponentesSuc1();
+        panBusSuc.revalidate();
+        panBusSuc.repaint();
 
     }//GEN-LAST:event_jrbNumSucActionPerformed
 
@@ -1547,6 +1781,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         txtCodSuc1.enable(false);
         txtTelSuc1.enable(false);
         vaciarComponentesSuc1();
+        panBusSuc.revalidate();
+        panBusSuc.repaint();
     }//GEN-LAST:event_jrbCalleSucActionPerformed
 
     private void jrbCiudadSucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbCiudadSucActionPerformed
@@ -1558,6 +1794,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         txtCodSuc1.enable(false);
         txtTelSuc1.enable(false);
         vaciarComponentesSuc1();
+        panBusSuc.revalidate();
+        panBusSuc.repaint();
 
     }//GEN-LAST:event_jrbCiudadSucActionPerformed
 
@@ -1570,6 +1808,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         txtCodSuc1.enable(false);
         txtTelSuc1.enable(false);
         vaciarComponentesSuc1();
+        panBusSuc.revalidate();
+        panBusSuc.repaint();
     }//GEN-LAST:event_jrbEstadoSucActionPerformed
 
     private void jrbCodPosSucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbCodPosSucActionPerformed
@@ -1581,6 +1821,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         txtCodSuc1.enable(true);
         txtTelSuc1.enable(false);
         vaciarComponentesSuc1();
+        panBusSuc.revalidate();
+        panBusSuc.repaint();
 
     }//GEN-LAST:event_jrbCodPosSucActionPerformed
 
@@ -1593,6 +1835,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         txtCodSuc1.enable(false);
         txtTelSuc1.enable(true);
         vaciarComponentesSuc1();
+        panBusSuc.revalidate();
+        panBusSuc.repaint();
         
     }//GEN-LAST:event_jrbTelSucActionPerformed
 
@@ -1682,9 +1926,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 //Click a la tabla de sucursal1 para cargar los datos y poder eliminar o modificar
     private void tbl_sucursal1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_sucursal1MouseClicked
         
-        jrbMosTodSuc.setSelected(true);
+        reaparecerComSuc();
         
-        jrbMosTodSuc.setEnabled(false);
         jrbNumSuc.setEnabled(false);
         jrbCalleSuc.setEnabled(false);
         jrbCiudadSuc.setEnabled(false);
@@ -1696,11 +1939,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnEdiSuc.setEnabled(true);
         
         txtNumSuc1.enable(false);
-        txtCalSuc1.enable(true);
-        txtCiuSuc1.enable(true);
-        txtEstSuc1.enable(true);
-        txtCodSuc1.enable(true);
-        txtTelSuc1.enable(true);
+        txtCalSuc1.enable(false);
+        txtCiuSuc1.enable(false);
+        txtEstSuc1.enable(false);
+        txtCodSuc1.enable(false);
+        txtTelSuc1.enable(false);
+        
+        panBusSuc.revalidate();
+        panBusSuc.repaint();
         
         txtNumSuc1.setText(modelo1.getValueAt(tbl_sucursal1.getSelectedRow(), 0).toString());
         txtCalSuc1.setText(modelo1.getValueAt(tbl_sucursal1.getSelectedRow(), 1).toString());
@@ -1737,11 +1983,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                             
                     );
                     
-                    
-                    
                     historialSucursales.guardar(memento);
-                    
-                    //System.out.println(historialSucursales.toString());
                     
                     SucursalDAO.eliminarSucursal(txtNumSuc1.getText());
                                     
@@ -1749,7 +1991,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     
                     vaciarComponentesSuc1();
                     
+                    restaurarJRBSuc();
+                    
                     mostrar1();
+                    
+                    
                     
                 }
                 
@@ -1781,6 +2027,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 try {
                     
                     mostrar1();
+                    restaurarJRBSuc();
                     
                 } catch (SQLException ex) {
                     
@@ -1803,6 +2050,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void btnEdiSucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEdiSucActionPerformed
 
+        txtCalSuc1.enable(true);
+        txtCiuSuc1.enable(true);
+        txtEstSuc1.enable(true);
+        txtCodSuc1.enable(true);
+        txtTelSuc1.enable(true);
+        
+        btnConfSuc.setVisible(true);
+        
+        panBusSuc.revalidate();
+        panBusSuc.repaint();
+
+    }//GEN-LAST:event_btnEdiSucActionPerformed
+
+    private void btnConfSucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfSucActionPerformed
+
         if(!(txtCalSuc1.getText().equals("") || txtCiuSuc1.getText().equals("") || txtEstSuc1.getText().equals("") || txtCodSuc1.getText().equals("") || txtTelSuc1.getText().equals(""))){
         
             num_Suc = txtNumSuc1.getText();
@@ -1812,11 +2074,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             cod_pos = txtCodSuc1.getText();
             tel = txtTelSuc1.getText();
             
+
+            
             if(SucursalDAO.cambiosSucursal(new Sucursal(num_Suc, calle, ciudad, estado, cod_pos, tel))){
             
                 try {
                     
-                    JOptionPane.showMessageDialog(this, "Exito");
+                    vaciarComponentesSuc1();
+                    JOptionPane.showMessageDialog(this, "Sucursal modifica exitosamente");
+                    restaurarJRBSuc();
+                    btnConfSuc.setVisible(false);
                     mostrar1();
                     
                 } catch (SQLException ex) {
@@ -1828,9 +2095,223 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         
         }
+        
+    }//GEN-LAST:event_btnConfSucActionPerformed
 
-    }//GEN-LAST:event_btnEdiSucActionPerformed
+    private void jrbMosFilSucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbMosFilSucActionPerformed
+        
+        reaparecerComSuc();
+        
+    }//GEN-LAST:event_jrbMosFilSucActionPerformed
 
+    private void jrbMosFilPelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbMosFilPelActionPerformed
+
+        reaparecerComPel();
+
+    }//GEN-LAST:event_jrbMosFilPelActionPerformed
+
+    private void jrbMosTodPelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbMosTodPelActionPerformed
+        
+        ocultarPelicula();
+        
+        try {
+        
+            mostrarPeliculas1();
+        
+        }catch (SQLException ex) {
+            
+            Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        
+    }//GEN-LAST:event_jrbMosTodPelActionPerformed
+
+    private void jrbNumCatPelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbNumCatPelActionPerformed
+
+        txtNumCatPel1.setEnabled(true);
+        txtTitPel1.setEnabled(false);
+        txtCatPel1.setEnabled(false);
+        txtCosAlqPel1.setEnabled(false);
+        txtCosAdqPel1.setEnabled(false);
+        txaActPel1.setEnabled(false);
+        jScrollPane9.setEnabled(false);
+        txtDirPel1.setEnabled(false);
+
+    }//GEN-LAST:event_jrbNumCatPelActionPerformed
+
+    private void jrbTitPelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbTitPelActionPerformed
+
+        txtNumCatPel1.setEnabled(false);
+        txtTitPel1.setEnabled(true);
+        txtCatPel1.setEnabled(false);
+        txtCosAlqPel1.setEnabled(false);
+        txtCosAdqPel1.setEnabled(false);
+        txaActPel1.setEnabled(false);
+        jScrollPane9.setEnabled(false);
+        txtDirPel1.setEnabled(false);
+        
+    }//GEN-LAST:event_jrbTitPelActionPerformed
+
+    private void jrbCatPelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbCatPelActionPerformed
+        txtNumCatPel1.setEnabled(false);
+        txtTitPel1.setEnabled(false);
+        txtCatPel1.setEnabled(true);
+        txtCosAlqPel1.setEnabled(false);
+        txtCosAdqPel1.setEnabled(false);
+        txaActPel1.setEnabled(false);
+        jScrollPane9.setEnabled(false);
+        txtDirPel1.setEnabled(false);
+    }//GEN-LAST:event_jrbCatPelActionPerformed
+
+    private void jrbDirPelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbDirPelActionPerformed
+        txtNumCatPel1.setEnabled(false);
+        txtTitPel1.setEnabled(false);
+        txtCatPel1.setEnabled(false);
+        txtCosAlqPel1.setEnabled(false);
+        txtCosAdqPel1.setEnabled(false);
+        txaActPel1.setEnabled(false);
+        jScrollPane9.setEnabled(false);
+        txtDirPel1.setEnabled(true);
+    }//GEN-LAST:event_jrbDirPelActionPerformed
+
+    private void jrbCosAlqPelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbCosAlqPelActionPerformed
+        txtNumCatPel1.setEnabled(false);
+        txtTitPel1.setEnabled(false);
+        txtCatPel1.setEnabled(false);
+        txtCosAlqPel1.setEnabled(true);
+        txtCosAdqPel1.setEnabled(false);
+        txaActPel1.setEnabled(false);
+        jScrollPane9.setEnabled(false);
+        txtDirPel1.setEnabled(false);
+    }//GEN-LAST:event_jrbCosAlqPelActionPerformed
+
+    private void jrbCosAdqPelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbCosAdqPelActionPerformed
+
+        txtNumCatPel1.setEnabled(false);
+        txtTitPel1.setEnabled(false);
+        txtCatPel1.setEnabled(false);
+        txtCosAlqPel1.setEnabled(false);
+        txtCosAdqPel1.setEnabled(true);
+        txaActPel1.setEnabled(false);
+        jScrollPane9.setEnabled(false);
+        txtDirPel1.setEnabled(false);
+
+    }//GEN-LAST:event_jrbCosAdqPelActionPerformed
+
+    private void jrbActPelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbActPelActionPerformed
+
+        txtNumCatPel1.setEnabled(false);
+        txtTitPel1.setEnabled(false);
+        txtCatPel1.setEnabled(false);
+        txtCosAlqPel1.setEnabled(false);
+        txtCosAdqPel1.setEnabled(false);
+        txaActPel1.setEnabled(true);
+        jScrollPane9.setEnabled(true);
+        txtDirPel1.setEnabled(false);
+
+    }//GEN-LAST:event_jrbActPelActionPerformed
+
+    private void txtNumCatPel1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumCatPel1KeyReleased
+
+        try {
+            
+            ResultSet rs = PeliculaDAO.numCatPelicula(txtNumCatPel1.getText());
+            mostrarPelFiltrados(rs);
+            
+        }catch (SQLException ex) {
+
+                Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                
+        }
+
+    }//GEN-LAST:event_txtNumCatPel1KeyReleased
+
+    private void txtTitPel1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTitPel1KeyReleased
+
+        try {
+            
+            ResultSet rs = PeliculaDAO.titPelicula(txtTitPel1.getText());
+            mostrarPelFiltrados(rs);
+            
+        }catch (SQLException ex) {
+
+                Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                
+        }
+
+    }//GEN-LAST:event_txtTitPel1KeyReleased
+
+    private void txtCatPel1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCatPel1KeyReleased
+        try {
+            
+            ResultSet rs = PeliculaDAO.catPelicula(txtCatPel1.getText());
+            mostrarPelFiltrados(rs);
+            
+        }catch (SQLException ex) {
+
+                Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                
+        }
+    }//GEN-LAST:event_txtCatPel1KeyReleased
+
+    private void txtDirPel1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDirPel1KeyReleased
+
+        try {
+            
+            ResultSet rs = PeliculaDAO.dirPelicula(txtDirPel1.getText());
+            mostrarPelFiltrados(rs);
+            
+        }catch (SQLException ex) {
+
+                Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                
+        }
+
+    }//GEN-LAST:event_txtDirPel1KeyReleased
+
+    private void txtCosAlqPel1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCosAlqPel1KeyReleased
+        try {
+            
+            ResultSet rs = PeliculaDAO.cosPelicula( txtCosAlqPel1.getText() );
+            mostrarPelFiltrados(rs);
+            
+        }catch (SQLException ex) {
+
+                Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                
+        }
+    }//GEN-LAST:event_txtCosAlqPel1KeyReleased
+    //Coste de Aquisicion -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    private void txtCosAdqPel1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCosAdqPel1KeyReleased
+        
+        try {
+            
+            ResultSet rs = PeliculaDAO.cosAdPelicula(  txtCosAdqPel1.getText() );
+            mostrarPelFiltrados(rs);
+            
+        }catch (SQLException ex) {
+
+                Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                
+        }
+    }//GEN-LAST:event_txtCosAdqPel1KeyReleased
+
+    private void txaActPel1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txaActPel1KeyReleased
+        try {
+            
+            ResultSet rs = PeliculaDAO.actPelicula(txaActPel1.getText());
+            mostrarPelFiltrados(rs);
+            
+        }catch (SQLException ex) {
+
+                Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                
+        }
+    }//GEN-LAST:event_txaActPel1KeyReleased
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -1873,7 +2354,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup btgCop;
     private javax.swing.ButtonGroup btgPel;
+    private javax.swing.ButtonGroup btgPel1;
     private javax.swing.ButtonGroup btgSuc;
+    private javax.swing.ButtonGroup btgSuc1;
+    private javax.swing.JButton btnAcePel;
     private javax.swing.JButton btnAgrCop;
     private javax.swing.JButton btnAgrPel;
     private javax.swing.JButton btnAgrSuc;
@@ -1884,6 +2368,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnCanPel1;
     private javax.swing.JButton btnCanSuc;
     private javax.swing.JButton btnCanSuc1;
+    private javax.swing.JButton btnConfSuc;
     private javax.swing.JButton btnDesPel;
     private javax.swing.JButton btnDesSuc;
     private javax.swing.JButton btnEdiCop;
@@ -1916,7 +2401,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTabbedPane jTabbedPane5;
     private javax.swing.JRadioButton jrbActPel;
@@ -1929,6 +2413,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JRadioButton jrbDirPel;
     private javax.swing.JRadioButton jrbEstCop;
     private javax.swing.JRadioButton jrbEstadoSuc;
+    private javax.swing.JRadioButton jrbMosFilPel;
+    private javax.swing.JRadioButton jrbMosFilSuc;
     private javax.swing.JRadioButton jrbMosTodCop;
     private javax.swing.JRadioButton jrbMosTodPel;
     private javax.swing.JRadioButton jrbMosTodSuc;
@@ -1957,10 +2443,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblNumCop;
     private javax.swing.JLabel lblNumSuc;
     private javax.swing.JLabel lblPel;
+    private javax.swing.JLabel lblResultadoPel;
+    private javax.swing.JLabel lblResultadoSuc;
     private javax.swing.JLabel lblSuc;
     private javax.swing.JLabel lblSucursal;
     private javax.swing.JLabel lblTelSuc;
     private javax.swing.JLabel lblTitPel;
+    private javax.swing.JLabel lblTituloPel;
+    private javax.swing.JLabel lblTituloSuc;
     private javax.swing.JPanel panAgrCop;
     private javax.swing.JPanel panAgrPel;
     private javax.swing.JPanel panAgrSuc;
@@ -1976,6 +2466,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTable tbl_pelicula1;
     private javax.swing.JTable tbl_sucursal;
     private javax.swing.JTable tbl_sucursal1;
+    private javax.swing.JTabbedPane tpnSucursal;
     private javax.swing.JTabbedPane tpnVideo;
     private javax.swing.JTextArea txaActPel;
     private javax.swing.JTextArea txaActPel1;
@@ -2040,6 +2531,115 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         txtCodSuc1.setText("");
         txtTelSuc1.setText("");
 
+    }
+    
+    public void restaurarJRBSuc(){
+        
+        jrbMosTodSuc.setSelected(true);
+    
+        jrbMosTodSuc.setEnabled(true);
+        jrbNumSuc.setEnabled(true);
+        jrbCalleSuc.setEnabled(true);
+        jrbCiudadSuc.setEnabled(true);
+        jrbEstadoSuc.setEnabled(true);
+        jrbCodPosSuc.setEnabled(true);
+        jrbTelSuc.setEnabled(true);
+        
+        btnEliSuc.setEnabled(false);
+        btnEdiSuc.setEnabled(false);
+        
+        txtNumSuc1.enable(false);
+        txtCalSuc1.enable(false);
+        txtCiuSuc1.enable(false);
+        txtEstSuc1.enable(false);
+        txtCodSuc1.enable(false);
+        txtTelSuc1.enable(false);
+        
+    }
+    
+    public void ocultarSucursal(){
+    
+        btnConfSuc.setVisible(false);
+        txtNumSuc1.setVisible(false);
+        txtCalSuc1.setVisible(false);
+        txtCiuSuc1.setVisible(false);
+        txtEstSuc1.setVisible(false);;
+        txtCodSuc1.setVisible(false);;
+        txtTelSuc1.setVisible(false);
+       
+        jrbNumSuc.setVisible(false);
+        jrbCalleSuc.setVisible(false);
+        jrbCiudadSuc.setVisible(false);
+        jrbEstadoSuc.setVisible(false);
+        jrbCodPosSuc.setVisible(false);
+        jrbTelSuc.setVisible(false);
+    
+    }
+    
+    public void ocultarPelicula(){
+    
+        btnAcePel.setVisible(false);
+        txtNumCatPel1.setVisible(false);
+        txtTitPel1.setVisible(false);
+        txtCatPel1.setVisible(false);
+        txtCosAlqPel1.setVisible(false);
+        txtCosAdqPel1.setVisible(false);
+        txaActPel1.setVisible(false);
+        jScrollPane9.setVisible(false);
+        txtDirPel1.setVisible(false);
+        
+        jrbNumCatPel.setVisible(false);
+        jrbTitPel.setVisible(false);
+        jrbCatPel.setVisible(false);
+        jrbCosAlqPel.setVisible(false);
+        jrbCosAdqPel.setVisible(false);
+        jrbActPel.setVisible(false);
+        jrbDirPel.setVisible(false);
+    
+    }
+    
+    public void reaparecerComSuc(){
+    
+        txtNumSuc1.setVisible(true);
+        txtCalSuc1.setVisible(true);
+        txtCiuSuc1.setVisible(true);
+        txtEstSuc1.setVisible(true);;
+        txtCodSuc1.setVisible(true);;
+        txtTelSuc1.setVisible(true);
+       
+        jrbNumSuc.setVisible(true);
+        jrbCalleSuc.setVisible(true);
+        jrbCiudadSuc.setVisible(true);
+        jrbEstadoSuc.setVisible(true);
+        jrbCodPosSuc.setVisible(true);
+        jrbTelSuc.setVisible(true);
+        
+        panBusSuc.revalidate();
+        panBusSuc.repaint();
+        
+    }
+    
+    public void reaparecerComPel(){
+    
+        txtNumCatPel1.setVisible(true);
+        txtTitPel1.setVisible(true);
+        txtCatPel1.setVisible(true);
+        txtCosAlqPel1.setVisible(true);
+        txtCosAdqPel1.setVisible(true);
+        txaActPel1.setVisible(true);
+        jScrollPane9.setVisible(true);
+        txtDirPel1.setVisible(true);
+        
+        jrbNumCatPel.setVisible(true);
+        jrbTitPel.setVisible(true);
+        jrbCatPel.setVisible(true);
+        jrbCosAlqPel.setVisible(true);
+        jrbCosAdqPel.setVisible(true);
+        jrbActPel.setVisible(true);
+        jrbDirPel.setVisible(true);
+        
+        panBusPel.revalidate();
+        panBusPel.repaint();
     }
     
     public void mostrar() throws SQLException {
@@ -2112,6 +2712,31 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             datos[6] = rs.getString(7);
             
             modeloPelicula.addRow(datos);
+
+        }
+
+    }
+    
+    public void mostrarPeliculas1() throws SQLException {
+
+        ResultSet rs = PeliculaDAO.buscar();
+
+        String datos[] = new String[7];
+
+        //vaciar filas anteriores
+        modeloPelicula1.setRowCount(0);
+
+        while (rs.next()) {
+            
+            datos[0] = rs.getString(1);
+            datos[1] = rs.getString(2);
+            datos[2] = rs.getString(3);
+            datos[3] = rs.getString(4);
+            datos[4] = rs.getString(5);
+            datos[5] = rs.getString(6);
+            datos[6] = rs.getString(7);
+            
+            modeloPelicula1.addRow(datos);
 
         }
 
@@ -2200,6 +2825,28 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             datos[4] = rs.getString(5);
             datos[5] = rs.getString(6);
             modelo1.addRow(datos);
+        }
+          
+    }
+    
+        public void mostrarPelFiltrados(ResultSet rs) throws SQLException {
+
+        String datos[] = new String[7];
+
+        //vaciar filas anteriores
+        modeloPelicula1.setRowCount(0);
+
+        while (rs.next()) {
+            
+            datos[0] = rs.getString(1);
+            datos[1] = rs.getString(2);
+            datos[2] = rs.getString(3);
+            datos[3] = rs.getString(4);
+            datos[4] = rs.getString(5);
+            datos[5] = rs.getString(6);
+            datos[6] = rs.getString(7);
+            modeloPelicula1.addRow(datos);
+            
         }
           
     }
