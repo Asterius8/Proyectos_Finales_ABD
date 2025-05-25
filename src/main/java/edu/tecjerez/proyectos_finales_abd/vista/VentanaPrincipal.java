@@ -213,7 +213,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         txtCodSuc = new javax.swing.JTextField();
         txtTelSuc = new javax.swing.JTextField();
         btnAgrSuc = new javax.swing.JButton();
-        btnCanSuc = new javax.swing.JButton();
         jSeparator4 = new javax.swing.JSeparator();
         jScrollPane5 = new javax.swing.JScrollPane();
         tbl_sucursal = new javax.swing.JTable();
@@ -408,12 +407,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtNumSuc1KeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumSuc1KeyTyped(evt);
+            }
         });
 
         txtCalSuc1.setEnabled(false);
         txtCalSuc1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtCalSuc1KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCalSuc1KeyTyped(evt);
             }
         });
 
@@ -422,12 +427,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtCiuSuc1KeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCiuSuc1KeyTyped(evt);
+            }
         });
 
         txtEstSuc1.setEnabled(false);
         txtEstSuc1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtEstSuc1KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEstSuc1KeyTyped(evt);
             }
         });
 
@@ -436,12 +447,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtCodSuc1KeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCodSuc1KeyTyped(evt);
+            }
         });
 
         txtTelSuc1.setEnabled(false);
         txtTelSuc1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtTelSuc1KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelSuc1KeyTyped(evt);
             }
         });
 
@@ -498,7 +515,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         lblTituloSuc.setText("Buscar");
 
         btgSuc1.add(jrbMosFilSuc);
-        jrbMosFilSuc.setText("Mostrar Filtros");
+        jrbMosFilSuc.setText("Buscar");
         jrbMosFilSuc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jrbMosFilSucActionPerformed(evt);
@@ -632,6 +649,24 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        txtCalSuc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCalSucKeyTyped(evt);
+            }
+        });
+
+        txtCiuSuc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCiuSucKeyTyped(evt);
+            }
+        });
+
+        txtEstSuc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEstSucKeyTyped(evt);
+            }
+        });
+
         txtCodSuc.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCodSucKeyTyped(evt);
@@ -648,13 +683,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnAgrSuc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgrSucActionPerformed(evt);
-            }
-        });
-
-        btnCanSuc.setText("Cancelar");
-        btnCanSuc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCanSucActionPerformed(evt);
             }
         });
 
@@ -691,11 +719,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addComponent(jScrollPane5)
                     .addGroup(panAgrSucLayout.createSequentialGroup()
                         .addGroup(panAgrSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblInsSuc)
                             .addGroup(panAgrSucLayout.createSequentialGroup()
-                                .addGroup(panAgrSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblNumSuc)
-                                    .addComponent(lblCalSuc)
-                                    .addComponent(lblCiuSuc))
+                                .addGroup(panAgrSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnAgrSuc)
+                                    .addGroup(panAgrSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblNumSuc)
+                                        .addComponent(lblCalSuc)
+                                        .addComponent(lblCiuSuc)))
                                 .addGap(18, 18, 18)
                                 .addGroup(panAgrSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtNumSuc, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
@@ -710,12 +741,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 .addGroup(panAgrSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtEstSuc)
                                     .addComponent(txtCodSuc)
-                                    .addComponent(txtTelSuc, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(lblInsSuc)
-                            .addGroup(panAgrSucLayout.createSequentialGroup()
-                                .addComponent(btnAgrSuc)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnCanSuc)))
+                                    .addComponent(txtTelSuc, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 547, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -742,11 +768,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addComponent(txtCiuSuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTelSuc)
                     .addComponent(txtTelSuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panAgrSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAgrSuc)
-                    .addComponent(btnCanSuc))
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
+                .addComponent(btnAgrSuc)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
@@ -1448,7 +1472,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addGroup(panBusCopLayout.createSequentialGroup()
                         .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator9)
-                            .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 1163, Short.MAX_VALUE)
+                            .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 1157, Short.MAX_VALUE)
                             .addGroup(panBusCopLayout.createSequentialGroup()
                                 .addGap(44, 44, 44)
                                 .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1467,8 +1491,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(comboSucursal1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(comboPeliculas1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                            .addComponent(comboPeliculas1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panBusCopLayout.createSequentialGroup()
                         .addGap(15, 15, 15)
@@ -1584,7 +1607,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                             .addComponent(lblInsCop)
                             .addGroup(panAgrCopLayout.createSequentialGroup()
                                 .addGroup(panAgrCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lblNumCat, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+                                    .addComponent(lblNumCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(lblNumCop)
                                     .addComponent(lblSucursal)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -1667,12 +1690,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-//Boton Cancelar --------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    private void btnCanSucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCanSucActionPerformed
-       
-        cancelar();
-        
-    }//GEN-LAST:event_btnCanSucActionPerformed
 
     private void btnCanSuc1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCanSuc1ActionPerformed
 
@@ -2150,8 +2167,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         if (opcion == JOptionPane.YES_OPTION) {
             
             try {
-                // El usuario hizo clic en "Sí"
-                System.out.println("Acción confirmada");
                 
                 ResultSet sucursal = SucursalDAO.numSucursal(txtNumSuc1.getText());
                 
@@ -2172,12 +2187,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     
                     vaciarComponentesSuc1();
                     
+                    btgSuc.clearSelection();
+                    
+                    ocultarComp();
+                    
                     restaurarJRBSuc();
                     
                     mostrar1();
-                    
-                    
-                    
+                
                 }
                 
             } catch (SQLException ex) {
@@ -2187,8 +2204,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
             
         } else {
-            // El usuario hizo clic en "No" o cerró el cuadro
-            System.out.println("Acción cancelada");
+
+            
+            
         }
                 
     }//GEN-LAST:event_btnEliSucActionPerformed
@@ -2239,6 +2257,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         btnConfSuc.setVisible(true);
         
+        btgSuc.clearSelection();
+        
+        tbl_sucursal1.setVisible(false);
+        
         panBusSuc.revalidate();
         panBusSuc.repaint();
 
@@ -2255,16 +2277,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             cod_pos = txtCodSuc1.getText();
             tel = txtTelSuc1.getText();
             
-
-            
             if(SucursalDAO.cambiosSucursal(new Sucursal(num_Suc, calle, ciudad, estado, cod_pos, tel))){
             
                 try {
                     
                     vaciarComponentesSuc1();
+                    
                     JOptionPane.showMessageDialog(this, "Sucursal modifica exitosamente");
+                    
                     restaurarJRBSuc();
+                    
                     btnConfSuc.setVisible(false);
+                    
+                    ocultarComp();
+                    
+                    tbl_sucursal1.setVisible(true);
+                    
                     mostrar1();
                     
                 } catch (SQLException ex) {
@@ -2808,6 +2836,105 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }    
     }//GEN-LAST:event_btnAceCPActionPerformed
 
+    private void txtCalSucKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCalSucKeyTyped
+
+        char c = evt.getKeyChar();
+
+        if (!Character.isAlphabetic(c)) {
+
+            evt.consume();
+
+        }
+
+    }//GEN-LAST:event_txtCalSucKeyTyped
+
+    private void txtCiuSucKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCiuSucKeyTyped
+        
+        char c = evt.getKeyChar();
+
+        if (!Character.isAlphabetic(c)) {
+
+            evt.consume();
+
+        }
+        
+    }//GEN-LAST:event_txtCiuSucKeyTyped
+
+    private void txtEstSucKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEstSucKeyTyped
+        
+        char c = evt.getKeyChar();
+
+        if (!Character.isAlphabetic(c)) {
+
+            evt.consume();
+
+        }
+        
+    }//GEN-LAST:event_txtEstSucKeyTyped
+
+    private void txtNumSuc1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumSuc1KeyTyped
+                
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c)) {
+
+            evt.consume();
+
+        }
+    }//GEN-LAST:event_txtNumSuc1KeyTyped
+
+    private void txtCalSuc1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCalSuc1KeyTyped
+
+        char c = evt.getKeyChar();
+
+        if (!Character.isAlphabetic(c)) {
+
+            evt.consume();
+
+        }
+
+    }//GEN-LAST:event_txtCalSuc1KeyTyped
+
+    private void txtCiuSuc1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCiuSuc1KeyTyped
+        char c = evt.getKeyChar();
+
+        if (!Character.isAlphabetic(c)) {
+
+            evt.consume();
+
+        }
+    }//GEN-LAST:event_txtCiuSuc1KeyTyped
+
+    private void txtEstSuc1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEstSuc1KeyTyped
+        char c = evt.getKeyChar();
+
+        if (!Character.isAlphabetic(c)) {
+
+            evt.consume();
+
+        }
+    }//GEN-LAST:event_txtEstSuc1KeyTyped
+
+    private void txtCodSuc1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodSuc1KeyTyped
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c) || txtCodSuc1.getText().length() >= 5) {
+
+            evt.consume();
+
+        }
+    }//GEN-LAST:event_txtCodSuc1KeyTyped
+
+    private void txtTelSuc1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelSuc1KeyTyped
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c) || txtTelSuc1.getText().length() >= 10) {
+
+            evt.consume();
+
+        }
+    }//GEN-LAST:event_txtTelSuc1KeyTyped
+
     
     /**
      * @param args the command line arguments
@@ -2864,7 +2991,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnCanCop1;
     private javax.swing.JButton btnCanPel;
     private javax.swing.JButton btnCanPel1;
-    private javax.swing.JButton btnCanSuc;
     private javax.swing.JButton btnCanSuc1;
     private javax.swing.JButton btnConfSuc;
     private javax.swing.JButton btnDesPel;
@@ -3478,6 +3604,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             btnEliCop.setEnabled(true);
             
         }
+    }
+    
+    public void ocultarComp(){
+    
+        jrbNumSuc.setVisible(false);
+        jrbCalleSuc.setVisible(false);
+        jrbCiudadSuc.setVisible(false);
+        jrbEstadoSuc.setVisible(false);
+        jrbCodPosSuc.setVisible(false);
+        jrbTelSuc.setVisible(false);
+        txtNumSuc1.setVisible(false);
+        txtCalSuc1.setVisible(false);
+        txtCiuSuc1.setVisible(false);
+        txtEstSuc1.setVisible(false);
+        txtCodSuc1.setVisible(false);
+        txtTelSuc1.setVisible(false);
+    
     }
     
 }
