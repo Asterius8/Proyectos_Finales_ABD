@@ -31,6 +31,16 @@ public class CopiaPeliculaDAO {
 
     }
     
+    //Cambios
+    public static boolean cambiosCop(CopiaPelicula c){
+    
+        boolean res = false;
+        
+        res = ConexionBD.cambiosCop(c);
+        
+        return res;
+        
+    }
     
     //------------------------------- Consultas --------------------------------------------------------------------------------------------------------------------------------------
     public static boolean numCopiaPeliculaIgual(String filtro){

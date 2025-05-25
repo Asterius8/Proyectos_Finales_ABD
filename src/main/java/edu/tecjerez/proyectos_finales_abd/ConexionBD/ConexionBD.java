@@ -405,6 +405,37 @@ private ConexionBD() {
         return false;
         
     }
+       
+    public static boolean cambiosCop(CopiaPelicula c){
+    
+        try {
+        
+            Connection conexion = getConexion();
+            
+            pstm = conexion.prepareStatement("UPDATE copiapelicula SET num_pelicula = ?, estado = ?, sucursal_num_sucursal = ?, pelicula_num_catalogo = ? WHERE num_pelicula = ?");
+
+            pstm.setString(1, c.getNum_pelicula());
+            pstm.setString(2, c.getEstado());
+            pstm.setString(3, c.getNum_sucursal());
+            pstm.setString(4, c.getNum_catalogo());
+            pstm.setString(5, c.getNum_pelicula());
+
+            
+            System.out.println(c.toString());
+            
+            pstm.execute();
+
+            return true;
+            
+        }catch (Exception e) {
+
+            System.out.println("Error en instrucción DML \n" + e);
+
+        }
+    
+        return false;
+        
+    }
     
 //Consultar ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     

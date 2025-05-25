@@ -1399,6 +1399,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         btnEdiCop.setText("Editar");
         btnEdiCop.setEnabled(false);
+        btnEdiCop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEdiCopActionPerformed(evt);
+            }
+        });
 
         tbl_copiapelicula1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1427,6 +1432,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
 
         btnAceCP.setText("Aceptar");
+        btnAceCP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceCPActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panBusCopLayout = new javax.swing.GroupLayout(panBusCop);
         panBusCop.setLayout(panBusCopLayout);
@@ -2759,6 +2769,44 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btnEliCopActionPerformed
+
+    private void btnEdiCopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEdiCopActionPerformed
+
+        //txtNumCop1.setEnabled(true);
+        comboEstado1.setEnabled(true);
+        comboSucursal1.setEnabled(true);
+        comboPeliculas1.setEnabled(true);
+        
+        btnAceCP.setVisible(true);
+        
+        
+    }//GEN-LAST:event_btnEdiCopActionPerformed
+
+    private void btnAceCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceCPActionPerformed
+        
+        if( !(txtNumCop1.getText().equals("") || comboEstado1.getSelectedIndex()== 0 || comboSucursal1.getSelectedIndex()== 0 || comboPeliculas1.getSelectedIndex()== 0) ){
+        
+            num_CopiaPelicula = txtNumCop1.getText();
+            String estadoP = String.valueOf(comboEstado1.getSelectedItem());
+            String numSucCop = String.valueOf(comboSucursal1.getSelectedItem());
+            String numPelCop = String.valueOf(comboPeliculas1.getSelectedItem());
+            
+            if(CopiaPeliculaDAO.cambiosCop(new CopiaPelicula(num_CopiaPelicula, estadoP, numSucCop, numPelCop))){
+            
+                try {
+                JOptionPane.showMessageDialog(this, "Copia de pelicula modifica exitosamente");
+                mostrarCopiasPeliculas1();
+                
+                }catch (SQLException ex) {
+                    
+                    Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                    
+                }
+            
+            }    
+            
+        }    
+    }//GEN-LAST:event_btnAceCPActionPerformed
 
     
     /**

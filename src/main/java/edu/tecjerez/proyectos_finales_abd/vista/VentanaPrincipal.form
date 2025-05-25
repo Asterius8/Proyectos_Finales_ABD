@@ -1767,6 +1767,9 @@
                         <Property name="text" type="java.lang.String" value="Editar"/>
                         <Property name="enabled" type="boolean" value="false"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEdiCopActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JSeparator" name="jSeparator9">
                     </Component>
@@ -1812,6 +1815,9 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Aceptar"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAceCPActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
