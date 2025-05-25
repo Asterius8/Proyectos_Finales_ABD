@@ -48,6 +48,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         this.mostrarCopiasPeliculas();
         this.mostrarCopiasPeliculas1();
         
+        
         //Evento para detectar el cambio de pestañas dentro de la VentanaPrincipal
         tpnVideo.addChangeListener(e -> {
         
@@ -1390,6 +1391,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         btnEliCop.setText("Eliminar");
         btnEliCop.setEnabled(false);
+        btnEliCop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliCopActionPerformed(evt);
+            }
+        });
 
         btnEdiCop.setText("Editar");
         btnEdiCop.setEnabled(false);
@@ -1405,6 +1411,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 "Numero de Copia", "Estado de la Pelicula", "Numero de Sucursal", "Numero de Catalogo"
             }
         ));
+        tbl_copiapelicula1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_copiapelicula1MouseClicked(evt);
+            }
+        });
         jScrollPane12.setViewportView(tbl_copiapelicula1);
 
         btgCop1.add(jrbBusCop);
@@ -2680,47 +2691,75 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_comboEstado1ActionPerformed
 
     private void comboSucursal1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboSucursal1ActionPerformed
-        String seleccion = comboSucursal1.getSelectedItem().toString();
         
-        if(!(seleccion.equals("Elija una opcion"))){
+        String seleccion = comboSucursal1.getSelectedItem().toString();
+
+        if (!"Elija una opcion".equals(seleccion)) {
             
             try {
                 
-                ResultSet rs = CopiaPeliculaDAO.comboSucursal( seleccion );
+                ResultSet rs = CopiaPeliculaDAO.comboSucursal(seleccion);
                 mostrarCopFiltrados(rs);
+
                 
             } catch (SQLException ex) {
                 
                 Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 
             }
-            
         }
+        
     }//GEN-LAST:event_comboSucursal1ActionPerformed
 
     private void comboPeliculas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboPeliculas1ActionPerformed
 
         String seleccion = comboPeliculas1.getSelectedItem().toString();
-        
-        if(!(seleccion.equals("Elija una opcion"))){
+
+        if (!"Elija una opcion".equals(seleccion)) {
             
             try {
                 
-                ResultSet rs = CopiaPeliculaDAO.comboPelicula( seleccion );
+                ResultSet rs = CopiaPeliculaDAO.comboPelicula(seleccion);
                 mostrarCopFiltrados(rs);
-                
+
             } catch (SQLException ex) {
                 
                 Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 
             }
-            
         }
 
     }//GEN-LAST:event_comboPeliculas1ActionPerformed
-    
-    
-    
+
+    private void tbl_copiapelicula1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_copiapelicula1MouseClicked
+        
+        cargarDatosDesdeTabla();
+        
+    }//GEN-LAST:event_tbl_copiapelicula1MouseClicked
+
+    private void btnEliCopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliCopActionPerformed
+        
+        int opcion = JOptionPane.showConfirmDialog(
+        null, 
+        "¿Estás seguro de que deseas eliminar la copia de pelicula?", 
+        "Confirmación", 
+        JOptionPane.YES_NO_OPTION
+        );
+        
+        if (opcion == JOptionPane.YES_OPTION) {
+        
+            CopiaPeliculaDAO.eliminarCopia(txtNumCop1.getText());
+            
+            JOptionPane.showMessageDialog(null, "Pelicula eliminada correctamente");
+            try {
+                mostrarCopiasPeliculas1();
+            } catch (SQLException ex) {
+                Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+    }//GEN-LAST:event_btnEliCopActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -3367,6 +3406,30 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             
         }
           
+    }
+    
+    private void cargarDatosDesdeTabla() {
+        
+        int fila = tbl_copiapelicula1.getSelectedRow();
+    
+        if (fila != -1) {
+            
+            txtNumCop1.setEnabled(false);
+            
+            String numCopia = modeloCopiaPelicula1.getValueAt(fila, 0).toString();
+            String estado = modeloCopiaPelicula1.getValueAt(fila, 1).toString();
+            String sucursal = modeloCopiaPelicula1.getValueAt(fila, 2).toString();
+            String catalogo = modeloCopiaPelicula1.getValueAt(fila, 3).toString();
+
+            txtNumCop1.setText(numCopia);
+            comboEstado1.setSelectedItem(estado);
+            comboSucursal1.setSelectedItem(sucursal);
+            comboPeliculas1.setSelectedItem(catalogo);
+        
+            btnEdiCop.setEnabled(true);
+            btnEliCop.setEnabled(true);
+            
+        }
     }
     
 }

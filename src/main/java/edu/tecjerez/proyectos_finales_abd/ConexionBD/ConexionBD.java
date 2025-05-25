@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class ConexionBD {
@@ -311,7 +313,31 @@ private ConexionBD() {
         }
 
     }
+      
+    public static boolean eliminarCopia(String filtro){
     
+         try {
+
+            Connection conexion = getConexion();
+            
+            String queryCopiaPeliculas = "DELETE FROM copiapelicula WHERE num_pelicula = ?";
+            
+            PreparedStatement pstmCopiaPeliculas = conexion.prepareStatement(queryCopiaPeliculas);
+        
+            pstmCopiaPeliculas.setString(1, filtro);
+            
+            pstmCopiaPeliculas.execute();
+            
+            return true;
+            
+        }catch (SQLException ex) {
+            
+            Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+         
+        return false;
+    }
 //Cambiar -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
     public static boolean cambioSucursal(Sucursal s){

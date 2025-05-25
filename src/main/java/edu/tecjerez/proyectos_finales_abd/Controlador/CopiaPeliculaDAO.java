@@ -20,6 +20,18 @@ public class CopiaPeliculaDAO {
     
     }
     
+    //ELIMINAR
+    public static boolean eliminarCopia(String filtro1) {
+
+        boolean res = false;
+
+        res = ConexionBD.eliminarCopia(filtro1);
+
+        return res;
+
+    }
+    
+    
     //------------------------------- Consultas --------------------------------------------------------------------------------------------------------------------------------------
     public static boolean numCopiaPeliculaIgual(String filtro){
     
