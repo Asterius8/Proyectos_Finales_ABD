@@ -13,8 +13,6 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
 
 public class VentanaPrincipal extends javax.swing.JFrame {
@@ -22,7 +20,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 //Atributos --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     String num_Suc, calle, ciudad, estado, cod_pos, tel, num_catalogo, titulo, categoria, actores, director, estadoCP, num_CopiaPelicula;
     float cos_alqui, cos_adqui;
-    DefaultTableModel modelo, modelo1, modeloPelicula, modeloPelicula1, modeloCopiaPelicula;
+    DefaultTableModel modelo, modelo1, modeloPelicula, modeloPelicula1, modeloCopiaPelicula, modeloCopiaPelicula1;
     private HistorialSucursales historialSucursales = new HistorialSucursales();
 
 //Constructor ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -37,15 +35,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         modeloPelicula = (DefaultTableModel)  tbl_pelicula.getModel();
         modeloPelicula1 = (DefaultTableModel) tbl_pelicula1.getModel();
         modeloCopiaPelicula = (DefaultTableModel)  tbl_copiapelicula.getModel();
+        modeloCopiaPelicula1 = (DefaultTableModel)  tbl_copiapelicula1.getModel();
         
         ocultarSucursal();
         ocultarPelicula();
+        desaparecerCopPel();
         
         this.mostrar();
         this.mostrar1();
         this.mostrarPeliculas();
         this.mostrarPeliculas1();
         this.mostrarCopiasPeliculas();
+        this.mostrarCopiasPeliculas1();
+        
         //Evento para detectar el cambio de pestañas dentro de la VentanaPrincipal
         tpnVideo.addChangeListener(e -> {
         
@@ -58,7 +60,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             try {
                 
                 cargarSucursales();
+                cargarSucursales1();
                 cargarPeliculas();
+                cargarPeliculas1();
                 validarDatosIniciales();
                 
             } catch (SQLException ex) {
@@ -162,6 +166,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btgPel = new javax.swing.ButtonGroup();
         btgPel1 = new javax.swing.ButtonGroup();
         btgCop = new javax.swing.ButtonGroup();
+        btgCop1 = new javax.swing.ButtonGroup();
         tpnVideo = new javax.swing.JTabbedPane();
         panSuc = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
@@ -268,7 +273,25 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panCop = new javax.swing.JPanel();
         jPanel19 = new javax.swing.JPanel();
         lblCop = new javax.swing.JLabel();
+        btnCanCop1 = new javax.swing.JButton();
         jTabbedPane5 = new javax.swing.JTabbedPane();
+        panBusCop = new javax.swing.JPanel();
+        jrbMosTodCop = new javax.swing.JRadioButton();
+        jrbNumCopCop = new javax.swing.JRadioButton();
+        jrbEstCop = new javax.swing.JRadioButton();
+        jrbNumSucCop = new javax.swing.JRadioButton();
+        jrbNumCatCop = new javax.swing.JRadioButton();
+        txtNumCop1 = new javax.swing.JTextField();
+        comboEstado1 = new javax.swing.JComboBox<>();
+        comboSucursal1 = new javax.swing.JComboBox<>();
+        comboPeliculas1 = new javax.swing.JComboBox<>();
+        btnEliCop = new javax.swing.JButton();
+        btnEdiCop = new javax.swing.JButton();
+        jSeparator9 = new javax.swing.JSeparator();
+        jScrollPane12 = new javax.swing.JScrollPane();
+        tbl_copiapelicula1 = new javax.swing.JTable();
+        jrbBusCop = new javax.swing.JRadioButton();
+        btnAceCP = new javax.swing.JButton();
         panAgrCop = new javax.swing.JPanel();
         lblInsCop = new javax.swing.JLabel();
         txtNumCop = new javax.swing.JTextField();
@@ -284,23 +307,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jSeparator8 = new javax.swing.JSeparator();
         jScrollPane11 = new javax.swing.JScrollPane();
         tbl_copiapelicula = new javax.swing.JTable();
-        panBusCop = new javax.swing.JPanel();
-        jrbMosTodCop = new javax.swing.JRadioButton();
-        jrbNumCopCop = new javax.swing.JRadioButton();
-        jrbEstCop = new javax.swing.JRadioButton();
-        jrbNumSucCop = new javax.swing.JRadioButton();
-        jrbNumCatCop = new javax.swing.JRadioButton();
-        txtNumCop1 = new javax.swing.JTextField();
-        comboEstado1 = new javax.swing.JComboBox<>();
-        comboSucursal1 = new javax.swing.JComboBox<>();
-        comboPeliculas1 = new javax.swing.JComboBox<>();
-        btnEliCop = new javax.swing.JButton();
-        btnEdiCop = new javax.swing.JButton();
-        btnBusCop = new javax.swing.JButton();
-        btnCanCop1 = new javax.swing.JButton();
-        jSeparator9 = new javax.swing.JSeparator();
-        jScrollPane12 = new javax.swing.JScrollPane();
-        tbl_copiapelicula1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -709,7 +715,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 .addComponent(btnAgrSuc)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnCanSuc)))
-                        .addGap(0, 543, Short.MAX_VALUE)))
+                        .addGap(0, 547, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panAgrSucLayout.setVerticalGroup(
@@ -988,14 +994,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator7)
-                    .addGroup(panBusPelLayout.createSequentialGroup()
-                        .addComponent(jScrollPane10)
-                        .addContainerGap())
-                    .addGroup(panBusPelLayout.createSequentialGroup()
-                        .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jrbMosFilPel)
-                            .addComponent(jrbMosTodPel))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panBusPelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1004,7 +1002,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 .addGap(483, 483, 483))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panBusPelLayout.createSequentialGroup()
                                 .addComponent(lblTituloPel, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(490, 490, 490))))))
+                                .addGap(490, 490, 490))))
+                    .addGroup(panBusPelLayout.createSequentialGroup()
+                        .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane10)
+                            .addGroup(panBusPelLayout.createSequentialGroup()
+                                .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jrbMosFilPel)
+                                    .addComponent(jrbMosTodPel))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())))
             .addGroup(panBusPelLayout.createSequentialGroup()
                 .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panBusPelLayout.createSequentialGroup()
@@ -1042,7 +1049,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addComponent(btnEdiPel)
                         .addGap(18, 18, 18)
                         .addComponent(btnAcePel)))
-                .addContainerGap(249, Short.MAX_VALUE))
+                .addContainerGap(251, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panBusPelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btnEliPel)
@@ -1283,6 +1290,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         lblCop.setFont(new java.awt.Font("Arial", 3, 36)); // NOI18N
         lblCop.setText("Copias de Peliculas");
 
+        btnCanCop1.setText("Cancelar");
+        btnCanCop1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCanCop1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
         jPanel19.setLayout(jPanel19Layout);
         jPanel19Layout.setHorizontalGroup(
@@ -1290,15 +1304,205 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel19Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(lblCop, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCanCop1)
+                .addContainerGap())
         );
         jPanel19Layout.setVerticalGroup(
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel19Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblCop)
+                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCop)
+                    .addComponent(btnCanCop1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        btgCop1.add(jrbMosTodCop);
+        jrbMosTodCop.setSelected(true);
+        jrbMosTodCop.setText("Mostar Todo");
+        jrbMosTodCop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbMosTodCopActionPerformed(evt);
+            }
+        });
+
+        btgCop.add(jrbNumCopCop);
+        jrbNumCopCop.setText("Numero de Copia");
+        jrbNumCopCop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbNumCopCopActionPerformed(evt);
+            }
+        });
+
+        btgCop.add(jrbEstCop);
+        jrbEstCop.setText("Estado");
+        jrbEstCop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbEstCopActionPerformed(evt);
+            }
+        });
+
+        btgCop.add(jrbNumSucCop);
+        jrbNumSucCop.setText("Numero de Sucursal");
+        jrbNumSucCop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbNumSucCopActionPerformed(evt);
+            }
+        });
+
+        btgCop.add(jrbNumCatCop);
+        jrbNumCatCop.setText("Numero de Catalogo");
+        jrbNumCatCop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbNumCatCopActionPerformed(evt);
+            }
+        });
+
+        txtNumCop1.setEnabled(false);
+        txtNumCop1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNumCop1KeyReleased(evt);
+            }
+        });
+
+        comboEstado1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elija una opcion", "Disponible", "Rentada", "Dañada" }));
+        comboEstado1.setEnabled(false);
+        comboEstado1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboEstado1ActionPerformed(evt);
+            }
+        });
+
+        comboSucursal1.setEnabled(false);
+        comboSucursal1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboSucursal1ActionPerformed(evt);
+            }
+        });
+
+        comboPeliculas1.setEnabled(false);
+        comboPeliculas1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboPeliculas1ActionPerformed(evt);
+            }
+        });
+
+        btnEliCop.setText("Eliminar");
+        btnEliCop.setEnabled(false);
+
+        btnEdiCop.setText("Editar");
+        btnEdiCop.setEnabled(false);
+
+        tbl_copiapelicula1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Numero de Copia", "Estado de la Pelicula", "Numero de Sucursal", "Numero de Catalogo"
+            }
+        ));
+        jScrollPane12.setViewportView(tbl_copiapelicula1);
+
+        btgCop1.add(jrbBusCop);
+        jrbBusCop.setText("Buscar");
+        jrbBusCop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbBusCopActionPerformed(evt);
+            }
+        });
+
+        btnAceCP.setText("Aceptar");
+
+        javax.swing.GroupLayout panBusCopLayout = new javax.swing.GroupLayout(panBusCop);
+        panBusCop.setLayout(panBusCopLayout);
+        panBusCopLayout.setHorizontalGroup(
+            panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panBusCopLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panBusCopLayout.createSequentialGroup()
+                        .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator9)
+                            .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 1163, Short.MAX_VALUE)
+                            .addGroup(panBusCopLayout.createSequentialGroup()
+                                .addGap(44, 44, 44)
+                                .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panBusCopLayout.createSequentialGroup()
+                                        .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jrbNumCopCop)
+                                            .addComponent(jrbEstCop))
+                                        .addGap(36, 36, 36)
+                                        .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(comboEstado1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtNumCop1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(panBusCopLayout.createSequentialGroup()
+                                        .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jrbNumCatCop)
+                                            .addComponent(jrbNumSucCop))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(comboSucursal1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(comboPeliculas1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panBusCopLayout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jrbMosTodCop)
+                            .addComponent(jrbBusCop, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(panBusCopLayout.createSequentialGroup()
+                .addGap(542, 542, 542)
+                .addComponent(btnEliCop)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panBusCopLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAceCP)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnEdiCop)
+                .addGap(503, 503, 503))
+        );
+        panBusCopLayout.setVerticalGroup(
+            panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panBusCopLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jrbMosTodCop)
+                .addGap(18, 18, 18)
+                .addComponent(jrbBusCop)
+                .addGap(18, 18, 18)
+                .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jrbNumCopCop)
+                    .addComponent(txtNumCop1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jrbEstCop)
+                    .addComponent(comboEstado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jrbNumSucCop)
+                    .addComponent(comboSucursal1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jrbNumCatCop)
+                    .addComponent(comboPeliculas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEdiCop)
+                    .addComponent(btnAceCP))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnEliCop)
+                .addGap(15, 15, 15))
+        );
+
+        jTabbedPane5.addTab("Buscar", panBusCop);
 
         lblInsCop.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblInsCop.setText("Ingrese la informacion de los siguientes campos");
@@ -1411,124 +1615,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         );
 
         jTabbedPane5.addTab("Agregar", panAgrCop);
-
-        btgCop.add(jrbMosTodCop);
-        jrbMosTodCop.setText("Mostar Todo");
-
-        btgCop.add(jrbNumCopCop);
-        jrbNumCopCop.setText("Numero de Copia");
-
-        btgCop.add(jrbEstCop);
-        jrbEstCop.setText("Estado");
-
-        btgCop.add(jrbNumSucCop);
-        jrbNumSucCop.setText("Numero de Sucursal");
-
-        btgCop.add(jrbNumCatCop);
-        jrbNumCatCop.setText("Numero de Catalogo");
-
-        comboEstado1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elija una opcion", "Disponible", "Rentada", "Dañada" }));
-
-        btnEliCop.setText("Eliminar");
-
-        btnEdiCop.setText("Editar");
-
-        btnBusCop.setText("Buscar");
-
-        btnCanCop1.setText("Cancelar");
-        btnCanCop1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCanCop1ActionPerformed(evt);
-            }
-        });
-
-        tbl_copiapelicula1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Numero de Copia", "Estado de la Pelicula", "Numero de Sucursal", "Numero de Catalogo"
-            }
-        ));
-        jScrollPane12.setViewportView(tbl_copiapelicula1);
-
-        javax.swing.GroupLayout panBusCopLayout = new javax.swing.GroupLayout(panBusCop);
-        panBusCop.setLayout(panBusCopLayout);
-        panBusCopLayout.setHorizontalGroup(
-            panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panBusCopLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator9)
-                    .addGroup(panBusCopLayout.createSequentialGroup()
-                        .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jrbMosTodCop)
-                            .addGroup(panBusCopLayout.createSequentialGroup()
-                                .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jrbNumCopCop)
-                                    .addComponent(jrbEstCop))
-                                .addGap(36, 36, 36)
-                                .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(comboEstado1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtNumCop1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(panBusCopLayout.createSequentialGroup()
-                                .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jrbNumCatCop)
-                                    .addComponent(jrbNumSucCop))
-                                .addGap(18, 18, 18)
-                                .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(comboSucursal1, 0, 150, Short.MAX_VALUE)
-                                    .addComponent(comboPeliculas1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(panBusCopLayout.createSequentialGroup()
-                                .addComponent(btnEliCop)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnEdiCop)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnBusCop)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnCanCop1)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 1153, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        panBusCopLayout.setVerticalGroup(
-            panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panBusCopLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jrbMosTodCop)
-                .addGap(18, 18, 18)
-                .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jrbNumCopCop)
-                    .addComponent(txtNumCop1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jrbEstCop)
-                    .addComponent(comboEstado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jrbNumSucCop)
-                    .addComponent(comboSucursal1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jrbNumCatCop)
-                    .addComponent(comboPeliculas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEliCop)
-                    .addComponent(btnEdiCop)
-                    .addComponent(btnBusCop)
-                    .addComponent(btnCanCop1))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(108, Short.MAX_VALUE))
-        );
-
-        jTabbedPane5.addTab("Buscar", panBusCop);
 
         javax.swing.GroupLayout panCopLayout = new javax.swing.GroupLayout(panCop);
         panCop.setLayout(panCopLayout);
@@ -2490,6 +2576,148 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         }
     }//GEN-LAST:event_btnAcePelActionPerformed
+
+    private void jrbMosTodCopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbMosTodCopActionPerformed
+        try {
+            
+            mostrarCopiasPeliculas1();
+            
+        } catch (SQLException ex) {
+            
+            Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        desaparecerCopPel();
+        
+    }//GEN-LAST:event_jrbMosTodCopActionPerformed
+
+    private void jrbBusCopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbBusCopActionPerformed
+
+        jrbNumCopCop.setVisible(true);
+        jrbEstCop.setVisible(true);
+        jrbNumSucCop.setVisible(true);
+        jrbNumCatCop.setVisible(true);
+        
+        txtNumCop1.setVisible(true);
+        comboEstado1.setVisible(true);
+        comboSucursal1.setVisible(true);
+        comboPeliculas1.setVisible(true);
+    
+    }//GEN-LAST:event_jrbBusCopActionPerformed
+
+    private void jrbNumCopCopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbNumCopCopActionPerformed
+        
+        txtNumCop1.setEnabled(true);
+        comboEstado1.setEnabled(false);
+        comboSucursal1.setEnabled(false);
+        comboPeliculas1.setEnabled(false);
+        
+        vaciarCajasCop();
+        
+    }//GEN-LAST:event_jrbNumCopCopActionPerformed
+
+    private void jrbEstCopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbEstCopActionPerformed
+
+        txtNumCop1.setEnabled(false);
+        comboEstado1.setEnabled(true);
+        comboSucursal1.setEnabled(false);
+        comboPeliculas1.setEnabled(false);
+        
+        vaciarCajasCop();
+
+    }//GEN-LAST:event_jrbEstCopActionPerformed
+
+    private void jrbNumSucCopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbNumSucCopActionPerformed
+        
+        txtNumCop1.setEnabled(false);
+        comboEstado1.setEnabled(false);
+        comboSucursal1.setEnabled(true);
+        comboPeliculas1.setEnabled(false);
+        
+        vaciarCajasCop();
+
+    }//GEN-LAST:event_jrbNumSucCopActionPerformed
+
+    private void jrbNumCatCopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbNumCatCopActionPerformed
+
+        txtNumCop1.setEnabled(false);
+        comboEstado1.setEnabled(false);
+        comboSucursal1.setEnabled(false);
+        comboPeliculas1.setEnabled(true);
+        
+        vaciarCajasCop();
+
+    }//GEN-LAST:event_jrbNumCatCopActionPerformed
+
+    private void txtNumCop1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumCop1KeyReleased
+
+        try {
+        
+            ResultSet rs = CopiaPeliculaDAO.numCop1( txtNumCop1.getText() );
+            mostrarCopFiltrados(rs);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_txtNumCop1KeyReleased
+
+    private void comboEstado1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEstado1ActionPerformed
+        
+        String seleccion = comboEstado1.getSelectedItem().toString();
+        
+        if(!(seleccion.equals("Elija una opcion"))){
+            
+            try {
+                ResultSet rs = CopiaPeliculaDAO.comboEstado1( seleccion );
+                mostrarCopFiltrados(rs);
+            } catch (SQLException ex) {
+                Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+        
+    }//GEN-LAST:event_comboEstado1ActionPerformed
+
+    private void comboSucursal1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboSucursal1ActionPerformed
+        String seleccion = comboSucursal1.getSelectedItem().toString();
+        
+        if(!(seleccion.equals("Elija una opcion"))){
+            
+            try {
+                
+                ResultSet rs = CopiaPeliculaDAO.comboSucursal( seleccion );
+                mostrarCopFiltrados(rs);
+                
+            } catch (SQLException ex) {
+                
+                Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                
+            }
+            
+        }
+    }//GEN-LAST:event_comboSucursal1ActionPerformed
+
+    private void comboPeliculas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboPeliculas1ActionPerformed
+
+        String seleccion = comboPeliculas1.getSelectedItem().toString();
+        
+        if(!(seleccion.equals("Elija una opcion"))){
+            
+            try {
+                
+                ResultSet rs = CopiaPeliculaDAO.comboPelicula( seleccion );
+                mostrarCopFiltrados(rs);
+                
+            } catch (SQLException ex) {
+                
+                Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                
+            }
+            
+        }
+
+    }//GEN-LAST:event_comboPeliculas1ActionPerformed
     
     
     
@@ -2535,15 +2763,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup btgCop;
+    private javax.swing.ButtonGroup btgCop1;
     private javax.swing.ButtonGroup btgPel;
     private javax.swing.ButtonGroup btgPel1;
     private javax.swing.ButtonGroup btgSuc;
     private javax.swing.ButtonGroup btgSuc1;
+    private javax.swing.JButton btnAceCP;
     private javax.swing.JButton btnAcePel;
     private javax.swing.JButton btnAgrCop;
     private javax.swing.JButton btnAgrPel;
     private javax.swing.JButton btnAgrSuc;
-    private javax.swing.JButton btnBusCop;
     private javax.swing.JButton btnCanCop;
     private javax.swing.JButton btnCanCop1;
     private javax.swing.JButton btnCanPel;
@@ -2585,6 +2814,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTabbedPane jTabbedPane5;
     private javax.swing.JRadioButton jrbActPel;
+    private javax.swing.JRadioButton jrbBusCop;
     private javax.swing.JRadioButton jrbCalleSuc;
     private javax.swing.JRadioButton jrbCatPel;
     private javax.swing.JRadioButton jrbCiudadSuc;
@@ -2728,6 +2958,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panBusPel.repaint();
     }
     
+    public void vaciarCajasCop(){
+    
+        txtNumCop1.setText("");
+        comboEstado1.setSelectedIndex(0);
+        comboSucursal1.setSelectedIndex(0);
+        comboPeliculas1.setSelectedIndex(0);
+    
+    }
+    
     public void restaurarJRBSuc(){
         
         jrbMosTodSuc.setSelected(true);
@@ -2790,6 +3029,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jrbCosAdqPel.setVisible(false);
         jrbActPel.setVisible(false);
         jrbDirPel.setVisible(false);
+    
+    }
+    
+    public void desaparecerCopPel(){
+    
+        btnAceCP.setVisible(false);
+        jrbNumCopCop.setVisible(false);
+        jrbEstCop.setVisible(false);
+        jrbNumSucCop.setVisible(false);
+        jrbNumCatCop.setVisible(false);
+        
+        txtNumCop1.setVisible(false);
+        comboEstado1.setVisible(false);
+        comboSucursal1.setVisible(false);
+        comboPeliculas1.setVisible(false);
     
     }
     
@@ -2959,6 +3213,28 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
     }
     
+    public void mostrarCopiasPeliculas1() throws SQLException{
+    
+        ResultSet rs = CopiaPeliculaDAO.buscar();
+        
+        String datos[] = new String[4];
+        
+        //vaciar filas anteriores
+        modeloCopiaPelicula1.setRowCount(0);
+        
+        while (rs.next()) {
+            
+            datos[0] = rs.getString(1);
+            datos[1] = rs.getString(2);
+            datos[2] = rs.getString(3);
+            datos[3] = rs.getString(4);
+            
+            modeloCopiaPelicula1.addRow(datos);
+
+        }
+        
+    }
+    
     //Metodos para comprobar la existencia de num sucursal y num catalogo
     private void cargarSucursales() throws SQLException{
 
@@ -2974,6 +3250,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
     }
     
+    private void cargarSucursales1() throws SQLException{
+
+        comboSucursal1.removeAllItems();
+
+        ResultSet rs = CopiaPeliculaDAO.buscarNumSucursal();
+        comboSucursal1.addItem("Elija una opcion");
+        while (rs.next()) {
+            
+            comboSucursal1.addItem(rs.getString("num_sucursal"));
+            
+        }
+        
+    }
+    
     private void cargarPeliculas() throws SQLException{
 
         comboPeliculas.removeAllItems();
@@ -2983,6 +3273,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         while (rs.next()) {
             
             comboPeliculas.addItem(rs.getString("num_catalogo"));
+            
+        }
+    
+    }
+    
+    private void cargarPeliculas1() throws SQLException{
+
+        comboPeliculas1.removeAllItems();
+
+        ResultSet rs = CopiaPeliculaDAO.buscarNumCatalogo();
+        comboPeliculas1.addItem("Elija una opcion");
+        while (rs.next()) {
+            
+            comboPeliculas1.addItem(rs.getString("num_catalogo"));
             
         }
     
@@ -3041,6 +3345,25 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             datos[5] = rs.getString(6);
             datos[6] = rs.getString(7);
             modeloPelicula1.addRow(datos);
+            
+        }
+          
+    }
+        
+    public void mostrarCopFiltrados(ResultSet rs) throws SQLException {
+
+        String datos[] = new String[4];
+
+        //vaciar filas anteriores
+        modeloCopiaPelicula1.setRowCount(0);
+
+        while (rs.next()) {
+            
+            datos[0] = rs.getString(1);
+            datos[1] = rs.getString(2);
+            datos[2] = rs.getString(3);
+            datos[3] = rs.getString(4);
+            modeloCopiaPelicula1.addRow(datos);
             
         }
           

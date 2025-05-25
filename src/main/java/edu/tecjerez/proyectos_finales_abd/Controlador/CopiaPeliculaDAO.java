@@ -47,6 +47,39 @@ public class CopiaPeliculaDAO {
         return false;
     }
     
+    //------------------------------- Consultas Filtradas --------------------------------------------------------------------------------------------------------------------------------------
+    public static ResultSet numCop1(String patron){
+    
+        String sql = "SELECT * FROM copiapelicula WHERE num_pelicula like '%" + patron + "%'";
+        ResultSet rs = ConexionBD.BuscarUsuario(sql);
+        return rs;
+        
+    }
+    
+    public static ResultSet comboEstado1(String patron){
+    
+        String sql = "SELECT * FROM copiapelicula WHERE estado like '%" + patron + "%'";
+        ResultSet rs = ConexionBD.BuscarUsuario(sql);
+        return rs;
+        
+    }
+    
+    public static ResultSet comboSucursal(String patron){
+    
+        String sql = "SELECT * FROM copiapelicula WHERE sucursal_num_sucursal like '%" + patron + "%'";
+        ResultSet rs = ConexionBD.BuscarUsuario(sql);
+        return rs;
+        
+    }
+    
+    public static ResultSet comboPelicula(String patron){
+    
+        String sql = "SELECT * FROM copiapelicula WHERE pelicula_num_catalogo like '%" + patron + "%'";
+        ResultSet rs = ConexionBD.BuscarUsuario(sql);
+        return rs;
+        
+    }
+    
     public static ResultSet buscarNumSucursal() {
 
         return ConexionBD.buscarNumSucursal();
