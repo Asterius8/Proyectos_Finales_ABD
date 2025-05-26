@@ -166,6 +166,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     cargarSucursales();
                     cargarPeliculas();
                     validarDatosIniciales();
+                    mostrarCopiasPeliculas();
                 
                 } catch (SQLException ex) {
                 
@@ -179,7 +180,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     cargarSucursales1();
                     cargarPeliculas1();
                     validarDatosIniciales1();
-                
+                    mostrarCopiasPeliculas1();
+                    
                 } catch (SQLException ex) {
                 
                     Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
@@ -323,6 +325,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         tbl_copiapelicula1 = new javax.swing.JTable();
         jrbBusCop = new javax.swing.JRadioButton();
         btnAceCP = new javax.swing.JButton();
+        lblResultadoPel1 = new javax.swing.JLabel();
+        lblTituloPel1 = new javax.swing.JLabel();
         panAgrCop = new javax.swing.JPanel();
         lblInsCop = new javax.swing.JLabel();
         txtNumCop = new javax.swing.JTextField();
@@ -334,7 +338,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         lblSucursal = new javax.swing.JLabel();
         lblNumCat = new javax.swing.JLabel();
         btnAgrCop = new javax.swing.JButton();
-        btnCanCop = new javax.swing.JButton();
         jSeparator8 = new javax.swing.JSeparator();
         jScrollPane11 = new javax.swing.JScrollPane();
         tbl_copiapelicula = new javax.swing.JTable();
@@ -580,11 +583,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 .addGap(13, 13, 13)
                                 .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jrbMosTodSuc)
-                                    .addComponent(jrbMosFilSuc)
-                                    .addGroup(panBusSucLayout.createSequentialGroup()
-                                        .addComponent(btnEdiSuc)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnConfSuc))))
+                                    .addComponent(jrbMosFilSuc)))
                             .addGroup(panBusSucLayout.createSequentialGroup()
                                 .addGap(38, 38, 38)
                                 .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -614,12 +613,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                             .addGroup(panBusSucLayout.createSequentialGroup()
                                 .addGap(487, 487, 487)
                                 .addComponent(lblTituloSuc, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 440, Short.MAX_VALUE))
+                    .addGroup(panBusSucLayout.createSequentialGroup()
+                        .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panBusSucLayout.createSequentialGroup()
+                                .addGap(461, 461, 461)
+                                .addComponent(lblResultadoSuc))
+                            .addGroup(panBusSucLayout.createSequentialGroup()
+                                .addGap(497, 497, 497)
+                                .addComponent(btnEdiSuc)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnConfSuc)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(panBusSucLayout.createSequentialGroup()
-                .addGap(461, 461, 461)
-                .addComponent(lblResultadoSuc)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panBusSucLayout.setVerticalGroup(
             panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1052,7 +1058,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         lblTituloPel.setText("Buscar");
 
         btgPel1.add(jrbMosFilPel);
-        jrbMosFilPel.setText("Mostrar Filtros");
+        jrbMosFilPel.setText("Buscar");
         jrbMosFilPel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jrbMosFilPelActionPerformed(evt);
@@ -1390,7 +1396,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         lblCop.setFont(new java.awt.Font("Arial", 3, 36)); // NOI18N
         lblCop.setText("Copias de Peliculas");
 
-        btnCanCop1.setText("Cancelar");
+        btnCanCop1.setText("Cerrar Sesion");
         btnCanCop1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCanCop1ActionPerformed(evt);
@@ -1402,9 +1408,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel19Layout.setHorizontalGroup(
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel19Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblCop, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(269, 269, 269)
                 .addComponent(btnCanCop1)
                 .addContainerGap())
         );
@@ -1412,14 +1418,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel19Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCop)
-                    .addComponent(btnCanCop1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(btnCanCop1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
+                .addGap(0, 12, Short.MAX_VALUE)
+                .addComponent(lblCop))
         );
 
         btgCop1.add(jrbMosTodCop);
-        jrbMosTodCop.setSelected(true);
         jrbMosTodCop.setText("Mostar Todo");
         jrbMosTodCop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1463,6 +1469,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         txtNumCop1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtNumCop1KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumCop1KeyTyped(evt);
             }
         });
 
@@ -1545,6 +1554,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        lblResultadoPel1.setFont(new java.awt.Font("Arial", 3, 36)); // NOI18N
+        lblResultadoPel1.setText("Resultados");
+
+        lblTituloPel1.setFont(new java.awt.Font("Arial", 3, 36)); // NOI18N
+        lblTituloPel1.setText("Buscar");
+
         javax.swing.GroupLayout panBusCopLayout = new javax.swing.GroupLayout(panBusCop);
         panBusCop.setLayout(panBusCopLayout);
         panBusCopLayout.setHorizontalGroup(
@@ -1553,50 +1568,64 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panBusCopLayout.createSequentialGroup()
-                        .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator9)
-                            .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 1157, Short.MAX_VALUE)
-                            .addGroup(panBusCopLayout.createSequentialGroup()
-                                .addGap(44, 44, 44)
-                                .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(panBusCopLayout.createSequentialGroup()
-                                        .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jrbNumCopCop)
-                                            .addComponent(jrbEstCop))
-                                        .addGap(36, 36, 36)
-                                        .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(comboEstado1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtNumCop1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(panBusCopLayout.createSequentialGroup()
-                                        .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jrbNumCatCop)
-                                            .addComponent(jrbNumSucCop))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(comboSucursal1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(comboPeliculas1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addComponent(jSeparator9)
                         .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panBusCopLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jrbMosTodCop)
-                            .addComponent(jrbBusCop, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(panBusCopLayout.createSequentialGroup()
-                .addGap(542, 542, 542)
-                .addComponent(btnEliCop)
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(panBusCopLayout.createSequentialGroup()
+                        .addGap(537, 537, 537)
+                        .addComponent(lblTituloPel1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(463, 463, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panBusCopLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAceCP)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnEdiCop)
-                .addGap(503, 503, 503))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblResultadoPel1)
+                .addGap(488, 488, 488))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panBusCopLayout.createSequentialGroup()
+                .addComponent(jScrollPane12)
+                .addContainerGap())
+            .addGroup(panBusCopLayout.createSequentialGroup()
+                .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panBusCopLayout.createSequentialGroup()
+                        .addGap(550, 550, 550)
+                        .addComponent(btnEliCop))
+                    .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panBusCopLayout.createSequentialGroup()
+                            .addGap(51, 51, 51)
+                            .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(panBusCopLayout.createSequentialGroup()
+                                    .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jrbNumCopCop)
+                                        .addComponent(jrbEstCop))
+                                    .addGap(36, 36, 36)
+                                    .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(comboEstado1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtNumCop1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(panBusCopLayout.createSequentialGroup()
+                                    .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jrbNumCatCop)
+                                        .addComponent(jrbNumSucCop))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(comboSucursal1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(comboPeliculas1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGroup(panBusCopLayout.createSequentialGroup()
+                            .addGap(22, 22, 22)
+                            .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(panBusCopLayout.createSequentialGroup()
+                                    .addComponent(jrbMosTodCop)
+                                    .addGap(559, 559, 559))
+                                .addComponent(jrbBusCop, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panBusCopLayout.createSequentialGroup()
+                            .addGap(521, 521, 521)
+                            .addComponent(btnEdiCop)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnAceCP))))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         panBusCopLayout.setVerticalGroup(
             panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panBusCopLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(1, 1, 1)
+                .addComponent(lblTituloPel1)
+                .addGap(27, 27, 27)
                 .addComponent(jrbMosTodCop)
                 .addGap(18, 18, 18)
                 .addComponent(jrbBusCop)
@@ -1616,17 +1645,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jrbNumCatCop)
                     .addComponent(comboPeliculas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEdiCop)
                     .addComponent(btnAceCP))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblResultadoPel1)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnEliCop)
-                .addGap(15, 15, 15))
+                .addGap(20, 20, 20))
         );
 
         tpnCopias.addTab("Buscar", panBusCop);
@@ -1654,13 +1685,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnAgrCop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgrCopActionPerformed(evt);
-            }
-        });
-
-        btnCanCop.setText("Cancelar");
-        btnCanCop.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCanCopActionPerformed(evt);
             }
         });
 
@@ -1709,11 +1733,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                     .addComponent(comboSucursal, 0, 150, Short.MAX_VALUE)
                                     .addComponent(comboPeliculas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(panAgrCopLayout.createSequentialGroup()
-                                .addComponent(btnAgrCop)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnCanCop)))
+                                .addGap(11, 11, 11)
+                                .addComponent(btnAgrCop)))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 1153, Short.MAX_VALUE))
+                    .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 1161, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panAgrCopLayout.setVerticalGroup(
@@ -1739,14 +1762,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addComponent(lblNumCat)
                     .addComponent(comboPeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(panAgrCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAgrCop)
-                    .addComponent(btnCanCop))
+                .addComponent(btnAgrCop)
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
 
         tpnCopias.addTab("Agregar", panAgrCop);
@@ -1793,12 +1814,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         cancelar();
         
     }//GEN-LAST:event_btnCanPel1ActionPerformed
-
-    private void btnCanCopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCanCopActionPerformed
-
-        cancelar();
-
-    }//GEN-LAST:event_btnCanCopActionPerformed
 
     private void btnCanCop1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCanCop1ActionPerformed
 
@@ -2024,13 +2039,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 //Boton Para Agregar Copia Pelicula --------------------------------------------------------------------------------------------------------------------------------------------------------
     private void btnAgrCopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgrCopActionPerformed
         
-        num_CopiaPelicula = txtNumCop.getText();
-        estadoCP = String.valueOf(comboEstado.getSelectedItem());
-        num_Suc = String.valueOf(comboSucursal.getSelectedItem());
-        num_catalogo = String.valueOf(comboPeliculas.getSelectedItem());
+            num_CopiaPelicula = txtNumCop.getText();
+            estadoCP = String.valueOf(comboEstado.getSelectedItem());
+            num_Suc = String.valueOf(comboSucursal.getSelectedItem());
+            num_catalogo = String.valueOf(comboPeliculas.getSelectedItem());
         
         if( !(num_CopiaPelicula.equals("") || comboEstado.getSelectedIndex() == 0 || comboSucursal.getSelectedIndex() == 0 || comboPeliculas.getSelectedIndex() == 0 ) ){
         
+
+            
             if(CopiaPeliculaDAO.numCopiaPeliculaIgual(num_CopiaPelicula)){
             
                 JOptionPane.showMessageDialog(this, "El numero de copia ya existe.");
@@ -2041,7 +2058,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     
                 CopiaPeliculaDAO.agregarCopiaPelicula(new CopiaPelicula(num_CopiaPelicula, estadoCP, num_Suc, num_catalogo));
                 
-                JOptionPane.showMessageDialog(this, "Pelicula agregada correctamente");
+                JOptionPane.showMessageDialog(this, "Copia de Pelicula agregada correctamente");
+                
+                vaciarCajasCop1();
                 
                 this.mostrarCopiasPeliculas();
                 
@@ -2934,6 +2953,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void tbl_copiapelicula1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_copiapelicula1MouseClicked
         
+        reaparecerComCop();
+        
         cargarDatosDesdeTabla();
         
     }//GEN-LAST:event_tbl_copiapelicula1MouseClicked
@@ -2951,11 +2972,24 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
             CopiaPeliculaDAO.eliminarCopia(txtNumCop1.getText());
             
-            JOptionPane.showMessageDialog(null, "Pelicula eliminada correctamente");
+            JOptionPane.showMessageDialog(null, "Copia de Pelicula eliminada correctamente");
+            
             try {
+                
+                jrbMosTodCop.setSelected(true);
+                
+                vaciarCajasCop();
+                
+                btgCop.clearSelection();
+                
+                desaparecerCopPel();
+                
                 mostrarCopiasPeliculas1();
+                
             } catch (SQLException ex) {
+                
                 Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                
             }
         }
         
@@ -2963,12 +2997,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void btnEdiCopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEdiCopActionPerformed
 
-        //txtNumCop1.setEnabled(true);
+        
         comboEstado1.setEnabled(true);
         comboSucursal1.setEnabled(true);
         comboPeliculas1.setEnabled(true);
         
         btnAceCP.setVisible(true);
+        
+        tbl_copiapelicula1.setVisible(false);
         
         
     }//GEN-LAST:event_btnEdiCopActionPerformed
@@ -2985,7 +3021,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             if(CopiaPeliculaDAO.cambiosCop(new CopiaPelicula(num_CopiaPelicula, estadoP, numSucCop, numPelCop))){
             
                 try {
+                    
                 JOptionPane.showMessageDialog(this, "Copia de pelicula modifica exitosamente");
+                
+                tbl_copiapelicula1.setVisible(true);
+                
+                jrbMosTodCop.setSelected(true);
+                
+                btgCop.clearSelection();
+                
+                vaciarCajasCop();
+                
+                desaparecerCopPel();
+                
+               deshabilitarComCop();
+                
                 mostrarCopiasPeliculas1();
                 
                 }catch (SQLException ex) {
@@ -2995,6 +3045,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 }
             
             }    
+            
+        }else{
+        
+            JOptionPane.showMessageDialog(this, "Debe llenar los campos de forma correcta");
             
         }    
     }//GEN-LAST:event_btnAceCPActionPerformed
@@ -3249,6 +3303,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtCosAdqPel1KeyTyped
 
+    private void txtNumCop1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumCop1KeyTyped
+         
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c)) {
+
+            evt.consume();
+        }
+        
+    }//GEN-LAST:event_txtNumCop1KeyTyped
+
     
     /**
      * @param args the command line arguments
@@ -3301,7 +3366,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnAgrCop;
     private javax.swing.JButton btnAgrPel;
     private javax.swing.JButton btnAgrSuc;
-    private javax.swing.JButton btnCanCop;
     private javax.swing.JButton btnCanCop1;
     private javax.swing.JButton btnCanPel1;
     private javax.swing.JButton btnCanSuc1;
@@ -3379,12 +3443,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblNumSuc;
     private javax.swing.JLabel lblPel;
     private javax.swing.JLabel lblResultadoPel;
+    private javax.swing.JLabel lblResultadoPel1;
     private javax.swing.JLabel lblResultadoSuc;
     private javax.swing.JLabel lblSuc;
     private javax.swing.JLabel lblSucursal;
     private javax.swing.JLabel lblTelSuc;
     private javax.swing.JLabel lblTitPel;
     private javax.swing.JLabel lblTituloPel;
+    private javax.swing.JLabel lblTituloPel1;
     private javax.swing.JLabel lblTituloSuc;
     private javax.swing.JPanel panAgrCop;
     private javax.swing.JPanel panAgrPel;
@@ -3501,13 +3567,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panBusPel.repaint();
     }
     
-    //Limpiar Cajas de texto de buscar pelicula
+    //Limpiar Cajas de texto de buscar copiapelicula
     public void vaciarCajasCop(){
     
         txtNumCop1.setText("");
         comboEstado1.setSelectedIndex(0);
         comboSucursal1.setSelectedIndex(0);
         comboPeliculas1.setSelectedIndex(0);
+    
+    }
+    
+    public void vaciarCajasCop1(){
+    
+        txtNumCop.setText("");
+        comboEstado.setSelectedIndex(0);
+        comboSucursal.setSelectedIndex(0);
+        comboPeliculas.setSelectedIndex(0);
     
     }
     
@@ -3657,6 +3732,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         panBusPel.revalidate();
         panBusPel.repaint();
+    
+    }
+    
+    //Mostrar componentes de buscar Copia Pelicula
+    public void reaparecerComCop(){
+    
+        jrbNumCopCop.setVisible(true);
+        jrbEstCop.setVisible(true);
+        jrbNumSucCop.setVisible(true);
+        jrbNumCatCop.setVisible(true);
+        
+        txtNumCop1.setVisible(true);
+        comboEstado1.setVisible(true);
+        comboSucursal1.setVisible(true);
+        comboPeliculas1.setVisible(true);
+    
     }
     
     public void deshabilitarComponPel(){
@@ -3673,6 +3764,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnEdiPel.setEnabled(false);
         btnEliPel.setEnabled(false);
         
+    }
+    
+    public void deshabilitarComCop(){
+    
+        comboEstado1.setEnabled(false);
+        comboSucursal1.setEnabled(false);
+        comboPeliculas1.setEnabled(false);
+    
     }
     
     public void mostrar() throws SQLException {
