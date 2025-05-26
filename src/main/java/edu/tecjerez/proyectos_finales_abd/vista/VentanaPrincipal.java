@@ -60,11 +60,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             
             try {
                 
-                cargarSucursales();
                 cargarSucursales1();
-                cargarPeliculas();
                 cargarPeliculas1();
-                validarDatosIniciales();
+                validarDatosIniciales1();
                 
             } catch (SQLException ex) {
                 
@@ -156,6 +154,41 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         });
         
+        tpnCopias.addChangeListener(e -> {
+
+            int index = tpnCopias.getSelectedIndex();
+            String titulo = tpnCopias.getTitleAt(index);
+
+            if ("Agregar".equals(titulo)) {
+            
+                try {
+                
+                    cargarSucursales();
+                    cargarPeliculas();
+                    validarDatosIniciales();
+                
+                } catch (SQLException ex) {
+                
+                    Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                
+                }
+            }else if("Buscar".equals(titulo)){
+            
+                    try {
+                
+                    cargarSucursales1();
+                    cargarPeliculas1();
+                    validarDatosIniciales1();
+                
+                } catch (SQLException ex) {
+                
+                    Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                
+                }
+            
+            }
+        });
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -240,7 +273,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         txaActPel1 = new javax.swing.JTextArea();
         btnEliPel = new javax.swing.JButton();
         btnEdiPel = new javax.swing.JButton();
-        btnDesPel = new javax.swing.JButton();
         jSeparator7 = new javax.swing.JSeparator();
         jScrollPane10 = new javax.swing.JScrollPane();
         tbl_pelicula1 = new javax.swing.JTable();
@@ -266,7 +298,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jScrollPane7 = new javax.swing.JScrollPane();
         txaActPel = new javax.swing.JTextArea();
         btnAgrPel = new javax.swing.JButton();
-        btnCanPel = new javax.swing.JButton();
         jSeparator6 = new javax.swing.JSeparator();
         jScrollPane8 = new javax.swing.JScrollPane();
         tbl_pelicula = new javax.swing.JTable();
@@ -274,7 +305,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel19 = new javax.swing.JPanel();
         lblCop = new javax.swing.JLabel();
         btnCanCop1 = new javax.swing.JButton();
-        jTabbedPane5 = new javax.swing.JTabbedPane();
+        tpnCopias = new javax.swing.JTabbedPane();
         panBusCop = new javax.swing.JPanel();
         jrbMosTodCop = new javax.swing.JRadioButton();
         jrbNumCopCop = new javax.swing.JRadioButton();
@@ -488,7 +519,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             new String [] {
                 "Numero de Sucursal", "Calle", "Ciudad", "Estado", "Codigo Postal", "Telefono"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tbl_sucursal1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbl_sucursal1MouseClicked(evt);
@@ -742,7 +781,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                     .addComponent(txtEstSuc)
                                     .addComponent(txtCodSuc)
                                     .addComponent(txtTelSuc, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 547, Short.MAX_VALUE)))
+                        .addGap(0, 551, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panAgrSucLayout.setVerticalGroup(
@@ -899,12 +938,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtCosAdqPel1KeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCosAdqPel1KeyTyped(evt);
+            }
         });
 
         txtCosAlqPel1.setEnabled(false);
         txtCosAlqPel1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtCosAlqPel1KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCosAlqPel1KeyTyped(evt);
             }
         });
 
@@ -913,12 +958,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtTitPel1KeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTitPel1KeyTyped(evt);
+            }
         });
 
         txtCatPel1.setEnabled(false);
         txtCatPel1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtCatPel1KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCatPel1KeyTyped(evt);
             }
         });
 
@@ -927,12 +978,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtNumCatPel1KeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumCatPel1KeyTyped(evt);
+            }
         });
 
         txtDirPel1.setEnabled(false);
         txtDirPel1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtDirPel1KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDirPel1KeyTyped(evt);
             }
         });
 
@@ -942,6 +999,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         txaActPel1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txaActPel1KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txaActPel1KeyTyped(evt);
             }
         });
         jScrollPane9.setViewportView(txaActPel1);
@@ -961,8 +1021,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 btnEdiPelActionPerformed(evt);
             }
         });
-
-        btnDesPel.setText("Deshacer");
 
         tbl_pelicula1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1074,13 +1132,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addComponent(btnEdiPel)
                         .addGap(18, 18, 18)
                         .addComponent(btnAcePel)))
-                .addContainerGap(251, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panBusPelLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap(255, Short.MAX_VALUE))
+            .addGroup(panBusPelLayout.createSequentialGroup()
+                .addGap(549, 549, 549)
                 .addComponent(btnEliPel)
-                .addGap(18, 18, 18)
-                .addComponent(btnDesPel)
-                .addGap(494, 494, 494))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         panBusPelLayout.setVerticalGroup(
             panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1130,9 +1186,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(panBusPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEliPel)
-                    .addComponent(btnDesPel))
+                .addComponent(btnEliPel)
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -1161,9 +1215,27 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        txtTitPel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTitPelKeyTyped(evt);
+            }
+        });
+
+        txtCatPel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCatPelKeyTyped(evt);
+            }
+        });
+
         txtCosAlqPel.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCosAlqPelKeyTyped(evt);
+            }
+        });
+
+        txtDirPel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDirPelKeyTyped(evt);
             }
         });
 
@@ -1175,19 +1247,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         txaActPel.setColumns(20);
         txaActPel.setRows(5);
+        txaActPel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txaActPelKeyTyped(evt);
+            }
+        });
         jScrollPane7.setViewportView(txaActPel);
 
         btnAgrPel.setText("Agregar");
         btnAgrPel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgrPelActionPerformed(evt);
-            }
-        });
-
-        btnCanPel.setText("Cancelar");
-        btnCanPel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCanPelActionPerformed(evt);
             }
         });
 
@@ -1199,9 +1269,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Numero de catalogo", "Titulo", "Categoria", "Director", "Costo de Alquiler", "Coste de Adquisicion", "Actores"
+                "Numero de catalogo", "Titulo", "Categoria", "Costo de Alquiler", "Coste de Adquisicion", "Actores", "Director"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane8.setViewportView(tbl_pelicula);
 
         javax.swing.GroupLayout panAgrPelLayout = new javax.swing.GroupLayout(panAgrPel);
@@ -1240,10 +1318,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(panAgrPelLayout.createSequentialGroup()
-                                .addComponent(btnAgrPel)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnCanPel)))
-                        .addGap(0, 375, Short.MAX_VALUE))
+                                .addGap(12, 12, 12)
+                                .addComponent(btnAgrPel)))
+                        .addGap(0, 381, Short.MAX_VALUE))
                     .addComponent(jScrollPane8))
                 .addContainerGap())
         );
@@ -1281,14 +1358,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                             .addComponent(txtCosAdqPel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane7))
                 .addGap(18, 18, 18)
-                .addGroup(panAgrPelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAgrPel)
-                    .addComponent(btnCanPel))
+                .addComponent(btnAgrPel)
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
 
         tpnPelicula.addTab("Agregar", panAgrPel);
@@ -1439,7 +1514,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             new String [] {
                 "Numero de Copia", "Estado de la Pelicula", "Numero de Sucursal", "Numero de Catalogo"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tbl_copiapelicula1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbl_copiapelicula1MouseClicked(evt);
@@ -1546,7 +1629,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGap(15, 15, 15))
         );
 
-        jTabbedPane5.addTab("Buscar", panBusCop);
+        tpnCopias.addTab("Buscar", panBusCop);
 
         lblInsCop.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblInsCop.setText("Ingrese la informacion de los siguientes campos");
@@ -1591,7 +1674,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             new String [] {
                 "Numero de Copia", "Estado de la Pelicula", "Numero de Sucursal", "Numero de Catalogo"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane11.setViewportView(tbl_copiapelicula);
 
         javax.swing.GroupLayout panAgrCopLayout = new javax.swing.GroupLayout(panAgrCop);
@@ -1658,21 +1749,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane5.addTab("Agregar", panAgrCop);
+        tpnCopias.addTab("Agregar", panAgrCop);
 
         javax.swing.GroupLayout panCopLayout = new javax.swing.GroupLayout(panCop);
         panCop.setLayout(panCopLayout);
         panCopLayout.setHorizontalGroup(
             panCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jTabbedPane5)
+            .addComponent(tpnCopias)
         );
         panCopLayout.setVerticalGroup(
             panCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panCopLayout.createSequentialGroup()
                 .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane5))
+                .addComponent(tpnCopias))
         );
 
         tpnVideo.addTab("Copias de Peliculas", panCop);
@@ -1696,12 +1787,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         cancelar();
 
     }//GEN-LAST:event_btnCanSuc1ActionPerformed
-
-    private void btnCanPelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCanPelActionPerformed
-
-        cancelar();
-
-    }//GEN-LAST:event_btnCanPelActionPerformed
 
     private void btnCanPel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCanPel1ActionPerformed
         
@@ -1787,17 +1872,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
 //Boton para Agregar Pelicula --------------------------------------------------------------------------------------------------------------------------------------------------------------    
     private void btnAgrPelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgrPelActionPerformed
-  
-        num_catalogo = txtNumCatPel.getText();
-        titulo = txtTitPel.getText();
-        categoria = txtCatPel.getText();
-        cos_alqui = Float.parseFloat(txtCosAlqPel.getText());
-        cos_adqui = Float.parseFloat(txtCosAdqPel.getText());
-        actores = txaActPel.getText();
-        director = txtDirPel.getText();
+   
+        if( !(txtNumCatPel.getText().equals("") || txtTitPel.getText().equals("") || txtCatPel.getText().equals("") ||
+                txtCosAlqPel.getText().equals("") || txtCosAdqPel.getText().equals("") || txaActPel.getText().equals("") || txtDirPel.getText().equals("") ) ){
         
-        if( !(num_catalogo.equals("") || titulo.equals("") || categoria.equals("") || actores.equals("") ||director.equals("")) ){
-        
+            num_catalogo = txtNumCatPel.getText();
+            titulo = txtTitPel.getText();
+            categoria = txtCatPel.getText();
+            cos_alqui = Float.parseFloat(txtCosAlqPel.getText());
+            cos_adqui = Float.parseFloat(txtCosAdqPel.getText());
+            actores = txaActPel.getText();
+            director = txtDirPel.getText();
+            
             if(PeliculaDAO.numPeliculaIgual(num_catalogo)){
             
                 JOptionPane.showMessageDialog(this, "El numero de catalogo ya existe.");
@@ -1808,6 +1894,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     PeliculaDAO.agregarPelicula(new Pelicula(num_catalogo, titulo, categoria, cos_alqui, cos_adqui, actores, director));
                     
                     JOptionPane.showMessageDialog(this, "Pelicula agregada correctamente");
+                    
+                    vaciarCajasPel ();
                     
                     this.mostrarPeliculas();
                     
@@ -1831,33 +1919,73 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgrPelActionPerformed
 
     private void txtCosAlqPelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCosAlqPelKeyTyped
-        
-        char c = evt.getKeyChar();
 
-        if (!Character.isDigit(c) && c != '.') {
-            
-            evt.consume(); 
-            
-        } else if (c == '.' && txtCosAlqPel.getText().contains(".")) {
-            
+        char c = evt.getKeyChar();
+        String texto = txtCosAlqPel.getText();
+
+        // Permitir solo dígitos, punto y backspace
+        if (!Character.isDigit(c) && c != '.' && c != '\b') {
             evt.consume();
-            
+            return;
         }
-        
+
+        // No permitir más de un punto decimal
+        if (c == '.' && texto.contains(".")) {
+            evt.consume();
+            return;
+        }
+
+        // Simula el texto si se agrega el nuevo carácter
+        int pos = txtCosAlqPel.getCaretPosition();
+        StringBuilder nuevoTexto = new StringBuilder(texto);
+        nuevoTexto.insert(pos, c);
+        String[] partes = nuevoTexto.toString().split("\\.");
+
+        // Limitar a 4 dígitos antes del punto
+        if (partes[0].length() > 4 && c != '.' && !texto.contains(".")) {
+            evt.consume();
+            return;
+        }
+
+        // Limitar a 2 dígitos después del punto
+        if (partes.length == 2 && partes[1].length() > 2) {
+            evt.consume();
+        }
+  
     }//GEN-LAST:event_txtCosAlqPelKeyTyped
 
     private void txtCosAdqPelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCosAdqPelKeyTyped
-        
-        char c = evt.getKeyChar();
 
-        if (!Character.isDigit(c) && c != '.') {
-            
+        char c = evt.getKeyChar();
+        String texto = txtCosAdqPel.getText();
+
+        // Permitir solo dígitos, punto y backspace
+        if (!Character.isDigit(c) && c != '.' && c != '\b') {
             evt.consume();
-            
-        } else if (c == '.' && txtCosAdqPel.getText().contains(".")) {
-            
+            return;
+        }
+
+        // No permitir más de un punto decimal
+        if (c == '.' && texto.contains(".")) {
             evt.consume();
-            
+            return;
+        }
+
+        // Simular el nuevo texto con el carácter insertado
+        int pos = txtCosAdqPel.getCaretPosition();
+        StringBuilder nuevoTexto = new StringBuilder(texto);
+        nuevoTexto.insert(pos, c);
+        String[] partes = nuevoTexto.toString().split("\\.");
+
+        // Limitar a 6 dígitos antes del punto
+        if (partes[0].length() > 6 && c != '.' && !texto.contains(".")) {
+            evt.consume();
+            return;
+        }
+
+        // Limitar a 2 dígitos después del punto
+        if (partes.length == 2 && partes[1].length() > 2) {
+            evt.consume();
         }
     }//GEN-LAST:event_txtCosAdqPelKeyTyped
 
@@ -2530,6 +2658,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnEdiPel.setEnabled(true);
         btnEliPel.setEnabled(true);
         
+        txtNumCatPel1.setEnabled(false);
+        txtTitPel1.setEnabled(false);
+        txtCatPel1.setEnabled(false);
+        txtCosAlqPel1.setEnabled(false);
+        txtCosAdqPel1.setEnabled(false);
+        txaActPel1.setEnabled(false);
+        jScrollPane9.setEnabled(false);
+        txtDirPel1.setEnabled(false);
+        
+        jrbNumCatPel.setEnabled(false);
+        jrbTitPel.setEnabled(false);
+        jrbCatPel.setEnabled(false);
+        jrbCosAlqPel.setEnabled(false);
+        jrbCosAdqPel.setEnabled(false);
+        jrbActPel.setEnabled(false);
+        jrbDirPel.setEnabled(false);
+        
         reaparecerComPel();
         
         txtNumCatPel1.setText(modeloPelicula1.getValueAt(tbl_pelicula1.getSelectedRow(), 0).toString());
@@ -2554,21 +2699,30 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         if (opcion == JOptionPane.YES_OPTION) {
             
             try {
-                
-                System.out.println("Acción aceptada");
             
                 PeliculaDAO.eliminarPelicula(txtNumCatPel1.getText());
             
                 JOptionPane.showMessageDialog(null, "Pelicula eliminada correctamente");
                 
+                btgPel.clearSelection();
+                
+                jrbMosTodPel.setSelected(true);
+                
                 mostrarPeliculas1();
                 
+                vaciarCajasPel1 ();
+                
+                deshabilitarComponPel();
+                
+                ocultarPelicula();
+                
             } catch (SQLException ex) {
+                
                 Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                
             }
         }else {
-            // El usuario hizo clic en "No" o cerró el cuadro
-            System.out.println("Acción cancelada");
+
         }
 
     }//GEN-LAST:event_btnEliPelActionPerformed
@@ -2582,6 +2736,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         txaActPel1.setEnabled(true);
         jScrollPane9.setEnabled(true);
         txtDirPel1.setEnabled(true);
+        
+        tbl_pelicula1.setVisible(false);
         
         btnAcePel.setVisible(true);
         
@@ -2609,11 +2765,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             
                 try {
                     
-                    //vaciarComponentesSuc1();
                     JOptionPane.showMessageDialog(this, "Pelicula modifica exitosamente");
-                    //restaurarJRBSuc();
+                    
+                    tbl_pelicula1.setVisible(true);
+                    
                     btnAcePel.setVisible(false);
+                    
+                    btgPel.clearSelection();
+                    
+                    vaciarCajasPel1();
+                    
+                    ocultarPelicula();
+                    
                     mostrarPeliculas1();
+                    
+                    jrbMosTodPel.setSelected(true);
                     
                 } catch (SQLException ex) {
                     
@@ -2730,40 +2896,37 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void comboSucursal1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboSucursal1ActionPerformed
         
-        String seleccion = comboSucursal1.getSelectedItem().toString();
+        Object selectedItem = comboSucursal1.getSelectedItem();
+
+        if (selectedItem != null) {
+         String seleccion = selectedItem.toString();
 
         if (!"Elija una opcion".equals(seleccion)) {
-            
             try {
-                
                 ResultSet rs = CopiaPeliculaDAO.comboSucursal(seleccion);
                 mostrarCopFiltrados(rs);
-
-                
             } catch (SQLException ex) {
-                
                 Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-                
             }
         }
+    }
         
     }//GEN-LAST:event_comboSucursal1ActionPerformed
 
     private void comboPeliculas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboPeliculas1ActionPerformed
 
-        String seleccion = comboPeliculas1.getSelectedItem().toString();
+        Object seleccionado = comboPeliculas1.getSelectedItem();
 
-        if (!"Elija una opcion".equals(seleccion)) {
-            
-            try {
-                
-                ResultSet rs = CopiaPeliculaDAO.comboPelicula(seleccion);
-                mostrarCopFiltrados(rs);
+        if (seleccionado != null) {
+            String seleccion = seleccionado.toString();
 
-            } catch (SQLException ex) {
-                
-                Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-                
+            if (!"Elija una opcion".equals(seleccion)) {
+                try {
+                    ResultSet rs = CopiaPeliculaDAO.comboPelicula(seleccion);
+                    mostrarCopFiltrados(rs);
+                } catch (SQLException ex) {
+                    Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
 
@@ -2935,6 +3098,157 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtTelSuc1KeyTyped
 
+    private void txtTitPelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTitPelKeyTyped
+         char c = evt.getKeyChar();
+
+        // Solo permite letras, espacios, comas y teclas especiales como backspace
+        if (!Character.isLetter(c) && c != ',' && c != ' ' && c != '\b') {
+            evt.consume(); // Ignora la tecla si no es válida
+        }
+    }//GEN-LAST:event_txtTitPelKeyTyped
+
+    private void txtCatPelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCatPelKeyTyped
+         char c = evt.getKeyChar();
+
+        // Solo permite letras, espacios, comas y teclas especiales como backspace
+        if (!Character.isLetter(c) && c != ',' && c != ' ' && c != '\b') {
+            evt.consume(); // Ignora la tecla si no es válida
+        }
+    }//GEN-LAST:event_txtCatPelKeyTyped
+
+    private void txtDirPelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDirPelKeyTyped
+         char c = evt.getKeyChar();
+
+        // Solo permite letras, espacios, comas y teclas especiales como backspace
+        if (!Character.isLetter(c) && c != ',' && c != ' ' && c != '\b') {
+            evt.consume(); // Ignora la tecla si no es válida
+        }
+    }//GEN-LAST:event_txtDirPelKeyTyped
+
+    private void txaActPelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txaActPelKeyTyped
+
+        char c = evt.getKeyChar();
+
+        // Solo permite letras, espacios, comas y teclas especiales como backspace
+        if (!Character.isLetter(c) && c != ',' && c != ' ' && c != '\b') {
+            evt.consume(); // Ignora la tecla si no es válida
+        }
+    }//GEN-LAST:event_txaActPelKeyTyped
+
+    private void txtNumCatPel1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumCatPel1KeyTyped
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c)) {
+
+            evt.consume();
+
+        }
+    }//GEN-LAST:event_txtNumCatPel1KeyTyped
+
+    private void txtTitPel1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTitPel1KeyTyped
+        char c = evt.getKeyChar();
+
+        // Solo permite letras, espacios, comas y teclas especiales como backspace
+        if (!Character.isLetter(c) && c != ',' && c != ' ' && c != '\b') {
+            evt.consume(); // Ignora la tecla si no es válida
+        }
+    }//GEN-LAST:event_txtTitPel1KeyTyped
+
+    private void txtCatPel1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCatPel1KeyTyped
+       char c = evt.getKeyChar();
+
+        // Solo permite letras, espacios, comas y teclas especiales como backspace
+        if (!Character.isLetter(c) && c != ',' && c != ' ' && c != '\b') {
+            evt.consume(); // Ignora la tecla si no es válida
+        }
+    }//GEN-LAST:event_txtCatPel1KeyTyped
+
+    private void txaActPel1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txaActPel1KeyTyped
+        char c = evt.getKeyChar();
+
+        // Solo permite letras, espacios, comas y teclas especiales como backspace
+        if (!Character.isLetter(c) && c != ',' && c != ' ' && c != '\b') {
+            evt.consume(); // Ignora la tecla si no es válida
+        }
+    }//GEN-LAST:event_txaActPel1KeyTyped
+
+    private void txtDirPel1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDirPel1KeyTyped
+        char c = evt.getKeyChar();
+
+        // Solo permite letras, espacios, comas y teclas especiales como backspace
+        if (!Character.isLetter(c) && c != ',' && c != ' ' && c != '\b') {
+            evt.consume(); // Ignora la tecla si no es válida
+        }
+    }//GEN-LAST:event_txtDirPel1KeyTyped
+
+    private void txtCosAlqPel1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCosAlqPel1KeyTyped
+         char c = evt.getKeyChar();
+        String texto = txtCosAlqPel1.getText();
+
+        // Permitir solo dígitos, punto y backspace
+        if (!Character.isDigit(c) && c != '.' && c != '\b') {
+            evt.consume();
+            return;
+        }
+
+        // No permitir más de un punto decimal
+        if (c == '.' && texto.contains(".")) {
+            evt.consume();
+            return;
+        }
+
+        // Simula el texto si se agrega el nuevo carácter
+        int pos = txtCosAlqPel1.getCaretPosition();
+        StringBuilder nuevoTexto = new StringBuilder(texto);
+        nuevoTexto.insert(pos, c);
+        String[] partes = nuevoTexto.toString().split("\\.");
+
+        // Limitar a 4 dígitos antes del punto
+        if (partes[0].length() > 4 && c != '.' && !texto.contains(".")) {
+            evt.consume();
+            return;
+        }
+
+        // Limitar a 2 dígitos después del punto
+        if (partes.length == 2 && partes[1].length() > 2) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtCosAlqPel1KeyTyped
+
+    private void txtCosAdqPel1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCosAdqPel1KeyTyped
+        char c = evt.getKeyChar();
+        String texto = txtCosAdqPel1.getText();
+
+        // Permitir solo dígitos, punto y backspace
+        if (!Character.isDigit(c) && c != '.' && c != '\b') {
+            evt.consume();
+            return;
+        }
+
+        // No permitir más de un punto decimal
+        if (c == '.' && texto.contains(".")) {
+            evt.consume();
+            return;
+        }
+
+        // Simular el nuevo texto con el carácter insertado
+        int pos = txtCosAdqPel1.getCaretPosition();
+        StringBuilder nuevoTexto = new StringBuilder(texto);
+        nuevoTexto.insert(pos, c);
+        String[] partes = nuevoTexto.toString().split("\\.");
+
+        // Limitar a 6 dígitos antes del punto
+        if (partes[0].length() > 6 && c != '.' && !texto.contains(".")) {
+            evt.consume();
+            return;
+        }
+
+        // Limitar a 2 dígitos después del punto
+        if (partes.length == 2 && partes[1].length() > 2) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtCosAdqPel1KeyTyped
+
     
     /**
      * @param args the command line arguments
@@ -2989,11 +3303,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnAgrSuc;
     private javax.swing.JButton btnCanCop;
     private javax.swing.JButton btnCanCop1;
-    private javax.swing.JButton btnCanPel;
     private javax.swing.JButton btnCanPel1;
     private javax.swing.JButton btnCanSuc1;
     private javax.swing.JButton btnConfSuc;
-    private javax.swing.JButton btnDesPel;
     private javax.swing.JButton btnDesSuc;
     private javax.swing.JButton btnEdiCop;
     private javax.swing.JButton btnEdiPel;
@@ -3025,7 +3337,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JTabbedPane jTabbedPane5;
     private javax.swing.JRadioButton jrbActPel;
     private javax.swing.JRadioButton jrbBusCop;
     private javax.swing.JRadioButton jrbCalleSuc;
@@ -3090,6 +3401,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTable tbl_pelicula1;
     private javax.swing.JTable tbl_sucursal;
     private javax.swing.JTable tbl_sucursal1;
+    private javax.swing.JTabbedPane tpnCopias;
     private javax.swing.JTabbedPane tpnPelicula;
     private javax.swing.JTabbedPane tpnSucursal;
     private javax.swing.JTabbedPane tpnVideo;
@@ -3135,7 +3447,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
     }
     
-    //
+    //Limpiar Cajas de texto de agregar sucursal
     public void vaciarComponentesSuc(){
         
         txtNumSuc.setText("");
@@ -3147,6 +3459,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     }
     
+    //Limpiar Cajas de texto de buscar sucursal
     public void vaciarComponentesSuc1(){
         
         txtNumSuc1.setText("");
@@ -3158,7 +3471,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     }
     
-    public void vaciarCajasPel (){
+    //Limpiar Cajas de texto de buscar pelicula
+    public void vaciarCajasPel(){
+        
+        txtNumCatPel.setText("");
+        txtTitPel.setText("");
+        txtCatPel.setText("");
+        txtCosAlqPel.setText("");
+        txtCosAdqPel.setText("");
+        txaActPel.setText("");
+        txtDirPel.setText("");
+        
+        panBusPel.revalidate();
+        panBusPel.repaint();
+    }
+    
+    //Limpiar Cajas de texto de buscar pelicula
+    public void vaciarCajasPel1 (){
         
         txtNumCatPel1.setText("");
         txtTitPel1.setText("");
@@ -3167,10 +3496,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         txtCosAdqPel1.setText("");
         txaActPel1.setText("");
         txtDirPel1.setText("");
+        
         panBusPel.revalidate();
         panBusPel.repaint();
     }
     
+    //Limpiar Cajas de texto de buscar pelicula
     public void vaciarCajasCop(){
     
         txtNumCop1.setText("");
@@ -3180,6 +3511,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     }
     
+    //Habilitar componentes de buscar Sucursal
     public void restaurarJRBSuc(){
         
         jrbMosTodSuc.setSelected(true);
@@ -3203,7 +3535,26 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         txtTelSuc1.enable(false);
         
     }
+
+    //Ocultar componentes buscar Sucursal
+    public void ocultarComp(){
     
+        jrbNumSuc.setVisible(false);
+        jrbCalleSuc.setVisible(false);
+        jrbCiudadSuc.setVisible(false);
+        jrbEstadoSuc.setVisible(false);
+        jrbCodPosSuc.setVisible(false);
+        jrbTelSuc.setVisible(false);
+        txtNumSuc1.setVisible(false);
+        txtCalSuc1.setVisible(false);
+        txtCiuSuc1.setVisible(false);
+        txtEstSuc1.setVisible(false);
+        txtCodSuc1.setVisible(false);
+        txtTelSuc1.setVisible(false);
+    
+    }    
+
+    //ocultar componentes de buscar Sucursal
     public void ocultarSucursal(){
     
         btnConfSuc.setVisible(false);
@@ -3223,6 +3574,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     }
     
+    //ocultar componentes de buscar Pelicula
     public void ocultarPelicula(){
     
         btnAcePel.setVisible(false);
@@ -3245,6 +3597,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     }
     
+    //ocultar componentes de buscar CopiaPelicula
     public void desaparecerCopPel(){
     
         btnAceCP.setVisible(false);
@@ -3260,6 +3613,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     }
     
+    //Mostrar componentes de buscar Sucursal
     public void reaparecerComSuc(){
     
         txtNumSuc1.setVisible(true);
@@ -3281,6 +3635,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
     }
     
+    //Mostrar componentes de buscar Pelicula
     public void reaparecerComPel(){
     
         txtNumCatPel1.setVisible(true);
@@ -3302,6 +3657,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         panBusPel.revalidate();
         panBusPel.repaint();
+    }
+    
+    public void deshabilitarComponPel(){
+       
+        txtNumCatPel1.setEnabled(false);
+        txtTitPel1.setEnabled(false);
+        txtCatPel1.setEnabled(false);
+        txtCosAlqPel1.setEnabled(false);
+        txtCosAdqPel1.setEnabled(false);
+        txaActPel1.setEnabled(false);
+        jScrollPane9.setEnabled(false);
+        txtDirPel1.setEnabled(false);
+        
+        btnEdiPel.setEnabled(false);
+        btnEliPel.setEnabled(false);
+        
     }
     
     public void mostrar() throws SQLException {
@@ -3506,19 +3877,27 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
     
     private void validarDatosIniciales() {
-        
-        if (comboSucursal.getItemCount() == 0 || comboPeliculas.getItemCount() == 0) {
-        
-            btnAgrCop.setEnabled(false); // Desactiva si faltan datos
-        
+        boolean sucursalesDisponibles = comboSucursal.getItemCount() > 1;
+        boolean peliculasDisponibles = comboPeliculas.getItemCount() > 1;
+
+        if (!sucursalesDisponibles || !peliculasDisponibles) {
+            btnAgrCop.setEnabled(false);
             JOptionPane.showMessageDialog(this, "Debes registrar al menos una sucursal y una película antes de agregar copias.");
-        
         } else {
-        
             btnAgrCop.setEnabled(true);
-        
         }
+    }
     
+    private void validarDatosIniciales1() {
+        boolean sucursalesDisponibles = comboSucursal1.getItemCount() > 1;
+        boolean peliculasDisponibles = comboPeliculas1.getItemCount() > 1;
+
+        if (!sucursalesDisponibles || !peliculasDisponibles) {
+            btnAgrCop.setEnabled(false);
+            JOptionPane.showMessageDialog(this, "Debes registrar al menos una sucursal y una película antes de agregar copias.");
+        } else {
+            btnAgrCop.setEnabled(true);
+        }
     }
     
     public void mostrarfiltrados(ResultSet rs) throws SQLException {
@@ -3541,7 +3920,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
           
     }
     
-        public void mostrarPelFiltrados(ResultSet rs) throws SQLException {
+    public void mostrarPelFiltrados(ResultSet rs) throws SQLException {
 
         String datos[] = new String[7];
 
@@ -3604,23 +3983,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             btnEliCop.setEnabled(true);
             
         }
-    }
-    
-    public void ocultarComp(){
-    
-        jrbNumSuc.setVisible(false);
-        jrbCalleSuc.setVisible(false);
-        jrbCiudadSuc.setVisible(false);
-        jrbEstadoSuc.setVisible(false);
-        jrbCodPosSuc.setVisible(false);
-        jrbTelSuc.setVisible(false);
-        txtNumSuc1.setVisible(false);
-        txtCalSuc1.setVisible(false);
-        txtCiuSuc1.setVisible(false);
-        txtEstSuc1.setVisible(false);
-        txtCodSuc1.setVisible(false);
-        txtTelSuc1.setVisible(false);
-    
     }
     
 }

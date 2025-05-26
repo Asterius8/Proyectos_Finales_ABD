@@ -433,12 +433,12 @@
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="6" rowCount="4">
-                                <Column editable="true" title="Numero de Sucursal" type="java.lang.Object"/>
-                                <Column editable="true" title="Calle" type="java.lang.Object"/>
-                                <Column editable="true" title="Ciudad" type="java.lang.Object"/>
-                                <Column editable="true" title="Estado" type="java.lang.Object"/>
-                                <Column editable="true" title="Codigo Postal" type="java.lang.Object"/>
-                                <Column editable="true" title="Telefono" type="java.lang.Object"/>
+                                <Column editable="false" title="Numero de Sucursal" type="java.lang.Object"/>
+                                <Column editable="false" title="Calle" type="java.lang.Object"/>
+                                <Column editable="false" title="Ciudad" type="java.lang.Object"/>
+                                <Column editable="false" title="Estado" type="java.lang.Object"/>
+                                <Column editable="false" title="Codigo Postal" type="java.lang.Object"/>
+                                <Column editable="false" title="Telefono" type="java.lang.Object"/>
                               </Table>
                             </Property>
                           </Properties>
@@ -545,7 +545,7 @@
                                               </Group>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="0" pref="547" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="551" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -871,14 +871,12 @@
                                       <Component id="btnAcePel" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="251" max="32767" attributes="0"/>
+                              <EmptySpace pref="255" max="32767" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="549" max="-2" attributes="0"/>
                               <Component id="btnEliPel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btnDesPel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="494" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -940,10 +938,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jScrollPane10" min="-2" pref="110" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btnEliPel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnDesPel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="btnEliPel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace pref="23" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -1045,6 +1040,7 @@
                       </Properties>
                       <Events>
                         <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCosAdqPel1KeyReleased"/>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCosAdqPel1KeyTyped"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtCosAlqPel1">
@@ -1053,6 +1049,7 @@
                       </Properties>
                       <Events>
                         <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCosAlqPel1KeyReleased"/>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCosAlqPel1KeyTyped"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtTitPel1">
@@ -1061,6 +1058,7 @@
                       </Properties>
                       <Events>
                         <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTitPel1KeyReleased"/>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTitPel1KeyTyped"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtCatPel1">
@@ -1069,6 +1067,7 @@
                       </Properties>
                       <Events>
                         <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCatPel1KeyReleased"/>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCatPel1KeyTyped"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtNumCatPel1">
@@ -1077,6 +1076,7 @@
                       </Properties>
                       <Events>
                         <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNumCatPel1KeyReleased"/>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNumCatPel1KeyTyped"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtDirPel1">
@@ -1085,6 +1085,7 @@
                       </Properties>
                       <Events>
                         <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDirPel1KeyReleased"/>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDirPel1KeyTyped"/>
                       </Events>
                     </Component>
                     <Container class="javax.swing.JScrollPane" name="jScrollPane9">
@@ -1102,6 +1103,7 @@
                           </Properties>
                           <Events>
                             <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txaActPel1KeyReleased"/>
+                            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txaActPel1KeyTyped"/>
                           </Events>
                         </Component>
                       </SubComponents>
@@ -1123,11 +1125,6 @@
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEdiPelActionPerformed"/>
                       </Events>
-                    </Component>
-                    <Component class="javax.swing.JButton" name="btnDesPel">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Deshacer"/>
-                      </Properties>
                     </Component>
                     <Component class="javax.swing.JSeparator" name="jSeparator7">
                     </Component>
@@ -1245,12 +1242,11 @@
                                               <Component id="jScrollPane7" min="-2" pref="360" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                                               <Component id="btnAgrPel" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="btnCanPel" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="0" pref="375" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="381" max="32767" attributes="0"/>
                                   </Group>
                                   <Component id="jScrollPane8" alignment="0" max="32767" attributes="0"/>
                               </Group>
@@ -1300,15 +1296,12 @@
                                   <Component id="jScrollPane7" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btnAgrPel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnCanPel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="btnAgrPel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jSeparator6" min="-2" pref="10" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jScrollPane8" min="-2" pref="203" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="93" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1363,8 +1356,14 @@
                       </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtTitPel">
+                      <Events>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTitPelKeyTyped"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtCatPel">
+                      <Events>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCatPelKeyTyped"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtCosAlqPel">
                       <Events>
@@ -1372,6 +1371,9 @@
                       </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtDirPel">
+                      <Events>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDirPelKeyTyped"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtCosAdqPel">
                       <Events>
@@ -1390,6 +1392,9 @@
                             <Property name="columns" type="int" value="20"/>
                             <Property name="rows" type="int" value="5"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txaActPelKeyTyped"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -1399,14 +1404,6 @@
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgrPelActionPerformed"/>
-                      </Events>
-                    </Component>
-                    <Component class="javax.swing.JButton" name="btnCanPel">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Cancelar"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCanPelActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JSeparator" name="jSeparator6">
@@ -1422,13 +1419,13 @@
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="7" rowCount="4">
-                                <Column editable="true" title="Numero de catalogo" type="java.lang.Object"/>
-                                <Column editable="true" title="Titulo" type="java.lang.Object"/>
-                                <Column editable="true" title="Categoria" type="java.lang.Object"/>
-                                <Column editable="true" title="Director" type="java.lang.Object"/>
-                                <Column editable="true" title="Costo de Alquiler" type="java.lang.Object"/>
-                                <Column editable="true" title="Coste de Adquisicion" type="java.lang.Object"/>
-                                <Column editable="true" title="Actores" type="java.lang.Object"/>
+                                <Column editable="false" title="Numero de catalogo" type="java.lang.Object"/>
+                                <Column editable="false" title="Titulo" type="java.lang.Object"/>
+                                <Column editable="false" title="Categoria" type="java.lang.Object"/>
+                                <Column editable="false" title="Costo de Alquiler" type="java.lang.Object"/>
+                                <Column editable="false" title="Coste de Adquisicion" type="java.lang.Object"/>
+                                <Column editable="false" title="Actores" type="java.lang.Object"/>
+                                <Column editable="false" title="Director" type="java.lang.Object"/>
                               </Table>
                             </Property>
                           </Properties>
@@ -1454,7 +1451,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jPanel19" max="32767" attributes="0"/>
-                  <Component id="jTabbedPane5" alignment="0" max="32767" attributes="0"/>
+                  <Component id="tpnCopias" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -1462,7 +1459,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jPanel19" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTabbedPane5" max="32767" attributes="0"/>
+                      <Component id="tpnCopias" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1519,7 +1516,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JTabbedPane" name="jTabbedPane5">
+            <Container class="javax.swing.JTabbedPane" name="tpnCopias">
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
               <SubComponents>
@@ -1782,10 +1779,10 @@
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="4" rowCount="4">
-                                <Column editable="true" title="Numero de Copia" type="java.lang.Object"/>
-                                <Column editable="true" title="Estado de la Pelicula" type="java.lang.Object"/>
-                                <Column editable="true" title="Numero de Sucursal" type="java.lang.Object"/>
-                                <Column editable="true" title="Numero de Catalogo" type="java.lang.Object"/>
+                                <Column editable="false" title="Numero de Copia" type="java.lang.Object"/>
+                                <Column editable="false" title="Estado de la Pelicula" type="java.lang.Object"/>
+                                <Column editable="false" title="Numero de Sucursal" type="java.lang.Object"/>
+                                <Column editable="false" title="Numero de Catalogo" type="java.lang.Object"/>
                               </Table>
                             </Property>
                           </Properties>
@@ -2003,10 +2000,10 @@
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="4" rowCount="4">
-                                <Column editable="true" title="Numero de Copia" type="java.lang.Object"/>
-                                <Column editable="true" title="Estado de la Pelicula" type="java.lang.Object"/>
-                                <Column editable="true" title="Numero de Sucursal" type="java.lang.Object"/>
-                                <Column editable="true" title="Numero de Catalogo" type="java.lang.Object"/>
+                                <Column editable="false" title="Numero de Copia" type="java.lang.Object"/>
+                                <Column editable="false" title="Estado de la Pelicula" type="java.lang.Object"/>
+                                <Column editable="false" title="Numero de Sucursal" type="java.lang.Object"/>
+                                <Column editable="false" title="Numero de Catalogo" type="java.lang.Object"/>
                               </Table>
                             </Property>
                             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
