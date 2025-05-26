@@ -138,4 +138,27 @@ public class SucursalDAO {
         return rs;
         
     }
+    
+    public static ResultSet contarCopiasPorSucursal() {
+    ResultSet rs = null;
+
+    try {
+        String sql = """
+            SELECT s.ciudad, COUNT(c.num_pelicula) AS total_copias
+            FROM CopiaPelicula c
+            JOIN Sucursal s ON c.sucursal_num_sucursal = s.num_sucursal
+            GROUP BY s.ciudad
+            ORDER BY total_copias DESC
+        """;
+
+        PreparedStatement ps = ConexionBD.getConexion().prepareStatement(sql);
+        rs = ps.executeQuery();
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return rs;
+}
+
 }
