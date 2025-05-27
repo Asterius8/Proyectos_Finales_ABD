@@ -642,28 +642,33 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(btnDesSuc))
                             .addGroup(panBusSucLayout.createSequentialGroup()
-                                .addGap(487, 487, 487)
-                                .addComponent(lblTituloSuc, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panBusSucLayout.createSequentialGroup()
                                 .addGap(461, 461, 461)
                                 .addComponent(lblResultadoSuc))
                             .addGroup(panBusSucLayout.createSequentialGroup()
-                                .addGap(317, 317, 317)
-                                .addComponent(jButton2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton1)
-                                .addGap(18, 18, 18)
+                                .addGap(491, 491, 491)
                                 .addComponent(btnEdiSuc)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnConfSuc)))
-                        .addGap(0, 444, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(panBusSucLayout.createSequentialGroup()
+                .addGap(487, 487, 487)
+                .addComponent(lblTituloSuc, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 333, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
         );
         panBusSucLayout.setVerticalGroup(
             panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panBusSucLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(lblTituloSuc)
+                .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTituloSuc)
+                    .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jrbMosTodSuc)
                 .addGap(17, 17, 17)
@@ -689,9 +694,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(panBusSucLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEdiSuc)
-                    .addComponent(btnConfSuc)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btnConfSuc))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -852,7 +855,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1227,7 +1230,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnEliPel)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         tpnPelicula.addTab("Buscar", panBusPel);
@@ -1403,7 +1406,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
 
         tpnPelicula.addTab("Agregar", panAgrPel);
@@ -1684,7 +1687,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGroup(panBusCopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEdiCop)
                     .addComponent(btnAceCP))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblResultadoPel1)
@@ -1802,7 +1805,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
 
         tpnCopias.addTab("Agregar", panAgrCop);
@@ -2480,32 +2483,51 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             cod_pos = txtCodSuc1.getText();
             tel = txtTelSuc1.getText();
             
-            if(SucursalDAO.cambiosSucursal(new Sucursal(num_Suc, calle, ciudad, estado, cod_pos, tel))){
+            if( !(txtCodSuc1.getText().length() < 5)){
             
-                try {
+                if( !(txtTelSuc1.getText().length() < 10) ){
+            
+                    if(SucursalDAO.cambiosSucursal(new Sucursal(num_Suc, calle, ciudad, estado, cod_pos, tel))){
+            
+                        try {
                     
-                    vaciarComponentesSuc1();
+                            vaciarComponentesSuc1();
                     
-                    JOptionPane.showMessageDialog(this, "Sucursal modifica exitosamente");
+                            JOptionPane.showMessageDialog(this, "Sucursal modifica exitosamente");
                     
-                    restaurarJRBSuc();
+                            restaurarJRBSuc();
                     
-                    btnConfSuc.setVisible(false);
+                            btnConfSuc.setVisible(false);
                     
-                    ocultarComp();
+                            ocultarComp();
                     
-                    tbl_sucursal1.setVisible(true);
+                            tbl_sucursal1.setVisible(true);
                     
-                    mostrar1();
+                            mostrar1();
                     
-                } catch (SQLException ex) {
+                        } catch (SQLException ex) {
                     
-                    Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                            Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                     
-                }
+                        }
                 
+                    }
+                
+                }else{
+                
+                     JOptionPane.showMessageDialog(this, "El numero de telefono tiene que ser 10 caracteres minimo");
+                
+                }
+            }else {
+            
+                JOptionPane.showMessageDialog(this, "El codigo postal tiene que ser 5 caracteres minimo");
+            
             }
+            
+        }else{
         
+            JOptionPane.showMessageDialog(this, "Todos los campos deben de ser llenados.");
+            
         }
         
     }//GEN-LAST:event_btnConfSucActionPerformed
@@ -3059,59 +3081,62 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void btnEdiCopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEdiCopActionPerformed
 
         
-        comboEstado1.setEnabled(true);
-        comboSucursal1.setEnabled(true);
-        comboPeliculas1.setEnabled(true);
-        
-        btnAceCP.setVisible(true);
-        
-        tbl_copiapelicula1.setVisible(false);
+    comboEstado1.setEnabled(true);
+    comboSucursal1.setEnabled(true);
+    comboPeliculas1.setEnabled(true);
+    btnAceCP.setVisible(true);
+    tbl_copiapelicula1.setVisible(false);
         
         
     }//GEN-LAST:event_btnEdiCopActionPerformed
 
     private void btnAceCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceCPActionPerformed
 
-        if( !(txtNumCop1.getText().equals("") || comboEstado1.getSelectedIndex()== 0 || comboSucursal1.getSelectedIndex()== 0 || comboPeliculas1.getSelectedIndex()== 0) ){
-            
-            num_CopiaPelicula = txtNumCop1.getText();
-            String estadoP = String.valueOf(comboEstado1.getSelectedItem());
-            String numSucCop = String.valueOf(comboSucursal1.getSelectedItem());
-            String numPelCop = String.valueOf(comboPeliculas1.getSelectedItem());
-            
-            if(CopiaPeliculaDAO.cambiosCop(new CopiaPelicula(num_CopiaPelicula, estadoP, numSucCop, numPelCop))){
-                
-                try {
-                    
-                JOptionPane.showMessageDialog(this, "Copia de pelicula modifica exitosamente");
-                
+        if (!(txtNumCop1.getText().equals("") || 
+          comboEstado1.getSelectedIndex() == 0 || 
+          comboSucursal1.getSelectedIndex() == 0 || 
+          comboPeliculas1.getSelectedIndex() == 0)) {
+
+        String numCopiaNueva = txtNumCop1.getText();
+        String estadoP = String.valueOf(comboEstado1.getSelectedItem());
+        String sucursalNueva = String.valueOf(comboSucursal1.getSelectedItem());
+        String catalogoNuevo = String.valueOf(comboPeliculas1.getSelectedItem());
+
+        // Validar si los datos clave cambiaron (puedes agregar esta validación si quieres evitar errores)
+        boolean cambioClave = !numCopiaNueva.equals(copiaOriginal)
+                            || !sucursalNueva.equals(sucursalOriginal)
+                            || !catalogoNuevo.equals(catalogoOriginal);
+
+        // Si cambió la clave, verifica que no exista otro registro igual
+        if (cambioClave && CopiaPeliculaDAO.numCopiaPeliculaIgual(numCopiaNueva, sucursalNueva, catalogoNuevo)) {
+            JOptionPane.showMessageDialog(this, "Ya existe otra copia con esos datos.");
+            return;
+        }
+
+        CopiaPelicula copiaModificada = new CopiaPelicula(numCopiaNueva, estadoP, sucursalNueva, catalogoNuevo);
+
+        if (CopiaPeliculaDAO.cambiosCop(copiaModificada, copiaOriginal, sucursalOriginal, catalogoOriginal)) {
+            try {
+                JOptionPane.showMessageDialog(this, "Copia de película modificada exitosamente");
+
                 tbl_copiapelicula1.setVisible(true);
-                
                 jrbMosTodCop.setSelected(true);
-                
                 btgCop.clearSelection();
-                
                 vaciarCajasCop();
-                
                 desaparecerCopPel();
-                
-               deshabilitarComCop();
-                
+                deshabilitarComCop();
                 mostrarCopiasPeliculas1();
-                
-                }catch (SQLException ex) {
-                    
-                    Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-                    
-                }
-                
+
+            } catch (SQLException ex) {
+                Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-        }else{
-        
-            JOptionPane.showMessageDialog(this, "Debe llenar los campos de forma correcta");
-            
-        }    
+        } else {
+            JOptionPane.showMessageDialog(this, "No se pudo modificar la copia.");
+        }
+
+    } else {
+        JOptionPane.showMessageDialog(this, "Debe llenar los campos de forma correcta");
+    }    
     
     }//GEN-LAST:event_btnAceCPActionPerformed
 
@@ -4162,25 +4187,25 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void cargarDatosDesdeTabla() {
         
         int fila = tbl_copiapelicula1.getSelectedRow();
-    
-        if (fila != -1) {
-            
-            txtNumCop1.setEnabled(false);
-            
-            String numCopia = modeloCopiaPelicula1.getValueAt(fila, 0).toString();
-            String estado = modeloCopiaPelicula1.getValueAt(fila, 1).toString();
-            String sucursal = modeloCopiaPelicula1.getValueAt(fila, 2).toString();
-            String catalogo = modeloCopiaPelicula1.getValueAt(fila, 3).toString();
 
-            txtNumCop1.setText(numCopia);
-            comboEstado1.setSelectedItem(estado);
-            comboSucursal1.setSelectedItem(sucursal);
-            comboPeliculas1.setSelectedItem(catalogo);
-        
-            btnEdiCop.setEnabled(true);
-            btnEliCop.setEnabled(true);
-            
-        }
+    if (fila != -1) {
+        txtNumCop1.setEnabled(false);
+
+        // Obtén los datos originales para poder usarlos luego en el update
+        copiaOriginal = modeloCopiaPelicula1.getValueAt(fila, 0).toString();
+        String estado = modeloCopiaPelicula1.getValueAt(fila, 1).toString();
+        sucursalOriginal = modeloCopiaPelicula1.getValueAt(fila, 2).toString();
+        catalogoOriginal = modeloCopiaPelicula1.getValueAt(fila, 3).toString();
+
+        // Llena los campos del formulario
+        txtNumCop1.setText(copiaOriginal);
+        comboEstado1.setSelectedItem(estado);
+        comboSucursal1.setSelectedItem(sucursalOriginal);
+        comboPeliculas1.setSelectedItem(catalogoOriginal);
+
+        btnEdiCop.setEnabled(true);
+        btnEliCop.setEnabled(true);
+    }
     }
     
 }

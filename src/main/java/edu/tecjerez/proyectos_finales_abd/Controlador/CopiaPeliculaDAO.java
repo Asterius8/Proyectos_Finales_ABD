@@ -35,15 +35,30 @@ public class CopiaPeliculaDAO {
     }
     
     //Cambios
-    public static boolean cambiosCop(CopiaPelicula c) {
-    
-        boolean res = false;
-        
-        res = ConexionBD.cambiosCop(c);
-        
-        return res;
-        
-        
+    public static boolean cambiosCop(CopiaPelicula c, String copiaOriginal, String sucursalOriginal, String catalogoOriginal) {
+        try {
+            Connection conexion = getConexion();
+            String sql = "UPDATE copiapelicula SET num_pelicula = ?, estado = ?, sucursal_num_sucursal = ?, pelicula_num_catalogo = ? "
+                    + "WHERE num_pelicula = ? AND sucursal_num_sucursal = ? AND pelicula_num_catalogo = ?";
+
+            PreparedStatement pstm = conexion.prepareStatement(sql);
+            pstm.setString(1, c.getNum_pelicula());
+            pstm.setString(2, c.getEstado());
+            pstm.setString(3, c.getNum_sucursal());
+            pstm.setString(4, c.getNum_catalogo());
+
+            pstm.setString(5, copiaOriginal);
+            pstm.setString(6, sucursalOriginal);
+            pstm.setString(7, catalogoOriginal);
+
+            int filasActualizadas = pstm.executeUpdate();
+
+            return filasActualizadas > 0;
+
+        } catch (SQLException e) {
+            System.out.println("Error en instrucción DML \n" + e);
+            return false;
+        }
     }
     
     //------------------------------- Consultas --------------------------------------------------------------------------------------------------------------------------------------
