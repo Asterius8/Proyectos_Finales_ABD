@@ -29,6 +29,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     float cos_alqui, cos_adqui;
     DefaultTableModel modelo, modelo1, modeloPelicula, modeloPelicula1, modeloCopiaPelicula, modeloCopiaPelicula1;
     private HistorialSucursales historialSucursales = new HistorialSucursales();
+    private String copiaOriginal;
+    private String sucursalOriginal;
+    private String catalogoOriginal;
 
 //Constructor ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     public VentanaPrincipal() throws SQLException {
@@ -486,6 +489,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
 
         txtCodSuc1.setEnabled(false);
+        txtCodSuc1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodSuc1ActionPerformed(evt);
+            }
+        });
         txtCodSuc1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtCodSuc1KeyReleased(evt);
@@ -648,7 +656,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 .addComponent(btnEdiSuc)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnConfSuc)))
-                        .addGap(0, 442, Short.MAX_VALUE)))
+                        .addGap(0, 444, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panBusSucLayout.setVerticalGroup(
@@ -813,7 +821,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                     .addComponent(txtEstSuc)
                                     .addComponent(txtCodSuc)
                                     .addComponent(txtTelSuc, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 553, Short.MAX_VALUE)))
+                        .addGap(0, 555, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panAgrSucLayout.setVerticalGroup(
@@ -1164,7 +1172,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addComponent(btnEdiPel)
                         .addGap(18, 18, 18)
                         .addComponent(btnAcePel)))
-                .addContainerGap(257, Short.MAX_VALUE))
+                .addContainerGap(259, Short.MAX_VALUE))
             .addGroup(panBusPelLayout.createSequentialGroup()
                 .addGap(549, 549, 549)
                 .addComponent(btnEliPel)
@@ -1452,6 +1460,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         );
 
         btgCop1.add(jrbMosTodCop);
+        jrbMosTodCop.setSelected(true);
         jrbMosTodCop.setText("Mostar Todo");
         jrbMosTodCop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1858,27 +1867,48 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         
         if( !(num_Suc.equals("")  || calle.equals("") || ciudad.equals("") || estado.equals("") || cod_pos.equals("") || tel.equals("")) ){
-        
-            if(SucursalDAO.nunSucursalIgual(num_Suc)){
             
-                JOptionPane.showMessageDialog(this, "El numero de sucursal ya existe.");
             
-            }else{
+            if( !(txtCodSuc.getText().length() < 5)){
             
-                try {
-                    SucursalDAO.agregarSucursal(new Sucursal(num_Suc, calle, ciudad, estado, cod_pos,tel));
-                    
-                    JOptionPane.showMessageDialog(this, "Usuario creado correctamente");
-                    
-                    vaciarComponentesSuc();
-                    
-                    this.mostrar();
-                } catch (SQLException ex) {
-                    Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                if( !(txtTelSuc.getText().length() < 10) ){
                 
+                    if(SucursalDAO.nunSucursalIgual(num_Suc)){
+            
+                        JOptionPane.showMessageDialog(this, "El numero de sucursal ya existe.");
+            
+                    }else{
+            
+                        try {
+                            SucursalDAO.agregarSucursal(new Sucursal(num_Suc, calle, ciudad, estado, cod_pos,tel));
+                    
+                            JOptionPane.showMessageDialog(this, "Sucursal creado correctamente");
+                    
+                            vaciarComponentesSuc();
+                    
+                            this.mostrar();
+                            
+                        } catch (SQLException ex) {
+                    
+                            Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                    
+                        }
+                
+                    }
+                
+                }else {
+                
+                    JOptionPane.showMessageDialog(this, "El numero de telefono tiene que ser 10 caracteres minimo");
+                    
+                }
+            
+            }else {
+            
+                JOptionPane.showMessageDialog(this, "El codigo postal tiene que ser 5 caracteres minimo");
+            
             }
         
+            
         }else{
         
             JOptionPane.showMessageDialog(this, "Todos los campos deben de ser llenados.");
@@ -2074,7 +2104,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
 
             
-            if(CopiaPeliculaDAO.numCopiaPeliculaIgual(num_CopiaPelicula)){
+            if(CopiaPeliculaDAO.numCopiaPeliculaIgual(num_CopiaPelicula, num_Suc, num_catalogo)){
             
                 JOptionPane.showMessageDialog(this, "El numero de copia ya existe.");
                 
@@ -2996,7 +3026,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         if (opcion == JOptionPane.YES_OPTION) {
         
-            CopiaPeliculaDAO.eliminarCopia(txtNumCop1.getText());
+            CopiaPeliculaDAO.eliminarCopia((txtNumCop1.getText()).toString(), (comboSucursal1.getSelectedItem()).toString(), (comboPeliculas1.getSelectedItem().toString()));
             
             JOptionPane.showMessageDialog(null, "Copia de Pelicula eliminada correctamente");
             
@@ -3011,6 +3041,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 desaparecerCopPel();
                 
                 mostrarCopiasPeliculas1();
+                
+                btnEdiCop.setEnabled(false);
+                btnEliCop.setEnabled(false);
+                
+                deshabilitarComCop();
                 
             } catch (SQLException ex) {
                 
@@ -3036,16 +3071,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEdiCopActionPerformed
 
     private void btnAceCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceCPActionPerformed
-        
+
         if( !(txtNumCop1.getText().equals("") || comboEstado1.getSelectedIndex()== 0 || comboSucursal1.getSelectedIndex()== 0 || comboPeliculas1.getSelectedIndex()== 0) ){
-        
+            
             num_CopiaPelicula = txtNumCop1.getText();
             String estadoP = String.valueOf(comboEstado1.getSelectedItem());
             String numSucCop = String.valueOf(comboSucursal1.getSelectedItem());
             String numPelCop = String.valueOf(comboPeliculas1.getSelectedItem());
             
             if(CopiaPeliculaDAO.cambiosCop(new CopiaPelicula(num_CopiaPelicula, estadoP, numSucCop, numPelCop))){
-            
+                
                 try {
                     
                 JOptionPane.showMessageDialog(this, "Copia de pelicula modifica exitosamente");
@@ -3069,14 +3104,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                     
                 }
-            
-            }    
+                
+            }
             
         }else{
         
             JOptionPane.showMessageDialog(this, "Debe llenar los campos de forma correcta");
             
         }    
+    
     }//GEN-LAST:event_btnAceCPActionPerformed
 
     private void txtCalSucKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCalSucKeyTyped
@@ -3370,6 +3406,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         grafica.setVisible(true);
             
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txtCodSuc1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodSuc1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodSuc1ActionPerformed
 
     
     /**

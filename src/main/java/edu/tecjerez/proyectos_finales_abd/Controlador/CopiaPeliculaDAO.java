@@ -1,7 +1,10 @@
 package edu.tecjerez.proyectos_finales_abd.Controlador;
 
 import edu.tecjerez.proyectos_finales_abd.ConexionBD.ConexionBD;
+import static edu.tecjerez.proyectos_finales_abd.ConexionBD.ConexionBD.getConexion;
 import edu.tecjerez.proyectos_finales_abd.Modelo.CopiaPelicula;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -21,18 +24,18 @@ public class CopiaPeliculaDAO {
     }
     
     //ELIMINAR
-    public static boolean eliminarCopia(String filtro1) {
+    public static boolean eliminarCopia(String num_pelicula, String sucursal_num_sucursal, String pelicula_num_catalogo) {
 
         boolean res = false;
 
-        res = ConexionBD.eliminarCopia(filtro1);
+        res = ConexionBD.eliminarCopia(num_pelicula, sucursal_num_sucursal, pelicula_num_catalogo);
 
         return res;
 
     }
     
     //Cambios
-    public static boolean cambiosCop(CopiaPelicula c){
+    public static boolean cambiosCop(CopiaPelicula c) {
     
         boolean res = false;
         
@@ -40,34 +43,39 @@ public class CopiaPeliculaDAO {
         
         return res;
         
+        
     }
     
     //------------------------------- Consultas --------------------------------------------------------------------------------------------------------------------------------------
-    public static boolean numCopiaPeliculaIgual(String filtro){
-    
-        try {
-            String sql = "SELECT * FROM copiapelicula WHERE num_pelicula = '" + filtro + "'";
+    public static boolean numCopiaPeliculaIgual(String numCopia, String sucursal, String catalogo) {
+        
+    try {
+        
+        String sql = "SELECT * FROM copiapelicula WHERE num_pelicula = ? AND Sucursal_num_sucursal = ? AND Pelicula_num_catalogo = ?";
+        PreparedStatement pstm = ConexionBD.getConexion().prepareStatement(sql);
+        pstm.setString(1, numCopia);
+        pstm.setString(2, sucursal);
+        pstm.setString(3, catalogo);
+        ResultSet rs = pstm.executeQuery();
+        
+        int countFilas = 0;
+        
+        while (rs.next()){
             
-            ResultSet rs = ConexionBD.BuscarUsuario(sql);
-            
-            int contFilas = 0;
-            
-            while (rs.next()){
-                
-                contFilas++;
+                countFilas++;
                 
             }
             
-            return contFilas == 1; 
-            
-        } catch (SQLException ex) {
-            
-            Logger.getLogger(CopiaPeliculaDAO.class.getName()).log(Level.SEVERE, null, ex);
-            
-        }
+            return countFilas == 1; 
         
-        return false;
+    } catch (SQLException ex) {
+        
+        Logger.getLogger(CopiaPeliculaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        System.out.println(ex);
     }
+    
+    return false;
+}
     
     //------------------------------- Consultas Filtradas --------------------------------------------------------------------------------------------------------------------------------------
     public static ResultSet numCop1(String patron){
@@ -119,5 +127,5 @@ public class CopiaPeliculaDAO {
         return ConexionBD.buscarCopiasPeliculas();
 
     }
-    
+        
 }

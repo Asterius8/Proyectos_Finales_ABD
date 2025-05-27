@@ -314,17 +314,19 @@ private ConexionBD() {
 
     }
       
-    public static boolean eliminarCopia(String filtro){
+    public static boolean eliminarCopia(String num_pelicula, String sucursal_num_sucursal, String pelicula_num_catalogo){
     
          try {
 
             Connection conexion = getConexion();
             
-            String queryCopiaPeliculas = "DELETE FROM copiapelicula WHERE num_pelicula = ?";
+            String queryCopiaPeliculas = "DELETE FROM copiapelicula WHERE num_pelicula = ? AND sucursal_num_sucursal = ? AND pelicula_num_catalogo = ?";
             
             PreparedStatement pstmCopiaPeliculas = conexion.prepareStatement(queryCopiaPeliculas);
         
-            pstmCopiaPeliculas.setString(1, filtro);
+            pstmCopiaPeliculas.setString(1, num_pelicula);
+            pstmCopiaPeliculas.setString(2, sucursal_num_sucursal);
+            pstmCopiaPeliculas.setString(3, pelicula_num_catalogo);
             
             pstmCopiaPeliculas.execute();
             
@@ -406,8 +408,8 @@ private ConexionBD() {
         
     }
        
-    public static boolean cambiosCop(CopiaPelicula c){
-    
+    public static boolean cambiosCop(CopiaPelicula c) {
+
         try {
         
             Connection conexion = getConexion();
@@ -434,7 +436,6 @@ private ConexionBD() {
         }
     
         return false;
-        
     }
     
 //Consultar ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
