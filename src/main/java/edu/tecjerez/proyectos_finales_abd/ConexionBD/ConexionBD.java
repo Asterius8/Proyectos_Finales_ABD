@@ -524,7 +524,7 @@ private ConexionBD() {
         
             Connection conexion = getConexion();
             
-            String sentencia = "SELECT num_sucursal FROM sucursal";
+            String sentencia = "SELECT num_sucursal, ciudad FROM sucursal";
             
             PreparedStatement stmt = conexion.prepareStatement(sentencia);
         
@@ -545,7 +545,7 @@ private ConexionBD() {
         
             Connection conexion = getConexion();
             
-            String sentencia = "SELECT num_catalogo FROM pelicula";
+            String sentencia = "SELECT num_catalogo, titulo FROM pelicula";
             
             PreparedStatement stmt = conexion.prepareStatement(sentencia);
         

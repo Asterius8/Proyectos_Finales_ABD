@@ -66,10 +66,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         String tituloPestania = tpnVideo.getTitleAt(index);
         
+        
+   
+        
         if ("Copias de Peliculas".equals(tituloPestania)) {
             
             try {
                 
+                mostrarCopiasPeliculas();
+                mostrarCopiasPeliculas1();
                 cargarSucursales1();
                 cargarPeliculas1();
                 validarDatosIniciales1();
@@ -2100,8 +2105,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
             num_CopiaPelicula = txtNumCop.getText();
             estadoCP = String.valueOf(comboEstado.getSelectedItem());
-            num_Suc = String.valueOf(comboSucursal.getSelectedItem());
-            num_catalogo = String.valueOf(comboPeliculas.getSelectedItem());
+            num_Suc = String.valueOf(comboSucursal.getSelectedItem()).split(" ")[0];
+            num_catalogo = String.valueOf(comboPeliculas.getSelectedItem()).split(" ")[0];
         
         if( !(num_CopiaPelicula.equals("") || comboEstado.getSelectedIndex() == 0 || comboSucursal.getSelectedIndex() == 0 || comboPeliculas.getSelectedIndex() == 0 ) ){
         
@@ -3099,8 +3104,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         String numCopiaNueva = txtNumCop1.getText();
         String estadoP = String.valueOf(comboEstado1.getSelectedItem());
-        String sucursalNueva = String.valueOf(comboSucursal1.getSelectedItem());
-        String catalogoNuevo = String.valueOf(comboPeliculas1.getSelectedItem());
+        String sucursalNueva = String.valueOf(comboSucursal1.getSelectedItem()).split(" ")[0];
+        String catalogoNuevo = String.valueOf(comboPeliculas1.getSelectedItem()).split(" ")[0];
 
         // Validar si los datos clave cambiaron (puedes agregar esta validación si quieres evitar errores)
         boolean cambioClave = !numCopiaNueva.equals(copiaOriginal)
@@ -4051,7 +4056,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         comboSucursal.addItem("Elija una opcion");
         while (rs.next()) {
             
-            comboSucursal.addItem(rs.getString("num_sucursal"));
+            comboSucursal.addItem(rs.getString("num_sucursal") + " " + rs.getString("ciudad"));
             
         }
         
@@ -4065,7 +4070,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         comboSucursal1.addItem("Elija una opcion");
         while (rs.next()) {
             
-            comboSucursal1.addItem(rs.getString("num_sucursal"));
+            comboSucursal1.addItem(rs.getString("num_sucursal") + " " + rs.getString("ciudad"));
             
         }
         
@@ -4079,7 +4084,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         comboPeliculas.addItem("Elija una opcion");
         while (rs.next()) {
             
-            comboPeliculas.addItem(rs.getString("num_catalogo"));
+            comboPeliculas.addItem(rs.getString("num_catalogo") + " " + rs.getString("titulo"));
             
         }
     
@@ -4093,7 +4098,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         comboPeliculas1.addItem("Elija una opcion");
         while (rs.next()) {
             
-            comboPeliculas1.addItem(rs.getString("num_catalogo"));
+            comboPeliculas1.addItem(rs.getString("num_catalogo") + " " + rs.getString("titulo"));
             
         }
     
